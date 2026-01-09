@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ================= BASE (GLOBAL TAGS) ================= */
+@layer base {
+    body {
+        overflow-x: clip;
+    }
+}
+
 /* ================= COMPONENTS ================= */
 @layer components {
     .stat-card {
@@ -63,13 +70,12 @@
 
     .full-bleed {
         width: 100vw;
+        max-width: 100vw;
         position: relative;
 
         /* BREAK OUT OF PARENT */
         left: 50%;
-        right: 50%;
-        margin-left: -50vw;
-        margin-right: -50vw;
+        transform: translateX(-50%);
     }
 
     .as-seen h3 {
@@ -108,6 +114,50 @@
 
     small {
         color: #666;
+    }
+
+    .ul-success {
+        color: #0c7c00;
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .ul-danger {
+        color: #a60003;
+        list-style: none;
+        padding-left: 0;
+    }
+
+    /* SUCCESS ICON */
+    .ul-success li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .ul-success li::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        margin-top: 4px;
+        background: url("https://trysculptique.com/cdn/shop/files/check-mark_17013456_2_1.png?v=1760702838") no-repeat center / contain;
+    }
+
+    /* DANGER ICON */
+    .ul-danger li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .ul-danger li::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        margin-top: 4px;
+        background: url("https://trysculptique.com/cdn/shop/files/Vector_7.png?v=1760702839") no-repeat center / contain;
     }
 }
 
