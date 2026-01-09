@@ -103,6 +103,15 @@
         opacity: 0.9;
         filter: grayscale(100%);
     }
+
+    .jdgm-star::before {
+        content: "\e002";
+        font-family: "JudgemeStar";
+        font-size: 16px;
+        color: #f5a623;
+        display: inline-block;
+    }
+
 }
 
 /* ================= BASE (GLOBAL TAGS) ================= */
