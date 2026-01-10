@@ -63,9 +63,12 @@
 
     .as-seen {
         background: #f6f1e4;
-        padding: 40px 0;
+        padding: 20px 0;
         text-align: center;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
     .full-bleed {
@@ -81,7 +84,6 @@
     .as-seen h3 {
         font-family: serif;
         font-size: 28px;
-        margin-bottom: 32px;
     }
 
     .marquee {
@@ -98,10 +100,16 @@
     }
 
     .marquee-track img {
-        height: 48px;
+        height: 30px;
         width: auto;
         opacity: 0.9;
         filter: grayscale(100%);
+    }
+
+    @media (max-width: 899px) {
+        .marquee-track img {
+            height: 20px;
+        }
     }
 
     .jdgm-star::before {
@@ -118,6 +126,12 @@
 @layer base {
     * {
         color: #212121
+    }
+
+    body {
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
     }
 
     a {
@@ -138,6 +152,7 @@
 
     h4 {
         font-family: 'Trirong';
+        font-size: 20px;
     }
 
     h1 {
@@ -158,6 +173,10 @@
         font-size: 16px;
     }
 
+    h2 span {
+        font-family: 'Lora';
+    }
+
 
     circle {
         fill: none;
@@ -168,16 +187,18 @@
         color: #666;
     }
 
-    .ul-success {
+    .ul-success li {
         color: #0c7c00;
         list-style: none;
         padding-left: 0;
+        font-weight: 600;
     }
 
-    .ul-danger {
+    .ul-danger li {
         color: #a60003;
         list-style: none;
         padding-left: 0;
+        font-weight: 600;
     }
 
     /* SUCCESS ICON */

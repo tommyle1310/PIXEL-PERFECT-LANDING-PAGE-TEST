@@ -175,42 +175,45 @@ function renderIngredientAccordion() {
         <button
           onclick="toggleIngredientAccordion('${item.id}')"
           aria-expanded="false"
-          class="w-full flex items-center justify-between text-left gap-3"
+          class="w-full flex flex-col text-left gap-3"
         >
-          <div class="flex items-center gap-3">
-            <span class="text-green-600 text-xl">✔</span>
-            <span class="text-green-600 text-lg font-medium">
-              ${item.title}
-            </span>
+          <!-- Title row - always visible -->
+          <div class="flex items-center justify-between w-full">
+            <div class="flex items-center gap-3">
+              <span class="text-green-600 text-xl">✔</span>
+              <span class="text-green-600 text-lg font-medium">
+                ${item.title}
+              </span>
+            </div>
+            <svg
+              id="${item.id}-icon"
+              class="w-5 h-5 flex-shrink-0 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
-          <svg
-            id="${item.id}-icon"
-            class="w-5 h-5 flex-shrink-0 transition-transform duration-300"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <path d="M19 9l-7 7-7-7" />
-          </svg>
+          <!-- Image & Name row - always visible -->
+          <div class="flex items-center gap-3">
+            <img
+              src="${item.image}"
+              class="w-10 h-10 object-contain"
+            />
+            <p class="font-bold text-black">${item.name}</p>
+          </div>
         </button>
+        <!-- Expandable content - desc & note only -->
         <div
           id="${item.id}-content"
           class="accordion-closed overflow-hidden transition-all duration-300 ease-in-out"
           style="max-height: 0px;"
         >
-          <div class="mt-4 space-y-3">
-            <div class="flex items-start gap-3">
-              <img
-                src="${item.image}"
-                class="w-10 h-10 object-contain"
-              />
-              <div>
-                <p class="font-bold text-black">${item.name}</p>
-                <p class="text-sm leading-relaxed text-black">${item.desc}</p>
-                ${item.note ? `<p class="text-sm mt-2">${item.note}</p>` : ""}
-              </div>
-            </div>
+          <div class="mt-3 pl-[52px]">
+            <p class="text-sm leading-relaxed text-black">${item.desc}</p>
+            ${item.note ? `<p class="text-sm mt-2">${item.note}</p>` : ""}
           </div>
         </div>
       </div>
@@ -237,7 +240,7 @@ function toggleIngredientAccordion(id) {
     content.classList.add("accordion-closed");
   }
 
-  icon.classList.toggle("rotate-180", isOpen);
+  // icon.classList.toggle("rotate-180", isOpen);
   button?.setAttribute("aria-expanded", String(isOpen));
 }
 
