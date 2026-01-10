@@ -16,8 +16,11 @@ module.exports = {
     },
     extend: {
       fontSize: {
-        xs: '13px', 
+        xs: '13px',
       },
+      fontFamily: {
+        mont: ['Montserrat', 'sans-serif'],
+      }
     },
   },
   plugins: [],

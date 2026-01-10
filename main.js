@@ -39,7 +39,7 @@ function initGenericAccordions() {
     acc1Content.style.overflow = 'hidden';
     acc1Content.style.transition = 'max-height 0.3s ease-in-out';
   }
-  
+
   // Set initial state for closed accordions (acc-2, acc-3)
   ['acc-2', 'acc-3'].forEach(id => {
     const content = document.getElementById(`${id}-content`);
@@ -276,7 +276,7 @@ function renderReviews() {
 
   const reviewsHTML = currentReviews.map(review => {
     const starsHTML = Array(review.rating).fill('<span class="jdgm-star"></span>').join('');
-    
+
     return `
       <div class="border-b-[1px] border-[#fef3f3] flex flex-col py-4 gap-4">
 
@@ -292,7 +292,7 @@ function renderReviews() {
         <div class="flex gap-2 items-start">
           <div class="w-12 h-12 bg-[#efefef] relative">
             <div class="absolute w-4 h-4 bottom-0 right-0 bg-[#fa8a8a] flex items-center justify-center">
-              <span class="text-white text-xs">${review.avatarInitial}</span>
+              <i class="fa-solid fa-check text-white text-[8px]"></i>
             </div>
           </div>
 
@@ -322,53 +322,49 @@ function renderReviews() {
 function renderPagination(totalPages) {
   if (totalPages <= 1) return '';
 
-  let pages = [];
   const current = currentReviewPage;
 
-  // Calculate range around current page (max 2 on each side)
-  let rangeStart = Math.max(1, current - 2);
-  let rangeEnd = Math.min(totalPages, current + 2);
-
-  // Only show first page if it's within range or adjacent to range
-  if (rangeStart > 1) {
-    // Don't show first page separately, it's not adjacent
+  const firstButton = `<button onclick="changeReviewPage(1)" class="text-[#fa8a8a] text-lg px-1 hover:opacity-70 transition-opacity"><svg
+class="w-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fa8a8a"
+    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m17 18-6-6 6-6" />
+    <path d="M7 6v12" /></svg></button>`;
+  const prevButton = `<button onclick="changeReviewPage(${Math.max(1, current - 1)})"
+  class="text-[#fa8a8a] text-lg px-1 hover:opacity-70 transition-opacity"><svg class="w-4" xmlns="http://www.w3.org/2000/svg"
+    width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fa8a8a" stroke-width="2" stroke-linecap="round"
+    stroke-linejoin="round">
+    <path d="m15 18-6-6 6-6" /></svg></button>`;
+  let pagesHTML = '';
+  for (let i = 1; i <= totalPages; i++) {
+    if (i === current) {
+      pagesHTML += `<span class="text-[#7b7b7b] text-2xl font-bold px-1">${i}</span>`;
+    } else {
+      pagesHTML += `<button onclick="changeReviewPage(${i})" class=" text-[#fa8a8a] text-lg px-1 hover:opacity-70 transition-opacity">${i}</button>`;
+    }
   }
 
-  // Add pages in range
-  for (let i = rangeStart; i <= rangeEnd; i++) {
-    pages.push(i);
-  }
-
-  const prevButton = current > 1 
-    ? `<button onclick="changeReviewPage(${current - 1})" class="w-10 h-10 flex items-center justify-center border rounded-full hover:bg-gray-100 transition-colors">
-        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>`
-    : '';
-
-  const nextButton = current < totalPages 
-    ? `<button onclick="changeReviewPage(${current + 1})" class="w-10 h-10 flex items-center justify-center border rounded-full hover:bg-gray-100 transition-colors">
-        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>`
-    : '';
-
-  // Progress bar pagination
-  const progressPercent = ((current - 1) / (totalPages - 1)) * 100;
-  const progressBar = `
-    <div class="flex-1 h-1 bg-gray-300 rounded-full mx-4 relative">
-      <div class="absolute left-0 top-0 h-full bg-green-600 rounded-full transition-all duration-300" style="width: ${progressPercent}%"></div>
-      <div class="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-green-600 rounded-full transition-all duration-300" style="left: ${progressPercent}%"></div>
-    </div>
-  `;
-
+  const nextButton = `<button onclick="changeReviewPage(${Math.min(totalPages, current + 1)})"
+   class="text-[#fa8a8a] text-lg px-1 hover:opacity-70 transition-opacity"><svg class="w-4" xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fa8a8a" stroke-width="2"
+     stroke-linecap="round" stroke-linejoin="round">
+     <path d="m9 18 6-6-6-6" /></svg></button>`;
+  const lastButton = `<button onclick="changeReviewPage(${totalPages})"
+   class="text-[#fa8a8a] text-lg px-1 hover:opacity-70 transition-opacity"><svg class="w-4" xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fa8a8a" stroke-width="2"
+     stroke-linecap="round" stroke-linejoin="round">
+     <path d="m7 18 6-6-6-6" />
+     <path d="M17 6v12" /></svg></button>`;
   return `
-    <div class="flex justify-center items-center gap-2 mt-6 py-4">
+    <div class="flex flex-wrap justify-center items-center gap-2 mt-6 py-4 pb-16 md:pb-[4.5rem]">
+    <div class="flex items-center gap-2">   
+    ${firstButton}
       ${prevButton}
-      ${progressBar}
+      </div>
+      ${pagesHTML}
+    <div class="flex items-center gap-2">
       ${nextButton}
+      ${lastButton}
+    </div>
     </div>
   `;
 }
@@ -426,10 +422,10 @@ function renderStoriesCarousel() {
   const isMobile = window.innerWidth < 768;
   const slideWidth = getSlideWidthPercent();
   const maxIndex = getMaxStoryIndex();
-  
+
   // Clamp currentStoryIndex to valid range
   currentStoryIndex = Math.max(0, Math.min(currentStoryIndex, maxIndex));
-  
+
   // Calculate translation based on current index
   const translateX = currentStoryIndex * slideWidth;
 
@@ -520,17 +516,17 @@ function startStoriesDrag(e) {
 
 function handleStoriesDrag(e) {
   if (!isDragging) return;
-  
+
   const track = document.getElementById('stories-track');
   if (!track) return;
-  
+
   const currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
   const diff = dragStartX - currentX;
   const containerWidth = track.parentElement.offsetWidth;
   const diffPercent = (diff / containerWidth) * 100;
-  
+
   dragCurrentTranslate = dragPrevTranslate + diffPercent;
-  
+
   // Clamp to valid range with some rubber-band effect
   const maxTranslate = getMaxStoryIndex() * getSlideWidthPercent();
   if (dragCurrentTranslate < 0) {
@@ -538,9 +534,9 @@ function handleStoriesDrag(e) {
   } else if (dragCurrentTranslate > maxTranslate) {
     dragCurrentTranslate = maxTranslate + (dragCurrentTranslate - maxTranslate) * 0.3; // Rubber band at end
   }
-  
+
   track.style.transform = `translateX(-${dragCurrentTranslate}%)`;
-  
+
   if (e.cancelable) {
     e.preventDefault();
   }
@@ -549,19 +545,19 @@ function handleStoriesDrag(e) {
 function endStoriesDrag(e) {
   if (!isDragging) return;
   isDragging = false;
-  
+
   const track = document.getElementById('stories-track');
   if (track) {
     track.style.transition = 'transform 0.3s ease-out';
   }
-  
+
   const slideWidth = getSlideWidthPercent();
   const maxIndex = getMaxStoryIndex();
-  
+
   // Determine which slide to snap to based on drag distance
   const dragDistance = dragCurrentTranslate - dragPrevTranslate;
   const threshold = slideWidth * 0.2; // 20% threshold to change slide
-  
+
   if (Math.abs(dragDistance) > threshold) {
     if (dragDistance > 0 && currentStoryIndex < maxIndex) {
       // Dragged left, go to next
@@ -571,13 +567,13 @@ function endStoriesDrag(e) {
       currentStoryIndex--;
     }
   }
-  
+
   // Snap to the current index
   const finalTranslate = currentStoryIndex * slideWidth;
   if (track) {
     track.style.transform = `translateX(-${finalTranslate}%)`;
   }
-  
+
   // Update pagination after animation
   setTimeout(() => {
     renderStoriesCarousel();

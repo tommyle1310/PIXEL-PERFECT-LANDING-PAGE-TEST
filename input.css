@@ -15,6 +15,7 @@
         max-width: 1340px;
         margin: 0 auto;
     }
+
     @media (min-width: 651px) {
         .section-container {
             padding: 0 32px;
@@ -122,6 +123,11 @@
         }
     }
 
+    .customer-reviews,
+    .customer-reviews p {
+        font-family: "Montserrat", sans-serif;
+    }
+
     .jdgm-star::before {
         content: "\e002";
         font-family: "JudgemeStar";
@@ -185,6 +191,10 @@
 
     h2 span {
         font-family: 'Lora';
+    }
+
+    .fa-star, .fa-star-half-stroke {
+        color: #FA8A8A;
     }
 
 
