@@ -171,41 +171,47 @@ function renderIngredientAccordion() {
     `;
 
     return `
-      <div class="p-4 ${borderClass}">
+      <div class="p-6 ${borderClass}">
         <button
           onclick="toggleIngredientAccordion('${item.id}')"
           aria-expanded="false"
           class="w-full flex flex-col text-left gap-3"
         >
-          <!-- Title row - always visible -->
-          <div class="flex items-center justify-between w-full">
-            <div class="flex items-center gap-3">
-              <span class="text-green-600 text-xl">✔</span>
-              <span class="text-green-600 text-lg font-medium">
-                ${item.title}
-              </span>
-            </div>
-            <svg
-              id="${item.id}-icon"
-              class="w-5 h-5 flex-shrink-0 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
-              <path d="M19 9l-7 7-7-7" />
-            </svg>
+          <div class="flex items-center justify-center gap-3 w-full">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/check-mark_17013456_2.png?v=1760698419"
+              class="w-5 h-5 object-contain"
+              alt="check"
+            />
+            <span class="text-green-600 text-lg font-medium">
+              ${item.title}
+            </span>
           </div>
-          <!-- Image & Name row - always visible -->
-          <div class="flex items-center gap-3">
+          <div class="flex flex-row md:flex-col gap-3 items-center md:items-start">
             <img
               src="${item.image}"
-              class="w-10 h-10 object-contain"
+              class="w-[20%] md:w-auto object-contain self-center"
+              style="max-height: 80px;"
             />
-            <p class="font-bold text-black">${item.name}</p>
+            <div class="flex items-center gap-2 justify-between w-full flex-1">
+              <p 
+              style="
+                font-family: 'Trirong';              
+              "
+              class="font-semibold text-[16px] text-black">${item.name}</p>
+              <svg
+                id="${item.id}-icon"
+                class="w-5 h-5 flex-shrink-0 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
         </button>
-        <!-- Expandable content - desc & note only -->
         <div
           id="${item.id}-content"
           class="accordion-closed overflow-hidden transition-all duration-300 ease-in-out"
