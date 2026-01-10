@@ -116,6 +116,49 @@
 
 /* ================= BASE (GLOBAL TAGS) ================= */
 @layer base {
+    * {
+        color: #212121
+    }
+
+    a {
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    p,
+    li,
+    span,
+    button {
+        font-family: 'Nunito';
+    }
+
+    h1,
+    h2 {
+        font-family: 'Lora';
+    }
+
+    h4 {
+        font-family: 'Trirong';
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    p,
+    li,
+    button {
+        font-size: 18px;
+    }
+
+    a {
+        font-size: 16px;
+    }
+
+
     circle {
         fill: none;
         stroke-width: 12;
@@ -180,5 +223,21 @@
         to {
             transform: translateX(-50%);
         }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.96);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .animate-fadeIn {
+        animation: fadeIn 0.2s ease-out;
     }
 }

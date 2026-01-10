@@ -270,27 +270,37 @@ function renderReviews() {
     
     return `
       <div class="border-b-[1px] border-[#fef3f3] flex flex-col py-4 gap-4">
-        <div class="flex gap-4 justify-between">
-          <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-1">
-              ${starsHTML}
-            </div>
-            <div class="flex gap-2 items-start">
-              <div class="w-12 h-12 bg-[#efefef] relative">
-                <div class="absolute w-4 h-4 bottom-0 right-0 bg-[#fa8a8a] flex items-center justify-center">
-                  <span class="text-white text-xs">${review.avatarInitial}</span>
-                </div>
-              </div>
-              <p class="text-[#fa8a8a]">${review.author}</p>
-              ${review.isVerified ? '<p class="py-[2px] px-[6px] flex-shrink text-white bg-[#FA8A8A]">Verified</p>' : ''}
+
+        <!-- ROW: STARS + DATE -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1">
+            ${starsHTML}
+          </div>
+          <p class="text-[#7b7b7b] text-sm">${review.date}</p>
+        </div>
+
+        <!-- ROW: AVATAR + NAME -->
+        <div class="flex gap-2 items-start">
+          <div class="w-12 h-12 bg-[#efefef] relative">
+            <div class="absolute w-4 h-4 bottom-0 right-0 bg-[#fa8a8a] flex items-center justify-center">
+              <span class="text-white text-xs">${review.avatarInitial}</span>
             </div>
           </div>
-          <p class="text-[#7b7b7b]">${review.date}</p>
+
+          <div class="flex items-center gap-2">
+            <p class="text-[#fa8a8a]">${review.author}</p>
+            ${review.isVerified ? '<p class="py-[2px] px-[6px] text-xs text-white bg-[#FA8A8A]">Verified</p>' : ''}
+          </div>
         </div>
+
+        <!-- CONTENT -->
         <p>${review.content}</p>
-        <div class="flex">
-          <p class="px-2 py-1 border">${review.source}</p>
+
+        <!-- SOURCE -->
+        <div class="hidden md:flex">
+          <p class="px-2 py-1">${review.source}</p>
         </div>
+
       </div>
     `;
   }).join('');
@@ -614,6 +624,30 @@ function playStoryVideo(index) {
     }
   }
 }
+
+const overlay = document.getElementById("modal-overlay")
+
+function openModal() {
+  overlay.classList.remove("hidden")
+  overlay.classList.add("flex")
+}
+
+function closeModal() {
+  overlay.classList.add("hidden")
+  overlay.classList.remove("flex")
+}
+
+
+// Click overlay to close
+overlay.addEventListener("click", (e) => {
+  if (e.target === overlay) closeModal()
+})
+
+// ESC to close
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal()
+})
+
 
 // INITIALIZE ALL ON DOM CONTENT LOADED
 document.addEventListener("DOMContentLoaded", async () => {
