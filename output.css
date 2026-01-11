@@ -575,8 +575,9 @@ a {
 p,
     li,
     span,
-    button {
+    button, strong {
   font-family: 'Nunito';
+  line-height: 1.3rem;
 }
 
 h1,
@@ -743,11 +744,18 @@ small {
 .section-container {
   max-width: 1340px;
   margin: 0 auto;
+  padding: 2rem 15px;
 }
 
 @media (min-width: 651px) {
   .section-container {
     padding: 0 32px;
+  }
+}
+
+@media (min-width: 750px) {
+  .section-container {
+    padding: 0 50px;
   }
 }
 
@@ -1090,12 +1098,12 @@ small {
   margin-top: 1.5rem;
 }
 
-.mt-auto {
-  margin-top: auto;
+.mt-\[10px\] {
+  margin-top: 10px;
 }
 
-.mb-12 {
-  margin-bottom: 3rem;
+.mt-auto {
+  margin-top: auto;
 }
 
 .box-border {
@@ -2017,11 +2025,23 @@ small {
   gap: 1rem;
 }
 
+.gap-6 {
+  gap: 1.5rem;
+}
+
 .gap-\[10px\] {
   gap: 10px;
 }
 
 .gap-px {
+  gap: 1px;
+}
+
+.gap-\[2px\] {
+  gap: 2px;
+}
+
+.gap-\[1px\] {
   gap: 1px;
 }
 
@@ -2824,6 +2844,11 @@ small {
   padding-right: 1.5rem;
 }
 
+.px-\[1\.5rem\] {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 .px-\[6px\] {
   padding-left: 6px;
   padding-right: 6px;
@@ -2869,6 +2894,10 @@ small {
   padding-bottom: 2px;
 }
 
+.pb-16 {
+  padding-bottom: 4rem;
+}
+
 .pb-2 {
   padding-bottom: 0.5rem;
 }
@@ -2903,22 +2932,6 @@ small {
 
 .pt-3 {
   padding-top: 0.75rem;
-}
-
-.pb-12 {
-  padding-bottom: 3rem;
-}
-
-.pb-14 {
-  padding-bottom: 3.5rem;
-}
-
-.pb-16 {
-  padding-bottom: 4rem;
-}
-
-.pb-\[4\.5rem\] {
-  padding-bottom: 4.5rem;
 }
 
 .text-left {
@@ -3802,6 +3815,10 @@ small {
     display: none;
   }
 
+  .md\:h-8 {
+    height: 2rem;
+  }
+
   .md\:h-\[260px\] {
     height: 260px;
   }
@@ -3820,10 +3837,6 @@ small {
 
   .md\:w-6 {
     width: 1.5rem;
-  }
-
-  .md\:w-8 {
-    width: 2rem;
   }
 
   .md\:w-\[45\%\] {
@@ -3929,6 +3942,11 @@ small {
 
   .md\:border-r {
     border-right-width: 1px;
+  }
+
+  .md\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 
   .md\:px-24 {

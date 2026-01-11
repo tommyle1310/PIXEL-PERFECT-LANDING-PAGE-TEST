@@ -275,14 +275,14 @@ function renderReviews() {
   const currentReviews = reviewsData.slice(startIndex, endIndex);
 
   const reviewsHTML = currentReviews.map(review => {
-    const starsHTML = Array(review.rating).fill('<span class="jdgm-star"></span>').join('');
+    const starsHTML = Array(review.rating).fill('<i class="fa-solid fa-star"></i>').join('');
 
     return `
       <div class="border-b-[1px] border-[#fef3f3] flex flex-col py-4 gap-4">
 
         <!-- ROW: STARS + DATE -->
         <div class="flex items-center justify-between">
-          <div class="flex items-center gap-1">
+          <div class="flex items-center gap-[1px]">
             ${starsHTML}
           </div>
           <p class="text-[#7b7b7b] text-sm">${review.date}</p>
@@ -431,7 +431,7 @@ function renderStoriesCarousel() {
 
   const videosHTML = storiesData.map((story, index) => `
     <div class="stories-slide flex-shrink-0 px-2" style="width: ${slideWidth}%;">
-      <div class="aspect-[9/16] rounded-xl overflow-hidden bg-gray-200 relative group cursor-pointer" onclick="playStoryVideo(${index})">
+      <div class="aspect-[9/16] rounded-[4px] overflow-hidden bg-gray-200 relative group cursor-pointer" onclick="playStoryVideo(${index})">
         <img 
           src="${story.poster}" 
           alt="Story ${index + 1}" 
