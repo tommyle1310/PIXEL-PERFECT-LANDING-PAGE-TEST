@@ -46,6 +46,15 @@
     }
 
 
+    .reviews-terms {
+        font-size: 16px;
+    }
+    .reviews-terms a {
+        text-decoration: underline;
+        color: #0000ee;
+        font-family: 'Nunito';
+    }
+
     .stat-card {
         max-width: 320px;
         padding: 24px;
