@@ -45,9 +45,45 @@
     }
   }
 
+  .section-1,
+  .section-3,
+  .section-6,
+  .section-8 {
+    padding-right: 35px;
+    padding-left: 35px;
+  }
+
+  @media (min-width: 651px) {
+    .section-1,
+    .section-3,
+    .section-6,
+    .section-8 {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+  }
+
+  @media (min-width: 750px) {
+    .section-1,
+    .section-3,
+    .section-6,
+    .section-8 {
+      padding-left: 3rem !important;
+      padding-right: 3rem !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-7 {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
   .reviews-terms {
     font-size: 16px;
     line-height: 1.4;
+    font-family: "Nunito";
   }
   .reviews-terms a {
     text-decoration: underline;
@@ -172,11 +208,9 @@
 
 /* ================= BASE (GLOBAL TAGS) ================= */
 @layer base {
-  * {
-    color: #212121;
-  }
 
   body {
+    letter-spacing: 0.06rem;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -193,7 +227,7 @@
   }
 
   p {
-    color: #000
+    color: #000;
   }
 
   li,

@@ -27,7 +27,7 @@ function renderFaqs() {
       aria-expanded="false"
     >
       <div class="w-full flex items-center justify-between text-left px-6 py-5">
-        <span class="text-gray-800 font-medium text-lg pr-4">
+        <span class="text-gray-800 font-medium font-nunito text-lg pr-4">
           ${item.question}
         </span>
         <svg
@@ -48,7 +48,7 @@ function renderFaqs() {
         class="accordion-closed overflow-hidden transition-all duration-300 ease-in-out"
         style="max-height: 0px;"
       >
-        <div class="px-6 pb-5 text-gray-600 leading-relaxed">
+        <div class="px-6 pb-5 font-nunito">
           ${item.answer}
         </div>
       </div>

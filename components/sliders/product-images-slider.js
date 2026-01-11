@@ -60,7 +60,7 @@ class ProductImageSlider {
         </button>
 
         <!-- Main Image Slider (Mobile) -->
-        <div id="main-slider-container" class="md:hidden w-full aspect-square rounded-md overflow-hidden bg-gray-200 relative cursor-grab active:cursor-grabbing select-none">
+        <div id="main-slider-container" class="md:hidden w-full aspect-square rounded-lg overflow-hidden bg-gray-200 relative cursor-grab active:cursor-grabbing select-none">
           <div id="main-slider-track" class="flex h-full transition-transform duration-300 ease-out" style="width: 300%; transform: translateX(-33.333%);">
             <div class="w-1/3 h-full flex-shrink-0">
               <img src="${sliderImages.prev}" class="w-full h-full object-cover pointer-events-none" alt="Previous" draggable="false">
@@ -95,11 +95,12 @@ class ProductImageSlider {
             onclick="openModal()"
             style=" font-family: 'Montserrat', sans-serif;"
             class="absolute bottom-8 left-1/2 -translate-x-1/2
-                    inline-flex items-center gap-3
+                    inline-flex items-center gap-2
                     whitespace-nowrap
-                    rounded-[32px]
+                    rounded-[24px]
                     bg-[#ffffffd9]
-                    px-6 py-2
+                    px-[24px] py-[8px]
+                    max-w-[290px]
                     text-[#383938]
                     border border-black
                     hover:opacity-70 duration-200"
@@ -109,7 +110,7 @@ class ProductImageSlider {
                 class="w-6 h-6 shrink-0"
                 alt=""
             />
-            <span class="text-lg font-medium">
+            <span class="text-[14px] font-mont font-[400]">
                 Nutrition Information
             </span>
         </button>

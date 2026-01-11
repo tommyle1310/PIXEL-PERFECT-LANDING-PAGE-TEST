@@ -20,6 +20,8 @@ module.exports = {
       },
       fontFamily: {
         mont: ['Montserrat', 'sans-serif'],
+        nunito: ['Nunito'],
+        
       }
     },
   },

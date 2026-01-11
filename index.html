@@ -33,15 +33,15 @@
             href="https://trysculptique.com/cdn/shop/files/fav.png?crop=center&height=32&v=1747491248&width=32" />
     </head>
 
-    <body class="section-container">
+    <body class>
         <header>
             <img
-                style="display: block; max-width: 160px; margin: auto"
-                class="max-md:pb-7 pb-7 pt-3"
+                style="display: block; max-width: 160px; margin: auto; padding-top: 0.4rem; padding-bottom: 44px"
+                class="max-md:pb-8 pb-8"
                 src="//trysculptique.com/cdn/shop/files/gempages_567005027885909033-610eea12-3864-40f1-b0bb-802237c7296c.png?v=1756727579" />
         </header>
         <section
-            class="section-1 p-4 flex flex-col md:flex-row gap-4 md:gap-16">
+            class="section-1 pb-12 flex flex-col md:flex-row gap-4 md:gap-16">
             <div class="lg:w-1/2">
                 <!-- Product Images Slider Container -->
                 <div id="product-images-slider"></div>
@@ -66,7 +66,7 @@
             </div>
 
             <div
-                class="product-details md:max-w-[437px]! lg:w-1/2 flex flex-col gap-4">
+                class="product-details font-nunito md:max-w-[437px]! lg:w-1/2 flex flex-col gap-4">
                 <div class="product-details_header flex gap-4 items-center">
                     <div class="stars">
                         <img
@@ -252,7 +252,7 @@
                     class="bg-[#000] w-full p-3 font-bold text-white hover:bg-[#333] rounded-lg duration-300">
                     ADD TO CART
                 </button>
-                <div class="flex items-center gap-4">
+                <div class="flex items-center mx-auto gap-4">
                     <div
                         class="flex w-1/2! items-center gap-2 pr-4 mr-4 border-r border-black">
                         <svg
@@ -266,14 +266,14 @@
                                 d="M14.583 12.1713C14.8698 12.1333 15.2001 12.1658 15.2331 12.5409L15.4195 14.6275C15.4683 15.1837 14.6219 15.2591 14.5729 14.7009L14.4664 13.5087C11.0241 17.4806 4.69181 17.0524 1.8463 12.5832C0.813943 10.9619 0.373055 8.97183 0.729143 6.97041C0.826743 6.41646 1.66639 6.56543 1.56914 7.11708C0.93661 10.7064 3.13963 14.1944 6.67777 15.1423C9.24097 15.8291 11.929 15.0161 13.687 13.1046L12.7599 13.1875C12.2036 13.2364 12.1283 12.39 12.6865 12.3409L14.583 12.1713ZM4.40861 3.48455L3.31261 3.58232C5.07048 1.67103 7.75883 0.858057 10.3219 1.54481C13.86 2.4929 16.063 5.98072 15.4305 9.57006C15.3332 10.1217 16.1729 10.2707 16.2705 9.71672C16.6267 7.71512 16.1857 5.72526 15.1533 4.10392C12.3587 -0.285054 6.18194 -0.791543 2.68932 3.00366L2.59723 1.97219C2.54817 1.41397 1.70177 1.48917 1.75065 2.04561L1.93554 4.11495C1.95314 4.36881 2.16274 4.54428 2.41768 4.51548L4.48203 4.33112C5.03972 4.28206 4.96559 3.43619 4.40861 3.48455Z"
                                 fill="black" />
                         </svg>
-                        <p class="text-sm">Refills Ship Bi-Monthly</p>
+                        <p class="text-sm font-mont">Refills Ship Bi-Monthly</p>
                     </div>
                     <div class="flex w-1/2! items-center gap-2">
                         <img
                             class="w-4 h-4"
                             src="https://cdn.shopify.com/s/files/1/0779/0673/9384/files/clock.webp"
                             alt="clock icon" />
-                        <p class="text-sm">Stop or Cancel Anytime</p>
+                        <p class="text-sm font-mont">Stop or Cancel Anytime</p>
                     </div>
                 </div>
 
@@ -286,7 +286,7 @@
                     alt="code voucher new year new me"
                     class="w-full h-auto" />
                 <div class="flex flex-col gap-3">
-                    <div data-guarantee></div>
+                    <div data-half-gap data-guarantee></div>
                     <div class="flex items-center gap-2">
                         <img
                             class="max-w-5"
@@ -384,7 +384,8 @@
                 </div>
             </div>
         </section>
-        <section class="section-3 p-4 flex flex-col items-center gap-4">
+        <section
+            class="section-3 section-container pt-12 flex flex-col items-center gap-4">
             <h2 class="text-center">
                 Why Your
                 <span class="text-[#039869]">Bloating, Brain Fog & Swollen
@@ -767,7 +768,7 @@
                             Try Lymphatic Drainage Risk-Free
                         </button>
                     </div>
-                    <div data-center data-guarantee></div>
+                    <div data-center data-bold data-guarantee></div>
                 </div>
             </div>
         </section>
@@ -817,7 +818,7 @@
                 <h2 class="text-center px-4">
                     Real Women, Real Results: 93,000+ Transformations
                 </h2>
-                <p class="text-center text-[16px]">
+                <p class="text-center font-nunito text-[18px]">
                     All reviews verified from actual paying customers
                 </p>
             </div>
@@ -851,101 +852,103 @@
                         </div>
                     </div>
                     <div
+                        id="rating-filter"
                         class="flex flex-col gap-[10px] px-6 md:px-6 text-[12px] w-full lg:border-x border-[#fef3f3]">
-                        <div
-                            class="flex flex-col items-center gap-2 md:grid md:grid-cols-[1fr_140px_32px] md:items-center md:gap-4 w-full">
-                            <div
-                                class="flex items-center gap-1 md:justify-start">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
 
+                        <!-- 5 STAR -->
+                        <div
+                            data-rating="5"
+                            class="rating-row cursor-pointer transition-opacity hover:opacity-60 flex flex-col items-center gap-2 md:grid md:grid-cols-[1fr_140px_32px] md:items-center md:gap-4 w-full">
+                            <div class="flex items-center gap-1">
+                                <i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
                             <div class="bg-[#efefef] w-[80%] md:w-full h-4">
                                 <div class="w-[76%] h-full bg-[#FA8A8A]"></div>
                             </div>
-
                             <p
-                                class="w-[32px] text-center md:text-right text-[12px]">84</p>
+                                class="w-[32px] text-center text-[12px] md:text-[13px] md:text-right">84</p>
                         </div>
 
+                        <!-- 4 STAR -->
                         <div
-                            class="flex flex-col items-center gap-2 md:grid md:grid-cols-[1fr_140px_32px] md:items-center md:gap-4 w-full">
-                            <div
-                                class="flex items-center gap-1 md:justify-start">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
+                            data-rating="4"
+                            class="rating-row cursor-pointer transition-opacity hover:opacity-60 flex flex-col items-center gap-2 md:grid md:grid-cols-[1fr_140px_32px] md:items-center md:gap-4 w-full">
+                            <div class="flex items-center gap-1">
+                                <i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
                             </div>
-
                             <div class="bg-[#efefef] w-[80%] md:w-full h-4">
                                 <div class="w-[15%] h-full bg-[#FA8A8A]"></div>
                             </div>
-
                             <p
-                                class="w-[32px] text-center md:text-right text-[12px]">17</p>
+                                class="w-[32px] text-center text-[12px] md:text-[13px] md:text-right">17</p>
                         </div>
 
+                        <!-- 3 STAR -->
                         <div
-                            class="flex flex-col items-center gap-2 md:grid md:grid-cols-[1fr_140px_32px] md:items-center md:gap-4 w-full">
-                            <div
-                                class="flex items-center gap-1 md:justify-start">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
+                            data-rating="3"
+                            class="rating-row cursor-pointer transition-opacity hover:opacity-60 flex flex-col items-center gap-2 md:grid md:grid-cols-[1fr_140px_32px] md:items-center md:gap-4 w-full">
+                            <div class="flex items-center gap-1">
+                                <i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
                             </div>
-
                             <div class="bg-[#efefef] w-[80%] md:w-full h-4">
                                 <div class="w-[7%] h-full bg-[#FA8A8A]"></div>
                             </div>
-
                             <p
-                                class="w-[32px] text-center md:text-right text-[12px]">8</p>
+                                class="w-[32px] text-center text-[12px] md:text-[13px] md:text-right">8</p>
                         </div>
 
+                        <!-- 2 STAR -->
                         <div
-                            class="flex flex-col items-center gap-2 md:grid md:grid-cols-[1fr_140px_32px] md:items-center md:gap-4 w-full">
-                            <div
-                                class="flex items-center gap-1 md:justify-start">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
+                            data-rating="2"
+                            class="rating-row cursor-pointer transition-opacity hover:opacity-60 flex flex-col items-center gap-2 md:grid md:grid-cols-[1fr_140px_32px] md:items-center md:gap-4 w-full">
+                            <div class="flex items-center gap-1">
+                                <i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
                             </div>
-
                             <div class="bg-[#efefef] w-[80%] md:w-full h-4">
                                 <div class="w-[1%] h-full bg-[#FA8A8A]"></div>
                             </div>
-
                             <p
-                                class="w-[32px] text-center md:text-right text-[12px]">1</p>
+                                class="w-[32px] text-center text-[12px] md:text-[13px] md:text-right">1</p>
                         </div>
 
+                        <!-- 1 STAR -->
                         <div
-                            class="flex flex-col items-center gap-2 md:grid md:grid-cols-[1fr_140px_32px] md:items-center md:gap-4 w-full">
-                            <div
-                                class="flex items-center gap-1 md:justify-start">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
+                            data-rating="1"
+                            class="rating-row cursor-pointer transition-opacity hover:opacity-60 flex flex-col items-center gap-2 md:grid md:grid-cols-[1fr_140px_32px] md:items-center md:gap-4 w-full">
+                            <div class="flex items-center gap-1">
+                                <i class="fa-solid fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
                             </div>
-
                             <div class="bg-[#efefef] w-[80%] md:w-full h-4">
                                 <div class="w-[0%] h-full bg-[#FA8A8A]"></div>
                             </div>
-
                             <p
-                                class="w-[32px] text-center md:text-right text-[12px]">0</p>
+                                class="w-[32px] text-center text-[12px] md:text-[13px] md:text-right">0</p>
                         </div>
+
+                        <div id="see-all-reviews"
+                            class="text-[#FA8A8A] text-[12px] max-md:pb-2 text-center md:text-[12.8px] underline">See
+                            all reviews</div>
+
                     </div>
                     <button
                         id="btn-toggle-review-form"
@@ -954,7 +957,6 @@
                     </button>
                 </div>
             </div>
-
             <form
                 id="review-form"
                 class="w-full font-mont hidden flex-col flex items-center md:max-w-[600px] mx-auto gap-8 py-6 px-4 border-t-[1px] border-[#fef3f3]">
@@ -1060,13 +1062,13 @@
                         rel="nofollow noopener">content</a> policies.</p>
                 <div
                     class="flex flex-col md:flex-row justify-center items-center md:gap-3">
-                    <button 
+                    <button
                         class="px-5 py-[10px] text-[#FA8A8A] border-[#FA8A8A] border-2"
-                    type="button" id="cancelReview">Cancel
+                        type="button" id="cancelReview">Cancel
                         Review</button>
-                    <button 
+                    <button
                         class="px-5 py-[10px] bg-[#FA8A8A] text-white"
-                    type="submit">Submit Review</button>
+                        type="submit">Submit Review</button>
 
                 </div>
             </form>
@@ -1078,23 +1080,27 @@
                     alt="diamond authencity" />
             </div>
             <div
-                class="w-full flex py-6 px-4 pt-0 border-b-[1px] border-[#fef3f3]">
-                <select class="text-[#fa8a8a]" aria-label="Sort dropdown">
-                    <option value="most-recent">Most Recent</option>
-                    <option value="highest-rating">Highest Rating</option>
-                    <option value="lowest-rating">Lowest Rating</option>
-                    <option value="with-pictures">Only Pictures</option>
-                    <option value="pictures-first">Pictures First</option>
-                    <option value="videos-first">Videos First</option>
-                    <option value="most-helpful">Most Helpful</option>
-                </select>
+                class="w-full flex pt-0 border-[#fef3f3]">
+                <div
+                    class="w-full flex py-6 px-4 pt-0 border-b-[1px] border-[#fef3f3]">
+                    <select id="review-sort" class="text-[#fa8a8a]"
+                        aria-label="Sort dropdown">
+                        <option value="most-recent">Most Recent</option>
+                        <option value="highest-rating">Highest Rating</option>
+                        <option value="lowest-rating">Lowest Rating</option>
+                        <option value="with-pictures">Only Pictures</option>
+                        <option value="pictures-first">Pictures First</option>
+                        <option value="videos-first">Videos First</option>
+                        <option value="most-helpful">Most Helpful</option>
+                    </select>
+                </div>
             </div>
             <div id="reviews-container"
-                class="w-full py-6 px-4 flex flex-col"></div>
+                class="w-full pb-6 px-4 flex flex-col"></div>
         </section>
         <section class="section-7 full-bleed bg-[#f3eee0]">
             <div
-                class="section-container py-8 px-[1.5rem]! grid grid-cols-2 md:grid-cols-4 gap-6">
+                class="section-container py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="flex flex-col items-center gap-2">
                     <img
                         class="h-10 md:h-8 w-auto object-cover"
@@ -1102,7 +1108,8 @@
                         alt="truck icon" />
                     <strong class="text-center mt-[10px] font-semibold">Free
                         Shipping from USA</strong>
-                    <p class="text-center">On all orders</p>
+                    <p class="text-center font-nunito text-[16px]">On all
+                        orders</p>
                 </div>
                 <div class="flex flex-col items-center gap-2">
                     <img
@@ -1112,7 +1119,8 @@
                     <strong
                         class="text-center mt-[10px] font-semibold">Naturally
                         Supports Your Body</strong>
-                    <p class="text-center">Promotes healthy immune cell
+                    <p class="text-center font-nunito text-[16px]">Promotes
+                        healthy immune cell
                         functions</p>
                 </div>
                 <div class="flex flex-col items-center gap-2">
@@ -1122,7 +1130,8 @@
                         alt="small tree icon" />
                     <strong class="text-center mt-[10px] font-semibold">100%
                         Natural Ingredients</strong>
-                    <p class="text-center">8 active, natural ingredients</p>
+                    <p class="text-center font-nunito text-[16px]">8 active,
+                        natural ingredients</p>
                 </div>
                 <div class="flex flex-col items-center gap-2">
                     <img
@@ -1132,15 +1141,16 @@
                     <strong class="text-center mt-[10px] font-semibold">Try
                         it
                         Risk Free for 60 Days</strong>
-                    <p class="text-center">60-day money-back guarantee</p>
+                    <p class="text-center font-nunito text-[16px]">60-day
+                        money-back guarantee</p>
                 </div>
             </div>
         </section>
-        <section class="section-8 section-container py-14">
+        <section class="section-8 font-nunito section-container py-14">
             <div
-                class="rounded-xl overflow-hidden flex flex-col-reverse md:grid md:grid-cols-2">
-                <div class="flex flex-col gap-4 p-4 bg-[#f7f7f7]">
-                    <p>July 4th, 2025</p>
+                class="rounded-xl overflow-hidden bg-[#f7f7f7] flex flex-col-reverse md:grid md:grid-cols-2">
+                <div class="flex flex-col gap-4 p-[32px] ">
+                    <p class="text-[#737373] text-[16px]">July 4th, 2025</p>
                     <h2>
                         Expert Advice from Dr. Emily Chen of a Premier New
                         York
@@ -1172,7 +1182,7 @@
                         class="bg-[#000] w-full font-semibold mx-auto p-3 px-12 rounded-[4px] text-white hover:bg-[#333] duration-300">
                         Try Lymphatic Drainage Risk-Free
                     </button>
-                    <div data-guarantee></div>
+                    <div data-center data-guarantee></div>
                 </div>
                 <div class="w-full h-auto rounded-xl overflow-hidden">
                     <img
@@ -1204,7 +1214,7 @@
                     class="bg-[#000] font-semibold mx-auto p-3 md:px-24 rounded-[4px] text-white hover:bg-[#333] duration-300">
                     Try Lymphatic Drainage Risk-Free
                 </button>
-                <div data-guarantee></div>
+                <div data-bold data-guarantee></div>
             </div>
         </section>
         <section
@@ -1232,7 +1242,7 @@
                     Naturally Get
                     Rid Of Bloating…And Feel Like Themselves Again
                 </h2>
-                <p class="my-[12px]">Here's where we're at right now:</p>
+                <p class="my-[12px] font-nunito">Here's where we're at right now:</p>
                 <img
                     src="https://trysculptique.com/cdn/shop/files/numbdeskt-min_png.png?v=1760942458"
                     alt="lymphatic stats"
@@ -1253,7 +1263,7 @@
             class="section-12 section-container full-bleed bg-[#f3eee0]">
             <div
                 class="section-container flex flex-col md:flex-row md:items-center gap-16 p-4 py-14">
-                <div class="flex flex-col md:w-full gap-4">
+                <div class="flex flex-col font-nunito md:w-full gap-4">
                     <img
                         class="max-w-[350px] object-cover"
                         src="	https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Trustpilot_review.png?v=1752480694"

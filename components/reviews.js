@@ -1,131 +1,234 @@
-
-// REVIEWS SECTION WITH PAGINATION
+/* ================= STATE ================= */
 let reviewsData = [];
+let filteredReviews = [];
 let currentReviewPage = 1;
 const REVIEWS_PER_PAGE = 5;
+let activeRatingFilter = null;
+let activeSortFilter = null;
 
+/* ================= LOAD ================= */
 async function loadReviewsData() {
-    try {
-        const response = await fetch('./data/reviews.json');
-        reviewsData = await response.json();
-        renderReviews();
-    } catch (error) {
-        console.error('Error loading reviews data:', error);
-    }
+  const res = await fetch("./data/reviews.json");
+  reviewsData = await res.json();
+  filteredReviews = [...reviewsData];
+
+  setupRatingRows(); // IMPORTANT: setup + disable rows based on data
+  renderReviews();
+  updateSeeAllVisibility();
 }
 
+/* ================= HELPERS ================= */
+function updateSeeAllVisibility() {
+  const seeAllEl = document.getElementById("see-all-reviews");
+  if (!seeAllEl) return;
+
+  const isFiltered =
+    activeRatingFilter !== null ||
+    activeSortFilter !== null ||
+    filteredReviews.length !== reviewsData.length;
+
+  seeAllEl.classList.toggle("hidden", !isFiltered);
+}
+
+function setupRatingRows() {
+  document.querySelectorAll(".rating-row").forEach((row) => {
+    const rating = Number(row.dataset.rating);
+    const count = reviewsData.filter((r) => r.rating === rating).length;
+
+    // disable row if no result
+    if (count === 0) {
+      row.classList.add("opacity-30", "pointer-events-none");
+      row.setAttribute("aria-disabled", "true");
+      return;
+    }
+
+    // enable row
+    row.classList.remove("opacity-30", "pointer-events-none");
+    row.removeAttribute("aria-disabled");
+
+    // remove old listener (safe rebind)
+    row.onclick = null;
+    row.addEventListener("click", () => {
+      applyRatingFilter(rating);
+    });
+  });
+}
+
+/* ================= FILTERS ================= */
+function applyRatingFilter(rating) {
+  const result = reviewsData.filter((r) => r.rating === rating);
+  if (result.length === 0) return; // safety
+
+  activeRatingFilter = rating;
+  currentReviewPage = 1;
+  filteredReviews = result;
+
+  renderReviews();
+  updateSeeAllVisibility();
+
+  document
+    .getElementById("reviews-container")
+    ?.scrollIntoView({ behavior: "smooth" });
+}
+
+function applySort(value) {
+  currentReviewPage = 1;
+
+  // reset-only options
+  if (
+    value === "with-pictures" ||
+    value === "pictures-first" ||
+    value === "videos-first" ||
+    value === "most-helpful"
+  ) {
+    activeRatingFilter = null;
+    activeSortFilter = null;
+    filteredReviews = [...reviewsData];
+    renderReviews();
+    updateSeeAllVisibility();
+    return;
+  }
+
+  // track active sort
+  activeSortFilter = value;
+
+  // base dataset
+  if (activeRatingFilter !== null) {
+    filteredReviews = reviewsData.filter(
+      (r) => r.rating === activeRatingFilter
+    );
+  } else {
+    filteredReviews = [...reviewsData];
+  }
+
+  if (value === "highest-rating") {
+    filteredReviews.sort((a, b) => b.rating - a.rating);
+  }
+  if (value === "lowest-rating") {
+    filteredReviews.sort((a, b) => a.rating - b.rating);
+  }
+  if (value === "most-recent") {
+    filteredReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+  }
+
+  renderReviews();
+  updateSeeAllVisibility();
+}
+
+/* ================= RENDER ================= */
 function renderReviews() {
-    const container = document.getElementById('reviews-container');
-    if (!container) return;
+  const container = document.getElementById("reviews-container");
+  const totalPages = Math.ceil(filteredReviews.length / REVIEWS_PER_PAGE);
+  const start = (currentReviewPage - 1) * REVIEWS_PER_PAGE;
+  const pageData = filteredReviews.slice(start, start + REVIEWS_PER_PAGE);
 
-    const totalPages = Math.ceil(reviewsData.length / REVIEWS_PER_PAGE);
-    const startIndex = (currentReviewPage - 1) * REVIEWS_PER_PAGE;
-    const endIndex = startIndex + REVIEWS_PER_PAGE;
-    const currentReviews = reviewsData.slice(startIndex, endIndex);
-
-    const reviewsHTML = currentReviews.map(review => {
-        const starsHTML = Array(review.rating).fill('<i class="fa-solid fa-star"></i>').join('');
+  container.innerHTML =
+    pageData
+      .map((r) => {
+        const solidStars = '<i class="fa-solid fa-star"></i>'.repeat(r.rating);
+        const regularStars = '<i class="fa-regular fa-star"></i>'.repeat(
+          5 - r.rating
+        );
 
         return `
-      <div class="border-b-[1px] border-[#fef3f3] flex flex-col py-4 gap-4">
-
-        <!-- ROW: STARS + DATE -->
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-[1px]">
-            ${starsHTML}
+      <div class="border-b font-mont border-[#fef3f3] py-4 flex flex-col gap-4">
+        <div class="flex justify-between">
+          <div class="flex gap-[1px]">
+            ${solidStars}${regularStars}
           </div>
-          <p class="text-[#7b7b7b] text-sm">${review.date}</p>
+          <p class="text-[#7b7b7b] text-sm">${r.date}</p>
         </div>
 
-        <!-- ROW: AVATAR + NAME -->
-        <div class="flex gap-2 items-start">
-          <div class="w-12 h-12 bg-[#efefef] relative">
-            <div class="absolute w-4 h-4 bottom-0 right-0 bg-[#fa8a8a] flex items-center justify-center">
-              <i class="fa-solid fa-check text-white text-[8px]"></i>
-            </div>
+        <div class="flex gap-2">
+          <div class="w-12 h-12 bg-[#efefef] flex items-center justify-center">
+            ${r.avatarInitial}
           </div>
-
-          <div class="flex items-center gap-2">
-            <p class="text-[#fa8a8a]">${review.author}</p>
-            ${review.isVerified ? '<p class="py-[2px] px-[6px] text-xs text-white bg-[#FA8A8A]">Verified</p>' : ''}
+          <div class="flex gap-2">
+            <p class="text-[#fa8a8a] text-[16px]">${r.author}</p>
+            ${
+              r.isVerified
+                ? '<div><span class="bg-[#FA8A8A] text-white text-xs px-2">Verified</span></div>'
+                : ""
+            }
           </div>
         </div>
 
-        <!-- CONTENT -->
-        <p>${review.content}</p>
-
-        <!-- SOURCE -->
-        <div class="hidden md:flex">
-          <p class="px-2 py-1">${review.source}</p>
-        </div>
-
+        <p class="font-nunito text-[16px]">${r.content}</p>
       </div>
     `;
-    }).join('');
-
-    const paginationHTML = renderPagination(totalPages);
-
-    container.innerHTML = reviewsHTML + paginationHTML;
+      })
+      .join("") + renderPagination(totalPages);
 }
 
+/* ================= PAGINATION ================= */
 function renderPagination(totalPages) {
-    if (totalPages <= 1) return '';
+  if (totalPages <= 1) return "";
 
-    const current = currentReviewPage;
+  const current = currentReviewPage;
 
-    const firstButton = `<button onclick="changeReviewPage(1)" class="text-[#fa8a8a] text-lg px-1 hover:opacity-70 transition-opacity"><svg
-class="w-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fa8a8a"
-    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="m17 18-6-6 6-6" />
-    <path d="M7 6v12" /></svg></button>`;
-    const prevButton = `<button onclick="changeReviewPage(${Math.max(1, current - 1)})"
-  class="text-[#fa8a8a] text-lg px-1 hover:opacity-70 transition-opacity"><svg class="w-4" xmlns="http://www.w3.org/2000/svg"
-    width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fa8a8a" stroke-width="2" stroke-linecap="round"
-    stroke-linejoin="round">
-    <path d="m15 18-6-6 6-6" /></svg></button>`;
-    let pagesHTML = '';
-    for (let i = 1; i <= totalPages; i++) {
-        if (i === current) {
-            pagesHTML += `<span class="text-[#7b7b7b] text-2xl font-bold px-1">${i}</span>`;
-        } else {
-            pagesHTML += `<button onclick="changeReviewPage(${i})" class=" text-[#fa8a8a] text-lg px-1 hover:opacity-70 transition-opacity">${i}</button>`;
-        }
-    }
+  const firstButton = `<button onclick="changeReviewPage(1)" class="text-[#fa8a8a] px-1 hover:opacity-70">«</button>`;
+  const prevButton = `<button onclick="changeReviewPage(${Math.max(
+    1,
+    current - 1
+  )})" class="text-[#fa8a8a] px-1 hover:opacity-70">‹</button>`;
 
-    const nextButton = `<button onclick="changeReviewPage(${Math.min(totalPages, current + 1)})"
-   class="text-[#fa8a8a] text-lg px-1 hover:opacity-70 transition-opacity"><svg class="w-4" xmlns="http://www.w3.org/2000/svg"
-     width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fa8a8a" stroke-width="2"
-     stroke-linecap="round" stroke-linejoin="round">
-     <path d="m9 18 6-6-6-6" /></svg></button>`;
-    const lastButton = `<button onclick="changeReviewPage(${totalPages})"
-   class="text-[#fa8a8a] text-lg px-1 hover:opacity-70 transition-opacity"><svg class="w-4" xmlns="http://www.w3.org/2000/svg"
-     width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fa8a8a" stroke-width="2"
-     stroke-linecap="round" stroke-linejoin="round">
-     <path d="m7 18 6-6-6-6" />
-     <path d="M17 6v12" /></svg></button>`;
-    return `
-    <div class="flex flex-wrap justify-center items-center gap-2 mt-6 py-4 pb-16 md:pb-[4.5rem]">
-    <div class="flex items-center gap-2">   
-    ${firstButton}
+  let pagesHTML = "";
+  for (let i = 1; i <= totalPages; i++) {
+    pagesHTML +=
+      i === current
+        ? `<span class="text-[#7b7b7b] text-2xl font-bold px-1">${i}</span>`
+        : `<button onclick="changeReviewPage(${i})" class="text-[#fa8a8a] px-1 hover:opacity-70">${i}</button>`;
+  }
+
+  const nextButton = `<button onclick="changeReviewPage(${Math.min(
+    totalPages,
+    current + 1
+  )})" class="text-[#fa8a8a] px-1 hover:opacity-70">›</button>`;
+  const lastButton = `<button onclick="changeReviewPage(${totalPages})" class="text-[#fa8a8a] px-1 hover:opacity-70">»</button>`;
+
+  return `
+    <div class="flex justify-center gap-2 mt-6 py-4">
+      ${firstButton}
       ${prevButton}
-      </div>
       ${pagesHTML}
-    <div class="flex items-center gap-2">
       ${nextButton}
       ${lastButton}
-    </div>
     </div>
   `;
 }
 
-function changeReviewPage(page) {
-    currentReviewPage = page;
-    renderReviews();
-    document.getElementById('reviews-container')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+function changeReviewPage(p) {
+  currentReviewPage = p;
+  renderReviews();
+  document
+    .getElementById("reviews-container")
+    ?.scrollIntoView({ behavior: "smooth" });
 }
 
-// INITIALIZE ALL ON DOM CONTENT LOADED
+/* ================= INIT ================= */
 document.addEventListener("DOMContentLoaded", async () => {
-    await loadReviewsData()
+  await loadReviewsData();
 
+  // SORT — now ALWAYS updates see-all correctly
+  document.getElementById("review-sort")?.addEventListener("change", (e) => {
+    applySort(e.target.value);
+  });
+
+  // SEE ALL → reset
+  document.getElementById("see-all-reviews")?.addEventListener("click", () => {
+    activeRatingFilter = null;
+    activeSortFilter = null;
+    filteredReviews = [...reviewsData];
+    currentReviewPage = 1;
+    renderReviews();
+    updateSeeAllVisibility();
+
+    // Reset sort dropdown to default
+    const sortDropdown = document.getElementById("review-sort");
+    if (sortDropdown) sortDropdown.value = "most-recent";
+
+    document
+      .getElementById("reviews-container")
+      ?.scrollIntoView({ behavior: "smooth" });
+  });
 });
