@@ -88,7 +88,7 @@ function renderFaqs() {
   if (!container) return;
 
   container.innerHTML = faqData.map(item => `
-    <div id="${item.id}" class="group">
+    <div id="${item.id}" class="group border-b border-white">
       <button
         class="w-full flex items-center justify-between text-left px-6 py-5 focus:outline-none"
         onclick="toggleFaqAccordion('${item.id}')"
@@ -170,60 +170,66 @@ function renderIngredientAccordion() {
       ${!isLastRow ? "md:border-b" : ""}
     `;
 
-    return `
-      <div class="p-6 ${borderClass}">
-        <button
-          onclick="toggleIngredientAccordion('${item.id}')"
-          aria-expanded="false"
-          class="w-full flex flex-col text-left gap-3"
-        >
-          <div class="flex items-center justify-center gap-3 w-full">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/check-mark_17013456_2.png?v=1760698419"
-              class="w-5 h-5 object-contain"
-              alt="check"
-            />
-            <span class="text-green-600 text-lg font-medium">
-              ${item.title}
-            </span>
-          </div>
-          <div class="flex flex-row md:flex-col gap-3 items-center md:items-start">
-            <img
-              src="${item.image}"
-              class="w-[20%] md:w-auto object-contain self-center"
-              style="max-height: 80px;"
-            />
-            <div class="flex items-center gap-2 justify-between w-full flex-1">
-              <p 
-              style="
-                font-family: 'Trirong';              
-              "
-              class="font-semibold text-[16px] text-black">${item.name}</p>
-              <svg
-                id="${item.id}-icon"
-                class="w-5 h-5 flex-shrink-0 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
-        </button>
-        <div
-          id="${item.id}-content"
-          class="accordion-closed overflow-hidden transition-all duration-300 ease-in-out"
-          style="max-height: 0px;"
-        >
-          <div class="mt-3 pl-[52px]">
-            <p class="text-sm leading-relaxed text-black">${item.desc}</p>
-            ${item.note ? `<p class="text-sm mt-2">${item.note}</p>` : ""}
-          </div>
+return `
+  <div class="p-6 ${borderClass} ${index >= 4 ? "border-b-0" : ""}">
+    <button
+      onclick="toggleIngredientAccordion('${item.id}')"
+      aria-expanded="false"
+      class="w-full flex flex-col text-left gap-3"
+    >
+      <div class="flex items-center justify-center gap-2 w-full">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/check-mark_17013456_2.png?v=1760698419"
+          class="w-[9px] aspect-square object-contain"
+          alt="check"
+        />
+        <span class="text-green-600 text-[16px] font-medium">
+          ${item.title}
+        </span>
+      </div>
+
+      <div class="flex flex-row md:flex-col gap-3 items-center md:items-start">
+        <img
+          src="${item.image}"
+          class="w-[20%] md:w-auto object-contain self-center"
+          style="max-height: 80px;"
+        />
+        <div class="flex items-center gap-2 justify-between w-full flex-1">
+          <p
+            style="font-family: 'Trirong';"
+            class="font-semibold text-[16px] text-black"
+          >
+            ${item.name}
+          </p>
+          <svg
+            id="${item.id}-icon"
+            class="w-5 h-5 flex-shrink-0 transition-transform duration-300"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
       </div>
-    `;
+    </button>
+
+    <div
+      id="${item.id}-content"
+      class="accordion-closed overflow-hidden transition-all duration-300 ease-in-out"
+      style="max-height: 0px;"
+    >
+      <div class="mt-3">
+        <p class="text-sm leading-relaxed text-black">${item.desc}</p>
+        ${item.note ? `<p class="text-sm mt-2">${item.note}</p>` : ""}
+      </div>
+    </div>
+  </div>
+`;
+
+
+
   }).join("");
 }
 
@@ -382,6 +388,7 @@ let isDragging = false;
 let dragStartX = 0;
 let dragCurrentTranslate = 0;
 let dragPrevTranslate = 0;
+let isStoriesAnimating = false;
 
 async function loadStoriesData() {
   try {
@@ -395,7 +402,7 @@ async function loadStoriesData() {
 }
 
 function getStoriesPerView() {
-  return window.innerWidth < 768 ? 1 : 4;
+  return window.innerWidth < 768 ? 1.2 : 4;
 }
 
 function getSlideWidthPercent() {
@@ -456,25 +463,35 @@ function renderStoriesCarousel() {
     </div>
   `).join('');
 
-  // Calculate progress for pagination
-  const progressPercent = maxIndex > 0 ? (currentStoryIndex / maxIndex) * 100 : 0;
+  // Calculate progress bar width: visible items / total items
+  const visibleItems = getStoriesPerView(); // 4 for desktop, 1.2 for mobile
+  const totalItems = storiesData.length;
+  const progressBarWidthPercent = (visibleItems / totalItems) * 100;
+
+  // Calculate progress bar position based on current index
+  // The bar can move from 0% to (100% - barWidth%)
+  const maxScrollableItems = totalItems - (isMobile ? 1 : 4);
+  const scrollProgress = maxScrollableItems > 0 ? (currentStoryIndex / maxScrollableItems) : 0;
+  const maxLeftPosition = 100 - progressBarWidthPercent;
+  const progressBarLeft = scrollProgress * maxLeftPosition;
 
   const paginationHTML = `
-    <div class="flex justify-center items-center gap-4 mt-6 py-4 px-4">
-      <button onclick="prevStorySlide()" class="w-10 h-10 flex items-center justify-center border rounded-full hover:bg-white/50 transition-colors ${currentStoryIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${currentStoryIndex === 0 ? 'disabled' : ''}>
-        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-      <div class="flex-1 max-w-md h-1 bg-gray-400 rounded-full relative">
-        <div class="absolute left-0 top-0 h-full bg-green-600 rounded-full transition-all duration-300" style="width: ${progressPercent}%"></div>
-        <div class="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-green-600 rounded-full transition-all duration-300" style="left: calc(${progressPercent}% - 6px)"></div>
+    <div class="flex items-center gap-4 mt-6 py-4 px-4">
+      <div id="stories-progress-track" class="flex-1 h-1 bg-[#D4D4C9] rounded-full relative cursor-pointer" onclick="onStoriesProgressClick(event)">
+        <div class="absolute top-0 h-full bg-[#039869] rounded-full transition-all duration-300" style="width: ${progressBarWidthPercent}%; left: ${progressBarLeft}%"></div>
       </div>
-      <button onclick="nextStorySlide()" class="w-10 h-10 flex items-center justify-center border rounded-full hover:bg-white/50 transition-colors ${currentStoryIndex >= maxIndex ? 'opacity-50 cursor-not-allowed' : ''}" ${currentStoryIndex >= maxIndex ? 'disabled' : ''}>
-        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
+      <div class="flex items-center gap-2">
+        <button onclick="prevStorySlide()" class="w-10 h-10 flex items-center justify-center border border-[#D4D4C9] rounded-full hover:bg-white/50 transition-colors ${currentStoryIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${currentStoryIndex === 0 ? 'disabled' : ''}>
+          <svg class="w-4 h-4 text-[#039869]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button onclick="nextStorySlide()" class="w-10 h-10 flex items-center justify-center border border-[#D4D4C9] rounded-full hover:bg-white/50 transition-colors ${currentStoryIndex >= maxIndex ? 'opacity-50 cursor-not-allowed' : ''}" ${currentStoryIndex >= maxIndex ? 'disabled' : ''}>
+          <svg class="w-4 h-4 text-[#039869]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
     </div>
   `;
 
@@ -503,7 +520,82 @@ function renderStoriesCarousel() {
   }
 }
 
+// Click on progress bar to jump to position
+function onStoriesProgressClick(e) {
+  if (isStoriesAnimating) return;
+
+  const progressTrack = e.currentTarget;
+  const rect = progressTrack.getBoundingClientRect();
+  const clickX = e.clientX - rect.left;
+  const trackWidth = rect.width;
+  const clickPercent = clickX / trackWidth;
+
+  const maxIndex = getMaxStoryIndex();
+  const targetIndex = Math.round(clickPercent * maxIndex);
+
+  if (targetIndex !== currentStoryIndex) {
+    animateStoriesToIndex(targetIndex);
+  }
+}
+
+// Smooth animation to target index (like product-images-slider)
+function animateStoriesToIndex(targetIndex) {
+  if (isStoriesAnimating || targetIndex === currentStoryIndex) return;
+  isStoriesAnimating = true;
+
+  const track = document.getElementById('stories-track');
+  if (!track) {
+    isStoriesAnimating = false;
+    return;
+  }
+
+  const slideWidth = getSlideWidthPercent();
+  const maxIndex = getMaxStoryIndex();
+
+  // Clamp target index
+  targetIndex = Math.max(0, Math.min(targetIndex, maxIndex));
+
+  const steps = Math.abs(targetIndex - currentStoryIndex);
+  const duration = Math.min(200 + steps * 50, 400);
+
+  const startTranslate = currentStoryIndex * slideWidth;
+  const endTranslate = targetIndex * slideWidth;
+
+  // Apply linear transition
+  track.style.transition = `transform ${duration}ms linear`;
+  track.style.transform = `translateX(-${endTranslate}%)`;
+
+  // Update progress bar smoothly
+  updateStoriesProgressBar(targetIndex, duration);
+
+  setTimeout(() => {
+    currentStoryIndex = targetIndex;
+    isStoriesAnimating = false;
+    renderStoriesCarousel();
+  }, duration + 20);
+}
+
+// Update progress bar position during animation
+function updateStoriesProgressBar(targetIndex, duration) {
+  const progressBar = document.querySelector('#stories-progress-track > div');
+  if (!progressBar) return;
+
+  const isMobile = window.innerWidth < 768;
+  const visibleItems = getStoriesPerView();
+  const totalItems = storiesData.length;
+  const progressBarWidthPercent = (visibleItems / totalItems) * 100;
+
+  const maxScrollableItems = totalItems - (isMobile ? 1 : 4);
+  const scrollProgress = maxScrollableItems > 0 ? (targetIndex / maxScrollableItems) : 0;
+  const maxLeftPosition = 100 - progressBarWidthPercent;
+  const progressBarLeft = scrollProgress * maxLeftPosition;
+
+  progressBar.style.transition = `left ${duration}ms linear`;
+  progressBar.style.left = `${progressBarLeft}%`;
+}
+
 function startStoriesDrag(e) {
+  if (isStoriesAnimating) return;
   isDragging = true;
   const track = document.getElementById('stories-track');
   if (track) {
@@ -515,7 +607,7 @@ function startStoriesDrag(e) {
 }
 
 function handleStoriesDrag(e) {
-  if (!isDragging) return;
+  if (!isDragging || isStoriesAnimating) return;
 
   const track = document.getElementById('stories-track');
   if (!track) return;
@@ -581,17 +673,17 @@ function endStoriesDrag(e) {
 }
 
 function prevStorySlide() {
+  if (isStoriesAnimating) return;
   if (currentStoryIndex > 0) {
-    currentStoryIndex--;
-    renderStoriesCarousel();
+    animateStoriesToIndex(currentStoryIndex - 1);
   }
 }
 
 function nextStorySlide() {
+  if (isStoriesAnimating) return;
   const maxIndex = getMaxStoryIndex();
   if (currentStoryIndex < maxIndex) {
-    currentStoryIndex++;
-    renderStoriesCarousel();
+    animateStoriesToIndex(currentStoryIndex + 1);
   }
 }
 

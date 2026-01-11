@@ -7,6 +7,19 @@
     body {
         overflow-x: clip;
     }
+
+    *,
+    ::before,
+    ::after {
+        box-sizing: border-box;
+        /* 1 */
+        border-width: 0;
+        /* 2 */
+        border-style: solid;
+        /* 2 */
+        border-color: #fff;
+        /* 2 */
+    }
 }
 
 /* ================= COMPONENTS ================= */
@@ -14,19 +27,24 @@
     .section-container {
         max-width: 1340px;
         margin: 0 auto;
-        padding: 2rem 15px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     @media (min-width: 651px) {
         .section-container {
-            padding: 0 32px;
+            padding-left: 32px;
+            padding-right: 32px;
         }
     }
+
     @media (min-width: 750px) {
         .section-container {
-            padding: 0 50px;
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
         }
     }
+
 
     .stat-card {
         max-width: 320px;
@@ -163,7 +181,8 @@
     p,
     li,
     span,
-    button, strong {
+    button,
+    strong {
         font-family: 'Nunito';
         line-height: 1.3rem;
     }
@@ -200,7 +219,8 @@
         font-family: 'Lora';
     }
 
-    .fa-star, .fa-star-half-stroke {
+    .fa-star,
+    .fa-star-half-stroke {
         color: #FA8A8A;
     }
 
