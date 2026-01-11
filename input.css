@@ -49,8 +49,8 @@
   .section-3,
   .section-6,
   .section-8 {
-    padding-right: 35px;
-    padding-left: 35px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 
   @media (min-width: 651px) {
@@ -208,7 +208,6 @@
 
 /* ================= BASE (GLOBAL TAGS) ================= */
 @layer base {
-
   body {
     letter-spacing: 0.06rem;
     line-height: 1.5;
@@ -256,10 +255,24 @@
     font-size: 32px;
   }
 
+  @media (max-width: 679px) {
+    h2 {
+      font-size: 24px;
+    }
+  }
+
   p,
   li,
   button {
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 679px) {
+    p,
+    li,
+    button {
+      font-size: 16px;
+    }
   }
 
   a {

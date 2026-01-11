@@ -6,7 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
       open: true,
       content: `
         <strong class="text-[16px] mb-3">Sculptique Ingredients:</strong>
-        <ul style="padding-left: 40px;" class="text-[16px] list-disc list-inside">
+        <ul style="padding-left: 30px; " class="text-[16px] mt-4
+          list-style: disc;
+          list-style-position: outside;
+        ">
           <li class="text-[16px]"><strong>Echinacea purpurea Extract</strong> – Known for its anti-inflammatory properties, it may support skin health.</li>
           <li class="text-[16px]"><strong>Dandelion Extract</strong> – Traditionally used as a diuretic, it may help reduce water retention.</li>
           <li class="text-[16px]"><strong>Burdock Powder</strong> – Contains antioxidants that may promote skin clarity.</li>
@@ -17,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <li class="text-[16px]"><strong>Kelp Extract</strong> – A source of iodine and minerals that may support skin metabolism.</li>
         </ul>
         <p class="text-[16px]">These natural ingredients work together to reduce puffiness, bloating, fluid retention.</p>
-      `
+      `,
     },
     {
       id: "acc-2",
@@ -30,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
           It also reduces inflammation and boosts collagen production to help skin become
           firmer and smoother.
         </p>
-      `
+      `,
     },
     {
       id: "acc-3",
@@ -45,15 +48,17 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="text-[16px]">
           We offer a 60-day money-back guarantee if you’re not satisfied.
         </p>
-      `
-    }
+      `,
+    },
   ];
 
   const root = document.getElementById("accordion-product-preview");
 
   root.innerHTML = `
     <div class="flex flex-col gap-4">
-      ${data.map(item => `
+      ${data
+        .map(
+          (item) => `
         <div
           id="${item.id}"
           class="border border-gray-300 p-4 cursor-pointer"
@@ -64,7 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <span class="text-[16px] font-medium">${item.title}</span>
             <span
               id="${item.id}-icon"
-              class="flex w-6 aspect-square items-center justify-center rounded-full bg-[#f4f0e8] transition-transform duration-300 ${item.open ? "rotate-45" : ""}"
+              class="flex w-6 aspect-square items-center justify-center rounded-full bg-[#f4f0e8] transition-transform duration-300 ${
+                item.open ? "rotate-45" : ""
+              }"
             >
               <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Button_To_Expand_1_8a6027c0-281a-4c6b-8881-60673c7255ec.png?v=1758716844" />
             </span>
@@ -72,17 +79,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <div
             id="${item.id}-content"
-            class="mt-4 overflow-hidden transition-all duration-300 ease-in-out ${item.open ? "" : "hidden"}"
+            class="mt-4 overflow-hidden transition-all duration-300 ease-in-out ${
+              item.open ? "" : "hidden"
+            }"
             style="max-height:${item.open ? "none" : "0px"}"
           >
             ${item.content}
           </div>
         </div>
-      `).join("")}
+      `
+        )
+        .join("")}
     </div>
   `;
 
-  document.querySelectorAll("[data-accordion]").forEach(acc => {
+  document.querySelectorAll("[data-accordion]").forEach((acc) => {
     acc.addEventListener("click", () => {
       toggleAccordion(acc.id);
     });
@@ -107,5 +118,4 @@ function toggleAccordion(id) {
     icon.classList.add("rotate-45");
     acc.setAttribute("aria-expanded", "true");
   }
-
 }

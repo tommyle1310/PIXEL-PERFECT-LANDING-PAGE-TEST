@@ -339,24 +339,12 @@ class ProductImageSlider {
     this.isAnimating = true;
     
     const len = this.images.length;
-    let diff = index - this.currentIndex;
     
-    // Find shortest path direction
-    let direction;
-    let steps;
-    if (diff > 0 && diff <= len / 2) {
-      direction = 'next';
-      steps = diff;
-    } else if (diff < 0 && Math.abs(diff) <= len / 2) {
-      direction = 'prev';
-      steps = Math.abs(diff);
-    } else if (diff > len / 2) {
-      direction = 'prev';
-      steps = len - diff;
-    } else {
-      direction = 'next';
-      steps = len + diff;
-    }
+    // Always animate 'next' (right) direction since thumbnails are always
+    // positioned to the right of the active image. Calculate forward steps,
+    // wrapping around if needed.
+    const direction = 'next';
+    const steps = (index - this.currentIndex + len) % len;
     
     const mainContainer = this.container.querySelector('#main-slider-container');
     const thumbsContainer = this.container.querySelector('#thumbnails-mobile');

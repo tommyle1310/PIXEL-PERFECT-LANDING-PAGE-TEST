@@ -23,11 +23,11 @@ function renderFaqs() {
     <div
       id="${item.id}"
       data-faq
-      class="group border-b border-white cursor-pointer"
+      class="group border-b leading-[1.3] border-white cursor-pointer"
       aria-expanded="false"
     >
-      <div class="w-full flex items-center justify-between text-left px-6 py-5">
-        <span class="text-gray-800 font-medium font-nunito text-lg pr-4">
+      <div class="w-full flex items-center justify-between text-left md:px-6 py-5">
+        <span class="text-gray-800 font-medium font-nunito text-[18px] pr-4">
           ${item.question}
         </span>
         <svg
@@ -48,7 +48,7 @@ function renderFaqs() {
         class="accordion-closed overflow-hidden transition-all duration-300 ease-in-out"
         style="max-height: 0px;"
       >
-        <div class="px-6 pb-5 font-nunito">
+        <div class=" pb-5 font-nunito">
           ${item.answer}
         </div>
       </div>

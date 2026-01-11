@@ -56,7 +56,7 @@ function renderStoriesCarousel() {
   const videosHTML = storiesData
     .map(
       (story, index) => `
-    <div class="stories-slide flex-shrink-0 px-2" style="width: ${slideWidth}%;">
+    <div class="stories-slide flex-shrink-0 ${index === 0 ? "pr-2 " : "px-2"}" style="width: ${slideWidth}%;">
         <div class="aspect-[9/16] rounded-[4px] overflow-hidden bg-gray-200 relative group cursor-pointer"
             onclick="playStoryVideo(${index})">
             <img src="${story.poster}" alt="Story ${
@@ -95,12 +95,12 @@ function renderStoriesCarousel() {
         <div class="absolute top-0 h-full bg-[#039869] rounded-full transition-all duration-300" style="width: ${progressBarWidthPercent}%; left: ${progressBarLeft}%"></div>
       </div>
       <div class="flex items-center gap-2">
-        <button onclick="prevStorySlide()" class="w-10 h-10 bg-white flex items-center justify-center border border-[#D4D4C9] rounded-full hover:bg-white/50 transition-colors ${
+        <button onclick="prevStorySlide()" class="max-w-[32px] aspect-square bg-white flex items-center justify-center rounded-full hover:bg-white/50 transition-colors ${
           currentStoryIndex === 0 ? "opacity-50 cursor-not-allowed" : ""
         }" ${currentStoryIndex === 0 ? "disabled" : ""}>
      <img class="w-full h-full" src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/iconamoon_arrow-up-2-thin_55aa38bb-cb5e-4608-9097-927814968771.png?v=1758716845" alt="chevron left"/>  
         </button>
-        <button onclick="nextStorySlide()" class="w-10 h-10 bg-white flex items-center justify-center border border-[#D4D4C9] rounded-full hover:bg-white/50 transition-colors ${
+        <button onclick="nextStorySlide()" class="max-w-[32px] aspect-square bg-white flex items-center justify-center rounded-full hover:bg-white/50 transition-colors ${
           currentStoryIndex >= maxIndex ? "opacity-50 cursor-not-allowed" : ""
         }" ${currentStoryIndex >= maxIndex ? "disabled" : ""}>
      <img class="rotate-180 w-full h-full" src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/iconamoon_arrow-up-2-thin_55aa38bb-cb5e-4608-9097-927814968771.png?v=1758716845" alt="chevron left"/>  
