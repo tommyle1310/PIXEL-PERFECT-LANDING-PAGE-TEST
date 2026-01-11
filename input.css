@@ -4,317 +4,326 @@
 
 /* ================= BASE (GLOBAL TAGS) ================= */
 @layer base {
-    body {
-        overflow-x: clip;
-    }
+  body {
+    overflow-x: clip;
+  }
 
-    *,
-    ::before,
-    ::after {
-        box-sizing: border-box;
-        /* 1 */
-        border-width: 0;
-        /* 2 */
-        border-style: solid;
-        /* 2 */
-        border-color: #fff;
-        /* 2 */
-    }
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+    /* 1 */
+    border-width: 0;
+    /* 2 */
+    border-style: solid;
+    /* 2 */
+    border-color: #fff;
+    /* 2 */
+  }
 }
 
 /* ================= COMPONENTS ================= */
 @layer components {
+  .section-container {
+    max-width: 1340px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  @media (min-width: 651px) {
     .section-container {
-        max-width: 1340px;
-        margin: 0 auto;
-        padding-left: 15px;
-        padding-right: 15px;
+      padding-left: 32px;
+      padding-right: 32px;
     }
+  }
 
-    @media (min-width: 651px) {
-        .section-container {
-            padding-left: 32px;
-            padding-right: 32px;
-        }
+  @media (min-width: 750px) {
+    .section-container {
+      padding-left: 2rem !important;
+      padding-right: 2rem !important;
     }
+  }
 
-    @media (min-width: 750px) {
-        .section-container {
-            padding-left: 2rem !important;
-            padding-right: 2rem !important;
-        }
-    }
+  .reviews-terms {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .reviews-terms a {
+    text-decoration: underline;
+    color: #0000ee;
+    font-family: "Nunito";
+  }
 
+  .stat-card {
+    max-width: 320px;
+    padding: 24px;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    text-align: center;
+    font-family: serif;
+  }
 
-    .reviews-terms {
-        font-size: 16px;
-    }
-    .reviews-terms a {
-        text-decoration: underline;
-        color: #0000ee;
-        font-family: 'Nunito';
-    }
+  .donut {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 24px;
+  }
 
-    .stat-card {
-        max-width: 320px;
-        padding: 24px;
-        border: 1px solid #e5e5e5;
-        border-radius: 16px;
-        text-align: center;
-        font-family: serif;
-    }
+  .donut svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
 
-    .donut {
-        position: relative;
-        width: 180px;
-        height: 180px;
-        margin: 0 auto 24px;
-    }
+  .bg {
+    stroke: #dcdcdc;
+  }
 
-    .donut svg {
-        width: 100%;
-        height: 100%;
-        transform: rotate(-90deg);
-    }
+  .progress {
+    stroke: #22a97a;
+    stroke-linecap: round;
+    stroke-dasharray: 314;
+    stroke-dashoffset: 314;
+    transition: stroke-dashoffset 1s ease;
+  }
 
-    .bg {
-        stroke: #dcdcdc;
-    }
+  .center-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 600;
+    color: #000;
+  }
 
-    .progress {
-        stroke: #22a97a;
-        stroke-linecap: round;
-        stroke-dasharray: 314;
-        stroke-dashoffset: 314;
-        transition: stroke-dashoffset 1s ease;
-    }
+  .desc {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
 
-    .center-text {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 36px;
-        font-weight: 600;
-        color: #000;
-    }
+  .as-seen {
+    background: #f6f1e4;
+    padding: 20px 0;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 
-    .desc {
-        font-size: 20px;
-        margin-bottom: 12px;
-    }
+  .full-bleed {
+    width: 100vw;
+    max-width: 100vw;
+    position: relative;
 
-    .as-seen {
-        background: #f6f1e4;
-        padding: 20px 0;
-        text-align: center;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
+    /* BREAK OUT OF PARENT */
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-    .full-bleed {
-        width: 100vw;
-        max-width: 100vw;
-        position: relative;
+  .as-seen h3 {
+    font-family: serif;
+    font-size: 28px;
+  }
 
-        /* BREAK OUT OF PARENT */
-        left: 50%;
-        transform: translateX(-50%);
-    }
+  .marquee {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
 
-    .as-seen h3 {
-        font-family: serif;
-        font-size: 28px;
-    }
+  .marquee-track {
+    display: flex;
+    gap: 80px;
+    width: max-content;
+    animation: scroll 25s linear infinite;
+  }
 
-    .marquee {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-    }
+  .marquee-track img {
+    height: 30px;
+    width: auto;
+    opacity: 0.9;
+    filter: grayscale(100%);
+  }
 
-    .marquee-track {
-        display: flex;
-        gap: 80px;
-        width: max-content;
-        animation: scroll 25s linear infinite;
-    }
-
+  @media (max-width: 899px) {
     .marquee-track img {
-        height: 30px;
-        width: auto;
-        opacity: 0.9;
-        filter: grayscale(100%);
+      height: 20px;
     }
+  }
 
-    @media (max-width: 899px) {
-        .marquee-track img {
-            height: 20px;
-        }
-    }
+  .customer-reviews,
+  .customer-reviews p {
+    font-family: "Montserrat", sans-serif;
+  }
 
-    .customer-reviews,
-    .customer-reviews p {
-        font-family: "Montserrat", sans-serif;
-    }
-
-    .jdgm-star::before {
-        content: "\e002";
-        font-family: "JudgemeStar";
-        font-size: 16px;
-        color: #f5a623;
-        display: inline-block;
-    }
-
+  .jdgm-star::before {
+    content: "\e002";
+    font-family: "JudgemeStar";
+    font-size: 16px;
+    color: #f5a623;
+    display: inline-block;
+  }
 }
 
 /* ================= BASE (GLOBAL TAGS) ================= */
 @layer base {
-    * {
-        color: #212121
-    }
+  * {
+    color: #212121;
+  }
 
-    body {
-        line-height: 1.5;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-    }
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-    a {
-        font-family: 'Montserrat', sans-serif;
-    }
+  input:focus,
+  textarea:focus {
+    border-color: #f2847d;
+    outline: none;
+  }
 
-    p,
-    li,
-    span,
-    button,
-    strong {
-        font-family: 'Nunito';
-        line-height: 1.3rem;
-    }
+  a {
+    font-family: "Montserrat", sans-serif;
+  }
 
-    h1,
-    h2 {
-        font-family: 'Lora';
-    }
+  p {
+    color: #000
+  }
 
-    h4 {
-        font-family: 'Trirong';
-        font-size: 20px;
-    }
+  li,
+  span,
+  button,
+  strong {
+    font-family: "Nunito";
+    line-height: 1.3rem;
+  }
 
-    h1 {
-        font-size: 28px;
-    }
+  h1,
+  h2 {
+    font-family: "Lora";
+  }
 
-    h2 {
-        font-size: 32px;
-    }
+  h4 {
+    font-family: "Trirong";
+    font-size: 20px;
+  }
 
-    p,
-    li,
-    button {
-        font-size: 18px;
-    }
+  h1 {
+    font-size: 28px;
+  }
 
-    a {
-        font-size: 16px;
-    }
+  h2 {
+    font-size: 32px;
+  }
 
-    h2 span {
-        font-family: 'Lora';
-    }
+  p,
+  li,
+  button {
+    font-size: 18px;
+  }
 
-    .fa-star,
-    .fa-star-half-stroke {
-        color: #FA8A8A;
-    }
+  a {
+    font-size: 16px;
+  }
 
+  h2 span {
+    font-family: "Lora";
+  }
 
-    circle {
-        fill: none;
-        stroke-width: 12;
-    }
+  .fa-star,
+  .fa-star-half-stroke {
+    color: #fa8a8a;
+  }
 
-    small {
-        color: #666;
-    }
+  circle {
+    fill: none;
+    stroke-width: 12;
+  }
 
-    .ul-success li {
-        color: #0c7c00;
-        list-style: none;
-        padding-left: 0;
-        font-weight: 600;
-    }
+  small {
+    color: #666;
+  }
 
-    .ul-danger li {
-        color: #a60003;
-        list-style: none;
-        padding-left: 0;
-        font-weight: 600;
-    }
+  .ul-success li {
+    color: #0c7c00;
+    list-style: none;
+    padding-left: 0;
+    font-weight: 600;
+  }
 
-    /* SUCCESS ICON */
-    .ul-success li {
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-    }
+  .ul-danger li {
+    color: #a60003;
+    list-style: none;
+    padding-left: 0;
+    font-weight: 600;
+  }
 
-    .ul-success li::before {
-        content: "";
-        width: 16px;
-        height: 16px;
-        flex-shrink: 0;
-        margin-top: 4px;
-        background: url("https://trysculptique.com/cdn/shop/files/check-mark_17013456_2_1.png?v=1760702838") no-repeat center / contain;
-    }
+  /* SUCCESS ICON */
+  .ul-success li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
 
-    /* DANGER ICON */
-    .ul-danger li {
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-    }
+  .ul-success li::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 4px;
+    background: url("https://trysculptique.com/cdn/shop/files/check-mark_17013456_2_1.png?v=1760702838")
+      no-repeat center / contain;
+  }
 
-    .ul-danger li::before {
-        content: "";
-        width: 16px;
-        height: 16px;
-        flex-shrink: 0;
-        margin-top: 4px;
-        background: url("https://trysculptique.com/cdn/shop/files/Vector_7.png?v=1760702839") no-repeat center / contain;
-    }
+  /* DANGER ICON */
+  .ul-danger li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .ul-danger li::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 4px;
+    background: url("https://trysculptique.com/cdn/shop/files/Vector_7.png?v=1760702839")
+      no-repeat center / contain;
+  }
 }
 
 /* ================= UTILITIES / ANIMATIONS ================= */
 @layer utilities {
-    @keyframes scroll {
-        from {
-            transform: translateX(0);
-        }
-
-        to {
-            transform: translateX(-50%);
-        }
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
     }
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: scale(0.96);
-        }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
     }
 
-    .animate-fadeIn {
-        animation: fadeIn 0.2s ease-out;
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.2s ease-out;
+  }
 }

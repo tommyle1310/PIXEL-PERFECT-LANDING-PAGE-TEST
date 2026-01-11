@@ -807,7 +807,8 @@
                 </div>
             </div>
         </section>
-        <section class="section-6 flex flex-col pb-6 gap-4 items-center p-4">
+        <section
+            class="section-6 md:py-14 flex flex-col pb-6 gap-4 items-center p-4">
             <div class="max-w-[800px] mx-auto flex flex-col gap-4 items-center">
                 <img
                     class="max-w-[200px]"
@@ -947,6 +948,7 @@
                         </div>
                     </div>
                     <button
+                        id="btn-toggle-review-form"
                         class="bg-[#fa8a8a] w-full p-3 py-2 text-white hover:bg-[#fba1a1] duration-300 font-[800] max-w-[240px]">
                         Write a review
                     </button>
@@ -954,18 +956,26 @@
             </div>
 
             <form
-                class="w-full flex flex-col items-center gap-4 py-6 px-4 border-t-[1px] border-[#fef3f3]">
-                <h3 class="font-bold text-[24px]">Write a review</h3>
-                <p>Rating</p>
-                <div class="flex items-center gap-1 text-[16px]">
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
+                id="review-form"
+                class="w-full font-mont hidden flex-col flex items-center md:max-w-[600px] mx-auto gap-8 py-6 px-4 border-t-[1px] border-[#fef3f3]">
+                <div
+                    class="flex font-mont flex-col items-center gap-4">
+                    <h3 class="font-bold text-[24px]">Write a review</h3>
+                    <p
+                        class="text-[16px] font-mont">Rating</p>
+                    <div
+                        class="flex items-center gap-1 text-[24px] review-stars cursor-pointer">
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center gap-2 w-full">
-                    <label for="content-textarea">Review content</label>
+                <div
+                    class="flex flex-col items-center gap-2 w-full text-[16px]">
+                    <label for="content-textarea">Review content <span
+                            class="text-[#7b7b7b] text-[12px] md:text-[12.8px]">(4996)</span></label>
                     <textarea
                         class="w-full px-4 py-2 border-[#e4e4e4] border"
                         id="content-textarea" rows="5"
@@ -992,12 +1002,16 @@
                     </label>
                 </div>
                 <div class="flex flex-col items-center gap-2 w-full">
-                    <div class="flex items-center gap-2">
-                        <label for="display-name-input">Display name</label>
-                        <div class="flex items-center">
-                            <label for="select-name-format">(displayed publicly
+                    <div class="flex flex-col md:flex-row items-center">
+                        <label for="display-name-input">Display name (</label>
+                        <div class="flex flex-col md:flex-row items-center">
+                            <label for="select-name-format">displayed publicly
                                 like</label>
                             <select
+                                style="
+                                font-family: Arial;
+                                "
+                                class="max-md:mt-2 text-[#FA8A8A] text-[14px]"
                                 id="select-name-format"
                                 class
                                 aria-label="Name format"
@@ -1026,8 +1040,17 @@
                         id="email-input" rows="5"
                         placeholder="Your email address"
                         aria-label="Email address" />
+                    <div
+                        class="border-[#f2847d] border  w-full p-2 leading-[1] flex items-center gap-2 bg-[#f2847d1a]">
+                        <i
+                            class="fa-solid fa-circle-exclamation w-4 h-4 text-[#f2847d]"></i>
+                        <p
+                            class="text-[16px] font-mont">Please enter a valid
+                            email address.</p>
+                    </div>
                 </div>
-                <p class="text-center reviews-terms">How we use your data: We'll only contact you about the review
+                <p class="text-center reviews-terms">How we use your data: We'll
+                    only contact you about the review
                     you left, and only if necessary. By submitting your review,
                     you agree to Judge.me's <a href="https://judge.me/terms"
                         target="_blank" rel="nofollow noopener">terms</a>, <a
@@ -1035,315 +1058,323 @@
                         rel="nofollow noopener">privacy</a> and <a
                         href="https://judge.me/content-policy" target="_blank"
                         rel="nofollow noopener">content</a> policies.</p>
-                        <div class="flex justify-center items-center gap-3">
-                            <button class="border-2 px-5 py-[10px] border-[#7b7b7b] text-[#7b7b7b] font-bold">Cancel Review</button>
-                            <button class="border-2 px-5 py-[10px] border-[#7b7b7b] bg-[#7b7b7b] text-white font-bold">Submit Review</button>
-                        </div>
-                </form>
                 <div
-                    class="w-full flex justify-center py-6 px-4 border-t-[1px] border-b-[1px] border-[#fef3f3]">
+                    class="flex flex-col md:flex-row justify-center items-center md:gap-3">
+                    <button 
+                        class="px-5 py-[10px] text-[#FA8A8A] border-[#FA8A8A] border-2"
+                    type="button" id="cancelReview">Cancel
+                        Review</button>
+                    <button 
+                        class="px-5 py-[10px] bg-[#FA8A8A] text-white"
+                    type="submit">Submit Review</button>
+
+                </div>
+            </form>
+            <div
+                class="w-full flex justify-center py-6 px-4 border-t-[1px] border-b-[1px] border-[#fef3f3]">
+                <img
+                    class="w-[80px] aspect-square"
+                    src="https://judgeme-public-images.imgix.net/judgeme/medals-v2-2025-rebranding/auth/diamond.svg?auto=format"
+                    alt="diamond authencity" />
+            </div>
+            <div
+                class="w-full flex py-6 px-4 pt-0 border-b-[1px] border-[#fef3f3]">
+                <select class="text-[#fa8a8a]" aria-label="Sort dropdown">
+                    <option value="most-recent">Most Recent</option>
+                    <option value="highest-rating">Highest Rating</option>
+                    <option value="lowest-rating">Lowest Rating</option>
+                    <option value="with-pictures">Only Pictures</option>
+                    <option value="pictures-first">Pictures First</option>
+                    <option value="videos-first">Videos First</option>
+                    <option value="most-helpful">Most Helpful</option>
+                </select>
+            </div>
+            <div id="reviews-container"
+                class="w-full py-6 px-4 flex flex-col"></div>
+        </section>
+        <section class="section-7 full-bleed bg-[#f3eee0]">
+            <div
+                class="section-container py-8 px-[1.5rem]! grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="flex flex-col items-center gap-2">
                     <img
-                        class="w-[80px] aspect-square"
-                        src="https://judgeme-public-images.imgix.net/judgeme/medals-v2-2025-rebranding/auth/diamond.svg?auto=format"
-                        alt="diamond authencity" />
+                        class="h-10 md:h-8 w-auto object-cover"
+                        src="https://trysculptique.com/cdn/shop/files/ship-min.png?v=1758713222"
+                        alt="truck icon" />
+                    <strong class="text-center mt-[10px] font-semibold">Free
+                        Shipping from USA</strong>
+                    <p class="text-center">On all orders</p>
                 </div>
-                <div
-                    class="w-full flex py-6 px-4 pt-0 border-b-[1px] border-[#fef3f3]">
-                    <select class="text-[#fa8a8a]" aria-label="Sort dropdown">
-                        <option value="most-recent">Most Recent</option>
-                        <option value="highest-rating">Highest Rating</option>
-                        <option value="lowest-rating">Lowest Rating</option>
-                        <option value="with-pictures">Only Pictures</option>
-                        <option value="pictures-first">Pictures First</option>
-                        <option value="videos-first">Videos First</option>
-                        <option value="most-helpful">Most Helpful</option>
-                    </select>
-                </div>
-                <div id="reviews-container"
-                    class="w-full py-6 px-4 flex flex-col"></div>
-            </section>
-            <section class="section-7 full-bleed bg-[#f3eee0]">
-                <div
-                    class="section-container py-8 px-[1.5rem]! grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="flex flex-col items-center gap-2">
-                        <img
-                            class="h-10 md:h-8 w-auto object-cover"
-                            src="https://trysculptique.com/cdn/shop/files/ship-min.png?v=1758713222"
-                            alt="truck icon" />
-                        <strong class="text-center mt-[10px] font-semibold">Free
-                            Shipping from USA</strong>
-                        <p class="text-center">On all orders</p>
-                    </div>
-                    <div class="flex flex-col items-center gap-2">
-                        <img
-                            class="h-10 md:h-8 w-auto object-cover"
-                            src="https://trysculptique.com/cdn/shop/files/support-min.png?v=1758713216"
-                            alt="lotus icon" />
-                        <strong
-                            class="text-center mt-[10px] font-semibold">Naturally
-                            Supports Your Body</strong>
-                        <p class="text-center">Promotes healthy immune cell
-                            functions</p>
-                    </div>
-                    <div class="flex flex-col items-center gap-2">
-                        <img
-                            class="h-10 md:h-8 w-auto object-cover"
-                            src="https://trysculptique.com/cdn/shop/files/natural-min.png?v=1758713216"
-                            alt="small tree icon" />
-                        <strong class="text-center mt-[10px] font-semibold">100%
-                            Natural Ingredients</strong>
-                        <p class="text-center">8 active, natural ingredients</p>
-                    </div>
-                    <div class="flex flex-col items-center gap-2">
-                        <img
-                            class="h-10 md:h-8 w-auto object-cover"
-                            src="https://trysculptique.com/cdn/shop/files/60-min.png?v=1758713216"
-                            alt="calendar icon" />
-                        <strong class="text-center mt-[10px] font-semibold">Try
-                            it
-                            Risk Free for 60 Days</strong>
-                        <p class="text-center">60-day money-back guarantee</p>
-                    </div>
-                </div>
-            </section>
-            <section class="section-8 section-container py-14">
-                <div
-                    class="rounded-xl overflow-hidden flex flex-col-reverse md:grid md:grid-cols-2">
-                    <div class="flex flex-col gap-4 p-4 bg-[#f7f7f7]">
-                        <p>July 4th, 2025</p>
-                        <h2>
-                            Expert Advice from Dr. Emily Chen of a Premier New
-                            York
-                            Skin Clinic
-                        </h2>
-                        <p>
-                            “Your nutrition plays a powerful role in your
-                            appearance. If your
-                            body is missing key vitamins and nutrients, it can’t
-                            process fat and
-                            upkeep healthy connective tissue, which is why
-                            unprocessed fat flows
-                            up and starts pushing up against your skin, forming
-                            bumps you know
-                            as cellulite.
-                        </p>
-                        <p>
-                            SmoothSkin by Sculptique™ contains ingredients that
-                            are
-                            scientifically proven to enhance microcirculation,
-                            boost
-                            lymphatic
-                            drainage, and reduce inflammation, which restores
-                            your
-                            tissue and
-                            breaks down the fat cells in your skin.”
-                        </p>
-                        <button
-                            class="bg-[#000] w-full font-semibold mx-auto p-3 px-12 rounded-[4px] text-white hover:bg-[#333] duration-300">
-                            Try Lymphatic Drainage Risk-Free
-                        </button>
-                        <div data-guarantee></div>
-                    </div>
-                    <div class="w-full h-auto rounded-xl overflow-hidden">
-                        <img
-                            src="https://trysculptique.com/cdn/shop/files/greendeskt-min.png?v=1758713213"
-                            alt="woman smile"
-                            class="object-cover w-full h-full" />
-                    </div>
-                </div>
-            </section>
-            <section class="section-9 full-bleed bg-[#f3eee0]">
-                <div
-                    class="section-container py-[56px] flex flex-col items-center gap-4">
+                <div class="flex flex-col items-center gap-2">
                     <img
-                        class="max-w-[300px] object-cover"
-                        src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Trustpilot_review_2.png?v=1752485383"
-                        alt="trust stats" />
-                    <h2 class="text-center">
-                        See The Stories of Sculptique™ Women Firsthand
+                        class="h-10 md:h-8 w-auto object-cover"
+                        src="https://trysculptique.com/cdn/shop/files/support-min.png?v=1758713216"
+                        alt="lotus icon" />
+                    <strong
+                        class="text-center mt-[10px] font-semibold">Naturally
+                        Supports Your Body</strong>
+                    <p class="text-center">Promotes healthy immune cell
+                        functions</p>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                    <img
+                        class="h-10 md:h-8 w-auto object-cover"
+                        src="https://trysculptique.com/cdn/shop/files/natural-min.png?v=1758713216"
+                        alt="small tree icon" />
+                    <strong class="text-center mt-[10px] font-semibold">100%
+                        Natural Ingredients</strong>
+                    <p class="text-center">8 active, natural ingredients</p>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                    <img
+                        class="h-10 md:h-8 w-auto object-cover"
+                        src="https://trysculptique.com/cdn/shop/files/60-min.png?v=1758713216"
+                        alt="calendar icon" />
+                    <strong class="text-center mt-[10px] font-semibold">Try
+                        it
+                        Risk Free for 60 Days</strong>
+                    <p class="text-center">60-day money-back guarantee</p>
+                </div>
+            </div>
+        </section>
+        <section class="section-8 section-container py-14">
+            <div
+                class="rounded-xl overflow-hidden flex flex-col-reverse md:grid md:grid-cols-2">
+                <div class="flex flex-col gap-4 p-4 bg-[#f7f7f7]">
+                    <p>July 4th, 2025</p>
+                    <h2>
+                        Expert Advice from Dr. Emily Chen of a Premier New
+                        York
+                        Skin Clinic
                     </h2>
-
-                    <!-- Stories Video Carousel -->
-                    <div class="w-full overflow-hidden px-4">
-                        <div id="stories-container" class="w-full">
-                            <!-- Stories will be rendered here by JavaScript -->
-                        </div>
-                    </div>
-
+                    <p>
+                        “Your nutrition plays a powerful role in your
+                        appearance. If your
+                        body is missing key vitamins and nutrients, it can’t
+                        process fat and
+                        upkeep healthy connective tissue, which is why
+                        unprocessed fat flows
+                        up and starts pushing up against your skin, forming
+                        bumps you know
+                        as cellulite.
+                    </p>
+                    <p>
+                        SmoothSkin by Sculptique™ contains ingredients that
+                        are
+                        scientifically proven to enhance microcirculation,
+                        boost
+                        lymphatic
+                        drainage, and reduce inflammation, which restores
+                        your
+                        tissue and
+                        breaks down the fat cells in your skin.”
+                    </p>
                     <button
-                        class="bg-[#000] font-semibold mx-auto p-3 md:px-24 rounded-[4px] text-white hover:bg-[#333] duration-300">
+                        class="bg-[#000] w-full font-semibold mx-auto p-3 px-12 rounded-[4px] text-white hover:bg-[#333] duration-300">
                         Try Lymphatic Drainage Risk-Free
                     </button>
                     <div data-guarantee></div>
                 </div>
-            </section>
-            <section
-                class="section-10 section-container md:mx-8 flex flex-col gap-4 py-14">
-                <h2 class="text-center">Frequently Asked Questions</h2>
+                <div class="w-full h-auto rounded-xl overflow-hidden">
+                    <img
+                        src="https://trysculptique.com/cdn/shop/files/greendeskt-min.png?v=1758713213"
+                        alt="woman smile"
+                        class="object-cover w-full h-full" />
+                </div>
+            </div>
+        </section>
+        <section class="section-9 full-bleed bg-[#f3eee0]">
+            <div
+                class="section-container py-[56px] flex flex-col items-center gap-4">
+                <img
+                    class="max-w-[300px] object-cover"
+                    src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Trustpilot_review_2.png?v=1752485383"
+                    alt="trust stats" />
+                <h2 class="text-center">
+                    See The Stories of Sculptique™ Women Firsthand
+                </h2>
 
-                <div
-                    class="mx-auto rounded-[32px] overflow-hidden bg-gradient-to-b p-8 from-white to-[#f3eee0]">
-                    <div id="faq-container" class></div>
+                <!-- Stories Video Carousel -->
+                <div class="w-full overflow-hidden px-4">
+                    <div id="stories-container" class="w-full">
+                        <!-- Stories will be rendered here by JavaScript -->
+                    </div>
                 </div>
 
-                <div class="mt-2 flex flex-col gap-4">
+                <button
+                    class="bg-[#000] font-semibold mx-auto p-3 md:px-24 rounded-[4px] text-white hover:bg-[#333] duration-300">
+                    Try Lymphatic Drainage Risk-Free
+                </button>
+                <div data-guarantee></div>
+            </div>
+        </section>
+        <section
+            class="section-10 section-container md:mx-8 flex flex-col gap-4 py-14">
+            <h2 class="text-center">Frequently Asked Questions</h2>
+
+            <div
+                class="mx-auto rounded-[32px] overflow-hidden bg-gradient-to-b p-8 from-white to-[#f3eee0]">
+                <div id="faq-container" class></div>
+            </div>
+
+            <div class="mt-2 flex flex-col gap-4">
+                <button
+                    class="bg-[#000] font-semibold mx-auto p-3 md:px-24 rounded-[4px] text-white hover:bg-[#333] duration-300">
+                    Try Lymphatic Drainage Risk-Free
+                </button>
+                <div data-center data-guarantee></div>
+            </div>
+        </section>
+        <section
+            class="section-11 section-container flex flex-col md:flex-row md:py-[56px] items-center gap-4">
+            <div class="md:w-full">
+                <h2 class>
+                    We’re On A Mission To Help 100,000,000 Women Visibly,
+                    Naturally Get
+                    Rid Of Bloating…And Feel Like Themselves Again
+                </h2>
+                <p class="my-[12px]">Here's where we're at right now:</p>
+                <img
+                    src="https://trysculptique.com/cdn/shop/files/numbdeskt-min_png.png?v=1760942458"
+                    alt="lymphatic stats"
+                    class="mt-4 w-full md:block hidden h-auto object-cover" />
+                <img
+                    src="https://trysculptique.com/cdn/shop/files/numbmob-min_png.png?v=1760942458"
+                    alt="lymphatic stats"
+                    class="mt-4 w-full block md:hidden h-auto object-cover" />
+            </div>
+            <div class="md:w-[70%]">
+                <img
+                    class="h-auto w-full object-cover"
+                    src="https://trysculptique.com/cdn/shop/files/Frame_1000003537.jpg?v=1760943777"
+                    alt="lymphatic jar with stats" />
+            </div>
+        </section>
+        <section
+            class="section-12 section-container full-bleed bg-[#f3eee0]">
+            <div
+                class="section-container flex flex-col md:flex-row md:items-center gap-16 p-4 py-14">
+                <div class="flex flex-col md:w-full gap-4">
+                    <img
+                        class="max-w-[350px] object-cover"
+                        src="	https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Trustpilot_review.png?v=1752480694"
+                        alt="trust stats" />
+                    <h2 class>Stop Masking Symptoms. Start Restoring Root
+                        Cause.</h2>
+                    <p>
+                        You deserve to feel like yourself again. To wake up
+                        without
+                        puffiness. To see your ankles. To look in the mirror
+                        and
+                        recognize
+                        the vibrant woman staring back. To have energy for
+                        the
+                        people you
+                        love.
+                    </p>
+                    <p>
+                        You deserve a solution that actually works. Not
+                        temporary relief.
+                        Not symptom masking. Complete lymphatic restoration.
+                    </p>
                     <button
-                        class="bg-[#000] font-semibold mx-auto p-3 md:px-24 rounded-[4px] text-white hover:bg-[#333] duration-300">
+                        class="bg-[#000] w-full mx-auto py-[18px] px-20 rounded-[4px] text-white hover:bg-[#333] duration-300">
                         Try Lymphatic Drainage Risk-Free
                     </button>
                     <div data-center data-guarantee></div>
                 </div>
-            </section>
-            <section
-                class="section-11 flex flex-col md:flex-row md:py-[56px] items-center gap-4">
-                <div class="md:w-full">
-                    <h2 class>
-                        We’re On A Mission To Help 100,000,000 Women Visibly,
-                        Naturally Get
-                        Rid Of Bloating…And Feel Like Themselves Again
-                    </h2>
-                    <p class="my-[12px]">Here's where we're at right now:</p>
+                <div class="w-full">
                     <img
-                        src="https://trysculptique.com/cdn/shop/files/numbdeskt-min_png.png?v=1760942458"
-                        alt="lymphatic stats"
-                        class="mt-4 w-full md:block hidden h-auto object-cover" />
-                    <img
-                        src="https://trysculptique.com/cdn/shop/files/numbmob-min_png.png?v=1760942458"
-                        alt="lymphatic stats"
-                        class="mt-4 w-full block md:hidden h-auto object-cover" />
+                        loading="lazy"
+                        src="//trysculptique.com/cdn/shop/files/before-min_png.png?v=1760688928"
+                        alt="before after"
+                        class="w-full h-auto object-cover" />
                 </div>
-                <div class="md:w-[70%]">
-                    <img
-                        class="h-auto w-full object-cover"
-                        src="https://trysculptique.com/cdn/shop/files/Frame_1000003537.jpg?v=1760943777"
-                        alt="lymphatic jar with stats" />
-                </div>
-            </section>
-            <section
-                class="section-12 section-container full-bleed bg-[#f3eee0]">
-                <div
-                    class="section-container flex flex-col md:flex-row md:items-center gap-16 p-4 py-14">
-                    <div class="flex flex-col md:w-full gap-4">
-                        <img
-                            class="max-w-[350px] object-cover"
-                            src="	https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Trustpilot_review.png?v=1752480694"
-                            alt="trust stats" />
-                        <h2 class>Stop Masking Symptoms. Start Restoring Root
-                            Cause.</h2>
-                        <p>
-                            You deserve to feel like yourself again. To wake up
-                            without
-                            puffiness. To see your ankles. To look in the mirror
-                            and
-                            recognize
-                            the vibrant woman staring back. To have energy for
-                            the
-                            people you
-                            love.
-                        </p>
-                        <p>
-                            You deserve a solution that actually works. Not
-                            temporary relief.
-                            Not symptom masking. Complete lymphatic restoration.
-                        </p>
-                        <button
-                            class="bg-[#000] w-full mx-auto py-[18px] px-20 rounded-[4px] text-white hover:bg-[#333] duration-300">
-                            Try Lymphatic Drainage Risk-Free
-                        </button>
-                        <div data-guarantee></div>
-                    </div>
-                    <div class="w-full">
-                        <img
-                            loading="lazy"
-                            src="//trysculptique.com/cdn/shop/files/before-min_png.png?v=1760688928"
-                            alt="before after"
-                            class="w-full h-auto object-cover" />
-                    </div>
-                </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- modal nutrition info -->
+        <!-- modal nutrition info -->
+        <div
+            id="modal-overlay"
+            class="fixed inset-0 z-50 bg-black/50 hidden items-center justify-center">
+            <!-- MODAL -->
             <div
-                id="modal-overlay"
-                class="fixed inset-0 z-50 bg-black/50 hidden items-center justify-center">
-                <!-- MODAL -->
+                id="modal"
+                class="relative bg-white w-[90%] flex flex-col max-w-md rounded-xl p-4 gap-4 animate-fadeIn">
+                <!-- CLOSE BUTTON -->
+                <button
+                    onclick="closeModal()"
+                    class="absolute top-2 right-2 border-[#d5416e] border rounded-full">
+                    <img
+                        class="object-cover w-6 h-6 rotate-45"
+                        src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Button_To_Expand.png?v=1752069152"
+                        alt />
+                </button>
+
+                <!-- CONTENT -->
+                <h2 class="text-center">Nutrition Information</h2>
+
+                <!-- not mobile -->
+                <img
+                    src="https://trysculptique.com/cdn/shop/files/ingredients-min.png?v=1758713223"
+                    alt="nutrition information"
+                    class="md:block hidden w-full h-auto" />
+                <!-- mobile -->
+                <img
+                    src="https://trysculptique.com/cdn/shop/files/ingredients-min.png?v=1758713223"
+                    alt="nutrition information"
+                    class="block md:hidden w-full h-auto" />
+
+                <button
+                    class="bg-[#000] font-mont w-full mx-auto p-3 rounded-lg text-white hover:bg-[#333] duration-300">
+                    Try Lymphatic Drainage Risk-Free
+                </button>
                 <div
-                    id="modal"
-                    class="relative bg-white w-[90%] flex flex-col max-w-md rounded-xl p-4 gap-4 animate-fadeIn">
-                    <!-- CLOSE BUTTON -->
-                    <button
-                        onclick="closeModal()"
-                        class="absolute top-2 right-2 border-[#d5416e] border rounded-full">
+                    class="flex items-center justify-center flex-wrap gap-3">
+                    <div class="flex items-center gap-1">
                         <img
-                            class="object-cover w-6 h-6 rotate-45"
-                            src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Button_To_Expand.png?v=1752069152"
-                            alt />
-                    </button>
-
-                    <!-- CONTENT -->
-                    <h2 class="text-center">Nutrition Information</h2>
-
-                    <!-- not mobile -->
-                    <img
-                        src="https://trysculptique.com/cdn/shop/files/ingredients-min.png?v=1758713223"
-                        alt="nutrition information"
-                        class="md:block hidden w-full h-auto" />
-                    <!-- mobile -->
-                    <img
-                        src="https://trysculptique.com/cdn/shop/files/ingredients-min.png?v=1758713223"
-                        alt="nutrition information"
-                        class="block md:hidden w-full h-auto" />
-
-                    <button
-                        style="font-family: 'Montserrat', sans-serif"
-                        class="bg-[#000] w-full mx-auto p-3 rounded-lg text-white hover:bg-[#333] duration-300">
-                        Try Lymphatic Drainage Risk-Free
-                    </button>
-                    <div
-                        class="flex items-center justify-center flex-wrap gap-3">
-                        <div class="flex items-center gap-1">
-                            <img
-                                class="w-4 h-4 object-cover"
-                                src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
-                                alt="check icon" />
-                            <p class="text-xs">Made & produced in the USA</p>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <img
-                                class="w-4 h-4 object-cover"
-                                src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
-                                alt="check icon" />
-                            <p class="text-xs">100% Natural Ingredients</p>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <img
-                                class="w-4 h-4 object-cover"
-                                src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
-                                alt="check icon" />
-                            <p class="text-xs">60-Day Money-Back Guarantee</p>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <img
-                                class="w-4 h-4 object-cover"
-                                src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
-                                alt="check icon" />
-                            <p class="text-xs">Free Shipping</p>
-                        </div>
+                            class="w-4 h-4 object-cover"
+                            src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
+                            alt="check icon" />
+                        <p class="text-xs">Made & produced in the USA</p>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <img
+                            class="w-4 h-4 object-cover"
+                            src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
+                            alt="check icon" />
+                        <p class="text-xs">100% Natural Ingredients</p>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <img
+                            class="w-4 h-4 object-cover"
+                            src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
+                            alt="check icon" />
+                        <p class="text-xs">60-Day Money-Back Guarantee</p>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <img
+                            class="w-4 h-4 object-cover"
+                            src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Mark_Icon_ce1ad4c9-5ec0-4162-969e-b565980ab82b.png?v=1752127285"
+                            alt="check icon" />
+                        <p class="text-xs">Free Shipping</p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <script src="components/sliders/product-images-slider.js"></script>
-            <script src="components/sliders/stories-slider.js"></script>
-            <script src="components/radio.js"></script>
-            <script src="components/guarantee.js"></script>
-            <script src="components/reviews.js"></script>
-            <script
-                src="components/accordions/accordion-product-reviews.js"></script>
-            <script src="components/accordions/accordion-faq.js"></script>
-            <script
-                src="components/accordions/accordion-ingredients.js"></script>
-            <script src="components/modal.js"></script>
+        <script src="components/sliders/product-images-slider.js"></script>
+        <script src="components/sliders/stories-slider.js"></script>
+        <script src="components/radio.js"></script>
+        <script src="components/guarantee.js"></script>
+        <script src="components/reviews.js"></script>
+        <script
+            src="components/accordions/accordion-product-reviews.js"></script>
+        <script src="components/accordions/accordion-faq.js"></script>
+        <script
+            src="components/accordions/accordion-ingredients.js"></script>
+        <script
+            src="components/review-form.js"></script>
+        <script src="components/modal.js"></script>
 
-        </body>
-    </html>
+    </body>
+</html>
