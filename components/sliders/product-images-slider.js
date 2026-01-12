@@ -78,7 +78,7 @@ class ProductImageSlider {
         </div>
 
         <!-- Main Image Static (Tablet+) -->
-        <div class="hidden md:block w-full aspect-square rounded-md overflow-hidden bg-gray-200 relative">
+        <div class="hidden md:block w-full aspect-square rounded-lg overflow-hidden bg-gray-200 relative">
           <img src="${this.images[0]}" class="w-full h-full object-cover" alt="Product image">
           <div class="absolute top-4 right-4 md:max-w-[120px] aspect-square pointer-events-none">
             <img src="${badgeImg}" alt="new year sale badge">

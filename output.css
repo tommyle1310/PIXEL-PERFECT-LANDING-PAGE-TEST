@@ -816,6 +816,8 @@ small {
   .section-8 {
   padding-right: 15px;
   padding-left: 15px;
+  max-width: 1340px;
+  margin: 0 auto;
 }
 
 @media (min-width: 651px) {
@@ -829,8 +831,7 @@ small {
 }
 
 @media (min-width: 750px) {
-  .section-1,
-    .section-3,
+  .section-3,
     .section-6,
     .section-8 {
     padding-left: 3rem !important;
@@ -839,6 +840,11 @@ small {
 }
 
 @media (min-width: 1024px) {
+  .section-1 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
   .section-7 {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -896,11 +902,6 @@ small {
   /* BREAK OUT OF PARENT */
   left: 50%;
   transform: translateX(-50%);
-}
-
-.as-seen h3 {
-  font-family: serif;
-  font-size: 28px;
 }
 
 .marquee {
@@ -1006,12 +1007,12 @@ small {
   inset: 0px;
 }
 
-.-right-\[6px\] {
-  right: -6px;
+.-right-\[5px\] {
+  right: -5px;
 }
 
-.-top-5 {
-  top: -1.25rem;
+.-top-\[20px\] {
+  top: -20px;
 }
 
 .bottom-\[32px\] {
@@ -1373,6 +1374,10 @@ small {
 
 .w-\[10\%\] {
   width: 10%;
+}
+
+.w-\[10px\] {
+  width: 10px;
 }
 
 .w-\[128px\] {
@@ -1751,6 +1756,10 @@ small {
   list-style-position: outside;
 }
 
+.list-disc {
+  list-style-type: disc;
+}
+
 .appearance-none {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -2118,12 +2127,12 @@ small {
   gap: 12px;
 }
 
-.gap-\[16px\] {
-  gap: 16px;
-}
-
 .gap-\[1px\] {
   gap: 1px;
+}
+
+.gap-\[64px\] {
+  gap: 64px;
 }
 
 .gap-\[8px\] {
@@ -2636,6 +2645,11 @@ small {
   border-color: rgb(250 138 138 / var(--tw-border-opacity, 1));
 }
 
+.border-\[\#d2d2d2\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(210 210 210 / var(--tw-border-opacity, 1));
+}
+
 .border-\[\#d5416e\] {
   --tw-border-opacity: 1;
   border-color: rgb(213 65 110 / var(--tw-border-opacity, 1));
@@ -2659,11 +2673,6 @@ small {
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
-}
-
-.border-gray-300 {
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
 }
 
 .border-white {
@@ -3140,6 +3149,10 @@ small {
   font-size: 14px;
 }
 
+.text-\[15px\] {
+  font-size: 15px;
+}
+
 .text-\[16px\] {
   font-size: 16px;
 }
@@ -3156,6 +3169,10 @@ small {
   font-size: 8px;
 }
 
+.text-md {
+  font-size: 16px;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -3165,12 +3182,8 @@ small {
   font-size: 13px;
 }
 
-.text-md {
-  font-size: 16px;
-}
-
-.text-\[15px\] {
-  font-size: 15px;
+.text-xxs {
+  font-size: 12px;
 }
 
 .font-\[400\] {
@@ -3277,6 +3290,10 @@ small {
   line-height: 1.3rem;
 }
 
+.leading-\[1\.8em\] {
+  line-height: 1.8em;
+}
+
 .leading-\[1\] {
   line-height: 1;
 }
@@ -3297,8 +3314,8 @@ small {
   line-height: 1.25;
 }
 
-.leading-\[1\.8em\] {
-  line-height: 1.8em;
+.tracking-\[0\.06rem\] {
+  letter-spacing: 0.06rem;
 }
 
 .tracking-normal {
@@ -3789,6 +3806,49 @@ small {
   forced-color-adjust: none;
 }
 
+h3 {
+  font-size: 18px;
+  font-family: 'Trirong';
+}
+
+@media (min-width: 900px) {
+  h3 {
+    font-size: 24px;
+  }
+}
+
+.top-4 {
+  top: 1.6rem;
+}
+
+.right-4 {
+  right: 1.6rem;
+}
+
+.gap-2 {
+  gap: 0.8rem;
+}
+
+.gap-4 {
+  gap: 1.6rem;
+}
+
+.p-3 {
+  padding: 1.2rem;
+}
+
+.p-4 {
+  padding: 1.6rem;
+}
+
+.rounded-xl {
+  border-radius: 1.2rem;
+}
+
+.rounded-lg {
+  border-radius: 0.8rem;
+}
+
 @keyframes scroll {
   from {
     transform: translateX(0);
@@ -4029,6 +4089,10 @@ small {
     width: 100px;
   }
 
+  .md\:w-\[16px\] {
+    width: 16px;
+  }
+
   .md\:w-\[47\%\] {
     width: 47%;
   }
@@ -4043,6 +4107,10 @@ small {
 
   .md\:w-full {
     width: 100%;
+  }
+
+  .md\:min-w-\[437px\] {
+    min-width: 437px;
   }
 
   .md\:max-w-\[120px\] {
@@ -4091,10 +4159,6 @@ small {
 
   .md\:justify-between {
     justify-content: space-between;
-  }
-
-  .md\:gap-16 {
-    gap: 4rem;
   }
 
   .md\:gap-2 {
@@ -4151,6 +4215,10 @@ small {
     padding-bottom: 56px;
   }
 
+  .md\:pb-20 {
+    padding-bottom: 5rem;
+  }
+
   .md\:text-right {
     text-align: right;
   }
@@ -4169,6 +4237,18 @@ small {
 
   .md\:text-\[18px\] {
     font-size: 18px;
+  }
+
+  .md\:text-md {
+    font-size: 16px;
+  }
+
+  .md\:gap-2 {
+    gap: 0.8rem;
+  }
+
+  .md\:gap-4 {
+    gap: 1.6rem;
   }
 }
 

@@ -5,6 +5,7 @@ const options = [
         subtitle: '1 bottle total | Save $27.99',
         price: '$31.96',
         oldPrice: '$59.95',
+        footer: ['Refills Ship Monthly', 'Stop or Cancel Anytime'],
         badges: [
             { text: 'Free USA Shipping', icon: 'https://trysculptique.com/cdn/shop/files/delivery-truck_181581.png' }
         ]
@@ -16,6 +17,7 @@ const options = [
         price: '$63.92',
         isNewYearSale: true,
         oldPrice: '$179.85',
+        footer: ['Refills Ship Bi-Monthly', 'Stop or Cancel Anytime'],
         badges: [
             { text: 'Free USA Shipping', icon: 'https://trysculptique.com/cdn/shop/files/delivery-truck_181581.png' },
             { text: 'Free Anti-Bloating Protocol E-book', icon: 'https://trysculptique.com/cdn/shop/files/download_5307610.png' }
@@ -27,6 +29,7 @@ const options = [
         subtitle: '5 bottles total | Save $203.87',
         price: '$95.88',
         oldPrice: '$299.75',
+        footer: ['Refills Ship Every 12 Week', 'Stop or Cancel Anytime'],
         badges: [
             { text: 'Free USA Shipping', icon: 'https://trysculptique.com/cdn/shop/files/delivery-truck_181581.png' },
             { text: 'Free Anti-Bloating Protocol E-book', icon: 'https://trysculptique.com/cdn/shop/files/download_5307610.png' },
@@ -40,13 +43,13 @@ const renderOptions = (containerId, opts) => {
     const wrap = document.getElementById(containerId);
 
     wrap.innerHTML = opts.map((o, idx) => `
-    <label for="${o.id}" class="group block relative rounded-xl border border-[#039869]
+    <label for="${o.id}" class="group block relative rounded-lg border border-[#039869]
              cursor-pointer transition-all
              has-[:checked]:border-[#039869]">
      <input id="${o.id}" type="radio" name="product_option" value="${o.id}" ${idx===0 ? 'checked' : '' }
          class="peer sr-only" />
 
-     <div class="absolute z-30 ${o.isNewYearSale ? 'block' : 'hidden'} -top-5 -right-[6px] pointer-events-none">
+     <div class="absolute z-30 ${o.isNewYearSale ? 'block' : 'hidden'} -top-[20px] -right-[5px] pointer-events-none">
          <svg width="77" height="37" viewBox="0 0 77 37" fill="none" xmlns="http://www.w3.org/2000/svg">
              <ellipse cx="38.5" cy="18.5" rx="38.5" ry="18.5" fill="#E70C0C"></ellipse>
              <path
@@ -64,7 +67,7 @@ const renderOptions = (containerId, opts) => {
          </svg>
      </div>
 
-     <div class="relative rounded-xl overflow-hidden bg-white z-10">
+     <div class="relative rounded-lg overflow-hidden bg-white z-10">
 
          <div class="flex justify-between p-[16px] gap-[12px]">
 
@@ -112,10 +115,14 @@ const renderOptions = (containerId, opts) => {
 
 renderOptions('product-options', options);
 
+const footer1 = document.getElementById('footer-text-1');
+const footer2 = document.getElementById('footer-text-2');
+
 /* ========== Optional: detect selection change (if you need it) ========== */
-document.getElementById('product-options').addEventListener('change', (e) => {
+document.getElementById('product-options').addEventListener('change', e => {
     if (e.target && e.target.name === 'product_option') {
-        console.log('selected:', e.target.value);
-        // do whatever on select (update summary, price, analytics...)
+        const selected = options.find(o => o.id === e.target.value);
+        footer1.textContent = selected.footer[0];
+        footer2.textContent = selected.footer[1];
     }
 });

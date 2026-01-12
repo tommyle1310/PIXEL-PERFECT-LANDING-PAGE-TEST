@@ -55,6 +55,8 @@
   .section-8 {
     padding-right: 15px;
     padding-left: 15px;
+    max-width: 1340px;
+    margin: 0 auto;
   }
 
   @media (min-width: 651px) {
@@ -68,7 +70,6 @@
   }
 
   @media (min-width: 750px) {
-    .section-1,
     .section-3,
     .section-6,
     .section-8 {
@@ -78,6 +79,10 @@
   }
 
   @media (min-width: 1024px) {
+    .section-1 {
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
     .section-7 {
       padding-left: 3rem;
       padding-right: 3rem;
@@ -163,11 +168,6 @@
     /* BREAK OUT OF PARENT */
     left: 50%;
     transform: translateX(-50%);
-  }
-
-  .as-seen h3 {
-    font-family: serif;
-    font-size: 28px;
   }
 
   .marquee {
@@ -358,6 +358,50 @@
 
 /* ================= UTILITIES / ANIMATIONS ================= */
 @layer utilities {
+  h3 {
+    font-size: 18px;
+    font-family: 'Trirong';
+  }
+
+   @media (min-width: 900px) {
+  h3 {
+    font-size: 24px;
+  }
+  }
+
+
+  .top-4 {
+    top: 1.6rem;
+  }
+
+  .right-4 {
+    right: 1.6rem;
+  }
+
+  .gap-2 {
+    gap: 0.8rem;
+  }
+
+  .gap-4 {
+    gap: 1.6rem;
+  }
+
+  .p-3 {
+    padding: 1.2rem;
+  }
+
+  .p-4 {
+    padding: 1.6rem;
+  }
+
+  .rounded-xl {
+    border-radius: 1.2rem;
+  }
+
+  .rounded-lg {
+    border-radius: 0.8rem;
+  }
+
   @keyframes scroll {
     from {
       transform: translateX(0);
