@@ -55,12 +55,12 @@ class ProductImageSlider {
       <!-- MAIN IMAGE WITH CHEVRONS (Mobile only) -->
       <div class="relative flex items-center">
         <!-- Left Chevron (Mobile only) -->
-        <button id="slider-prev" class="md:hidden absolute left-6 z-10 w-8 h-8 flex items-center justify-center transition-all">
+        <button id="slider-prev" class="md:hidden absolute left-[24px] mt-4 z-10 w-[32px] aspect-square flex items-center justify-center transition-all">
           <img alt="left arrow" class="object-cover w-full h-full" src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/iconamoon_arrow-up-2-thin_1.png?v=1752126281" draggable="false">
         </button>
 
         <!-- Main Image Slider (Mobile) -->
-        <div id="main-slider-container" class="md:hidden w-full aspect-square rounded-lg overflow-hidden bg-gray-200 relative cursor-grab active:cursor-grabbing select-none">
+        <div id="main-slider-container" class="md:hidden w-full aspect-square rounded-xl overflow-hidden bg-gray-200 relative cursor-grab active:cursor-grabbing select-none">
           <div id="main-slider-track" class="flex h-full transition-transform duration-300 ease-out" style="width: 300%; transform: translateX(-33.333%);">
             <div class="w-1/3 h-full flex-shrink-0">
               <img src="${sliderImages.prev}" class="w-full h-full object-cover pointer-events-none" alt="Previous" draggable="false">
@@ -72,7 +72,7 @@ class ProductImageSlider {
               <img src="${sliderImages.next}" class="w-full h-full object-cover pointer-events-none" alt="Next" draggable="false">
             </div>
           </div>
-          <div class="absolute top-4 right-4 w-20 aspect-square pointer-events-none">
+          <div class="absolute top-[16px] right-[16px] w-[80px] aspect-square pointer-events-none">
             <img src="${badgeImg}" alt="new year sale badge" draggable="false">
           </div>
         </div>
@@ -86,7 +86,7 @@ class ProductImageSlider {
         </div>
 
         <!-- Right Chevron (Mobile only) -->
-        <button id="slider-next" class="md:hidden absolute right-6 z-10 w-8 h-8 flex items-center justify-center transition-all">
+        <button id="slider-next" class="md:hidden absolute right-[24px] mt-4 z-10 w-[32px] aspect-square flex items-center justify-center transition-all">
           <img alt="right arrow" class="object-cover w-full h-full" src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/iconamoon_arrow-up-2-thin.png?v=1752126281" draggable="false">
         </button>
 
@@ -94,8 +94,8 @@ class ProductImageSlider {
         <button
             onclick="openModal()"
             style=" font-family: 'Montserrat', sans-serif;"
-            class="absolute bottom-8 left-1/2 -translate-x-1/2
-                    inline-flex items-center gap-2
+            class="absolute bottom-[32px] left-1/2 -translate-x-1/2
+                    inline-flex items-center gap-[8px]
                     whitespace-nowrap
                     rounded-[24px]
                     bg-[#ffffffd9]
@@ -107,11 +107,11 @@ class ProductImageSlider {
             >
             <img
                 src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/leaves_1247958_1.png?v=1752126615"
-                class="w-6 h-6 shrink-0"
+                class="w-[24px] h-[24px] object-cover shrink-0"
                 alt=""
             />
             <span class="text-[14px] font-mont font-[400]">
-                Nutrition Information
+                Nutritional Information
             </span>
         </button>
 
@@ -120,7 +120,7 @@ class ProductImageSlider {
 
       <!-- THUMBNAILS: MOBILE (slides 1 image at a time) -->
       <!-- 6 images total: 1 prev + 4 visible + 1 next. Show 4 at a time, each = 25% of container -->
-      <div id="thumbnails-mobile" class="relative mt-3 mb-4 md:hidden overflow-hidden cursor-grab active:cursor-grabbing select-none">
+      <div id="thumbnails-mobile" class="relative mt-[8px] mb-4 md:hidden overflow-hidden cursor-grab active:cursor-grabbing select-none">
         <div id="thumbnails-track" class="flex gap-2 transition-transform duration-300 ease-out" style="width: calc(150% + 10px); transform: translateX(calc(-16.666% - 1.333px));">
           ${thumbImages.map((thumb, i) => `
             <div class="aspect-square rounded-lg overflow-hidden cursor-pointer thumbnail-item hover:border-[#039869] transition-all flex-shrink-0" style="width: calc((100% - 45px) / 6);" data-index="${thumb.index}">

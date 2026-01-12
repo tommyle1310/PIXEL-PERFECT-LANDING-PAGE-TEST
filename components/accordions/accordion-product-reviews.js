@@ -10,16 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
           list-style: disc;
           list-style-position: outside;
         ">
-          <li class="text-[16px]"><strong>Echinacea purpurea Extract</strong> – Known for its anti-inflammatory properties, it may support skin health.</li>
-          <li class="text-[16px]"><strong>Dandelion Extract</strong> – Traditionally used as a diuretic, it may help reduce water retention.</li>
-          <li class="text-[16px]"><strong>Burdock Powder</strong> – Contains antioxidants that may promote skin clarity.</li>
-          <li class="text-[16px]"><strong>Cleavers Extract</strong> – Believed to support lymphatic drainage and detoxification.</li>
-          <li class="text-[16px]"><strong>Rutin</strong> – A flavonoid that may strengthen blood vessels and improve circulation.</li>
-          <li class="text-[16px]"><strong>Bromelain Powder</strong> – An enzyme from pineapple that may reduce inflammation and support tissue repair.</li>
-          <li class="text-[16px]"><strong>Lemon Powder</strong> – Rich in vitamin C, it may aid in collagen production and skin rejuvenation.</li>
-          <li class="text-[16px]"><strong>Kelp Extract</strong> – A source of iodine and minerals that may support skin metabolism.</li>
+          <li class="font-mont leading-[1.8em] text-[15px]"><strong>Echinacea purpurea Extract</strong> – Known for its anti-inflammatory properties, it may support skin health.</li>
+          <li class="font-mont leading-[1.8em] text-[15px]"><strong>Dandelion Extract</strong> – Traditionally used as a diuretic, it may help reduce water retention.</li>
+          <li class="font-mont leading-[1.8em] text-[15px]"><strong>Burdock Powder</strong> – Contains antioxidants that may promote skin clarity.</li>
+          <li class="font-mont leading-[1.8em] text-[15px]"><strong>Cleavers Extract</strong> – Believed to support lymphatic drainage and detoxification.</li>
+          <li class="font-mont leading-[1.8em] text-[15px]"><strong>Rutin</strong> – A flavonoid that may strengthen blood vessels and improve circulation.</li>
+          <li class="font-mont leading-[1.8em] text-[15px]"><strong>Bromelain Powder</strong> – An enzyme from pineapple that may reduce inflammation and support tissue repair.</li>
+          <li class="font-mont leading-[1.8em] text-[15px]"><strong>Lemon Powder</strong> – Rich in vitamin C, it may aid in collagen production and skin rejuvenation.</li>
+          <li class="font-mont leading-[1.8em] text-[15px]"><strong>Kelp Extract</strong> – A source of iodine and minerals that may support skin metabolism.</li>
         </ul>
-        <p class="text-[16px]">These natural ingredients work together to reduce puffiness, bloating, fluid retention.</p>
+        <p class="text-md leading-[1.3em]">These natural ingredients work together to reduce puffiness, bloating, fluid retention.</p>
       `,
     },
     {
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "How does it actually work?",
       open: false,
       content: `
-        <p class="text-[16px]">
+        <p class="text-md font-nunito leading-[1.3em]">
           Sculptique works by improving blood flow and supporting lymphatic drainage
           to reduce fluid buildup that causes puffiness, inflammation, and water retention.
           It also reduces inflammation and boosts collagen production to help skin become
@@ -40,12 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Shipping and returns",
       open: false,
       content: `
-        <p class="text-[16px]">
+        <p class="text-md font-nunito leading-[1.3em]">
           All Sculptique orders get FREE shipping straight from our USA warehouse.
           Orders ship within 1–2 working days and arrive in 3–7 days (USA),
           or within 10 days internationally.
         </p>
-        <p class="text-[16px]">
+        <p class="text-md font-nunito leading-[1.3em]">
           We offer a 60-day money-back guarantee if you’re not satisfied.
         </p>
       `,
@@ -61,15 +61,15 @@ document.addEventListener("DOMContentLoaded", () => {
           (item) => `
         <div
           id="${item.id}"
-          class="border border-gray-300 p-4 cursor-pointer"
+          class="border border-gray-300 p-[16px] cursor-pointer"
           style="border-radius:32px"
           data-accordion
         >
-          <div class="w-full flex items-center justify-between text-left">
-            <span class="text-[16px] font-medium">${item.title}</span>
+          <div class="w-full flex items-center gap-[12px] justify-between leading-[1.3em] text-left">
+            <span class="text-[16px] flex-1  leading-[1.3em] font-medium">${item.title}</span>
             <span
               id="${item.id}-icon"
-              class="flex w-6 aspect-square items-center justify-center rounded-full bg-[#f4f0e8] transition-transform duration-300 ${
+              class="flex w-[24px] aspect-square items-center justify-center rounded-full bg-[#f4f0e8] transition-transform duration-300 ${
                 item.open ? "rotate-45" : ""
               }"
             >
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <div
             id="${item.id}-content"
-            class="mt-4 overflow-hidden transition-all duration-300 ease-in-out ${
+            class="mt-4 overflow-hidden transition-all duration-300 leading-[1.3em]  ease-in-out ${
               item.open ? "" : "hidden"
             }"
             style="max-height:${item.open ? "none" : "0px"}"

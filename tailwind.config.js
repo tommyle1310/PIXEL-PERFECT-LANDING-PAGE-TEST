@@ -16,7 +16,9 @@ module.exports = {
     },
     extend: {
       fontSize: {
+        xxs: '12px',
         xs: '13px',
+        md: '16px'
       },
       fontFamily: {
         mont: ['Montserrat', 'sans-serif'],

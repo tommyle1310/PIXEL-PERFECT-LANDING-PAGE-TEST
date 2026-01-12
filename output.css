@@ -558,6 +558,11 @@ body {
   overflow-x: clip;
 }
 
+html {
+  font-size: 62.5%;
+  /* 1rem = 10px */
+}
+
 *,
   ::before,
   ::after {
@@ -612,6 +617,12 @@ h4 {
 
 h1 {
   font-size: 28px;
+}
+
+@media (max-width: 679px) {
+  h1 {
+    font-size: 24px;
+  }
 }
 
 h2 {
@@ -1003,8 +1014,8 @@ small {
   top: -1.25rem;
 }
 
-.bottom-8 {
-  bottom: 2rem;
+.bottom-\[32px\] {
+  bottom: 32px;
 }
 
 .end-1 {
@@ -1015,8 +1026,8 @@ small {
   left: 50%;
 }
 
-.left-6 {
-  left: 1.5rem;
+.left-\[24px\] {
+  left: 24px;
 }
 
 .right-2 {
@@ -1027,8 +1038,12 @@ small {
   right: 1rem;
 }
 
-.right-6 {
-  right: 1.5rem;
+.right-\[16px\] {
+  right: 16px;
+}
+
+.right-\[24px\] {
+  right: 24px;
 }
 
 .top-0 {
@@ -1041,6 +1056,10 @@ small {
 
 .top-4 {
   top: 1rem;
+}
+
+.top-\[16px\] {
+  top: 16px;
 }
 
 .isolate {
@@ -1155,6 +1174,10 @@ small {
 
 .mt-\[10px\] {
   margin-top: 10px;
+}
+
+.mt-\[8px\] {
+  margin-top: 8px;
 }
 
 .mt-auto {
@@ -1284,10 +1307,6 @@ small {
   height: 3rem;
 }
 
-.h-3 {
-  height: 0.75rem;
-}
-
 .h-4 {
   height: 1rem;
 }
@@ -1304,16 +1323,16 @@ small {
   height: 2rem;
 }
 
+.h-\[24px\] {
+  height: 24px;
+}
+
 .h-auto {
   height: auto;
 }
 
 .h-full {
   height: 100%;
-}
-
-.max-h-\[150px\] {
-  max-height: 150px;
 }
 
 .w-1\/2 {
@@ -1326,14 +1345,6 @@ small {
 
 .w-12 {
   width: 3rem;
-}
-
-.w-20 {
-  width: 5rem;
-}
-
-.w-3 {
-  width: 0.75rem;
 }
 
 .w-4 {
@@ -1360,6 +1371,10 @@ small {
   width: 1%;
 }
 
+.w-\[10\%\] {
+  width: 10%;
+}
+
 .w-\[128px\] {
   width: 128px;
 }
@@ -1368,12 +1383,28 @@ small {
   width: 15%;
 }
 
+.w-\[16px\] {
+  width: 16px;
+}
+
 .w-\[20\%\] {
   width: 20%;
 }
 
+.w-\[24px\] {
+  width: 24px;
+}
+
 .w-\[32px\] {
   width: 32px;
+}
+
+.w-\[34px\] {
+  width: 34px;
+}
+
+.w-\[60px\] {
+  width: 60px;
 }
 
 .w-\[7\%\] {
@@ -1422,10 +1453,6 @@ small {
 
 .max-w-5 {
   max-width: 1.25rem;
-}
-
-.max-w-9 {
-  max-width: 2.25rem;
 }
 
 .max-w-\[120px\] {
@@ -1722,10 +1749,6 @@ small {
 
 .list-outside {
   list-style-position: outside;
-}
-
-.list-disc {
-  list-style-type: disc;
 }
 
 .appearance-none {
@@ -2091,8 +2114,20 @@ small {
   gap: 10px;
 }
 
+.gap-\[12px\] {
+  gap: 12px;
+}
+
+.gap-\[16px\] {
+  gap: 16px;
+}
+
 .gap-\[1px\] {
   gap: 1px;
+}
+
+.gap-\[8px\] {
+  gap: 8px;
 }
 
 .gap-px {
@@ -2876,6 +2911,14 @@ small {
   padding: 2rem;
 }
 
+.p-\[12px\] {
+  padding: 12px;
+}
+
+.p-\[16px\] {
+  padding: 16px;
+}
+
 .p-\[32px\] {
   padding: 32px;
 }
@@ -3109,6 +3152,10 @@ small {
   font-size: 24px;
 }
 
+.text-\[8px\] {
+  font-size: 8px;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -3116,6 +3163,14 @@ small {
 
 .text-xs {
   font-size: 13px;
+}
+
+.text-md {
+  font-size: 16px;
+}
+
+.text-\[15px\] {
+  font-size: 15px;
 }
 
 .font-\[400\] {
@@ -3206,8 +3261,16 @@ small {
   font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
 }
 
+.leading-\[1\.2\] {
+  line-height: 1.2;
+}
+
 .leading-\[1\.3\] {
   line-height: 1.3;
+}
+
+.leading-\[1\.3em\] {
+  line-height: 1.3em;
 }
 
 .leading-\[1\.3rem\] {
@@ -3216,6 +3279,10 @@ small {
 
 .leading-\[1\] {
   line-height: 1;
+}
+
+.leading-\[2em\] {
+  line-height: 2em;
 }
 
 .leading-\[41\.6px\] {
@@ -3230,8 +3297,8 @@ small {
   line-height: 1.25;
 }
 
-.leading-\[1\.2\] {
-  line-height: 1.2;
+.leading-\[1\.8em\] {
+  line-height: 1.8em;
 }
 
 .tracking-normal {
@@ -3876,12 +3943,6 @@ small {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
-@media not all and (min-width: 750px) {
-  .max-md-2\:text-xs {
-    font-size: 13px;
-  }
-}
-
 @media not all and (min-width: 679px) {
   .max-md\:mt-2 {
     margin-top: 0.5rem;
@@ -3893,10 +3954,6 @@ small {
 
   .max-md\:w-1\/2 {
     width: 50%;
-  }
-
-  .max-md\:w-full {
-    width: 100%;
   }
 
   .max-md\:max-w-\[420px\] {
@@ -3915,8 +3972,8 @@ small {
     text-align: center;
   }
 
-  .max-md\:text-xs {
-    font-size: 13px;
+  .max-md\:text-xxs {
+    font-size: 12px;
   }
 }
 
@@ -3966,6 +4023,10 @@ small {
 
   .md\:w-6 {
     width: 1.5rem;
+  }
+
+  .md\:w-\[100px\] {
+    width: 100px;
   }
 
   .md\:w-\[47\%\] {
@@ -4100,6 +4161,14 @@ small {
 
   .md\:text-\[13px\] {
     font-size: 13px;
+  }
+
+  .md\:text-\[16px\] {
+    font-size: 16px;
+  }
+
+  .md\:text-\[18px\] {
+    font-size: 18px;
   }
 }
 

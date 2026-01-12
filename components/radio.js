@@ -66,38 +66,40 @@ const renderOptions = (containerId, opts) => {
 
      <div class="relative rounded-xl overflow-hidden bg-white z-10">
 
-         <div class="flex justify-between p-4">
+         <div class="flex justify-between p-[16px] gap-[12px]">
 
              <div class="flex items-center gap-3">
 
-                 <span class="flex items-center justify-center w-6 h-6 rounded-full border-2 border-[#039869]
+                 <span
+                 style="width: 24px; height: 24px;"
+                 class="flex items-center justify-center aspect-square rounded-full border-2 border-[#039869]
                      transition-all
                      group-has-[:checked]:bg-white">
-                     <span class="block w-3 h-3 rounded-full bg-[#039869]
+                     <span class="block w-[16px] aspect-square rounded-full bg-[#039869]
                        scale-0 group-has-[:checked]:scale-100
                        transition-transform"></span>
                  </span>
 
                  <div class="flex flex-col leading-tight">
-                     <p class="font-semibold text-sm">${o.title}</p>
-                     <p class="text-[14px] text-[#101010]">${o.subtitle}</p>
+                     <p class="font-semibold text-[16px]">${o.title}</p>
+                     <p class="text-[12px] text-[#101010]">${o.subtitle}</p>
                  </div>
              </div>
 
              <div class="flex flex-col items-end">
                  <p class="font-semibold">${o.price}</p>
-                 <p class="text-xs line-through text-slate-400">${o.oldPrice}</p>
+                 <p class="text-[14px] font-mont line-through text-slate-400">${o.oldPrice}</p>
              </div>
 
          </div>
 
          <div class="flex flex-col gap-px">
              ${o.badges.map(b => `
-             <div class="flex items-center px-2 py-2 gap-2 text-sm text-white
+             <div class="flex items-center px-2 py-2 gap-[8px] text-sm text-white
                      bg-[#63ba99] group-has-[:checked]:bg-[#039869]
                      transition-colors">
-                 <img class="w-5 h-5 object-contain" src="${b.icon}" alt="" />
-                 <span class="text-white">${b.text}</span>
+                 <img class="w-[34px] aspect-square object-contain" src="${b.icon}" alt="" />
+                 <span class="text-white text-[12px]">${b.text}</span>
              </div>
              `).join('')}
          </div>
