@@ -5,18 +5,18 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Ingredients proven by science",
       open: true,
       content: `
-        <strong class="text-[16px] mb-3">Sculptique Ingredients:</strong>
-        <ul style="padding-left: 30px;" class="text-[16px] mt-4 list-disc list-outside">
-          <li class="font-mont leading-[1.8em] text-[15px]"><strong class="tracking-[0.06rem]">Echinacea purpurea Extract</strong> – Known for its anti-inflammatory properties, it may support skin health.</li>
-          <li class="font-mont leading-[1.8em] text-[15px]"><strong class="tracking-[0.06rem]">Dandelion Extract</strong> – Traditionally used as a diuretic, it may help reduce water retention.</li>
-          <li class="font-mont leading-[1.8em] text-[15px]"><strong class="tracking-[0.06rem]">Burdock Powder</strong> – Contains antioxidants that may promote skin clarity.</li>
-          <li class="font-mont leading-[1.8em] text-[15px]"><strong class="tracking-[0.06rem]">Cleavers Extract</strong> – Believed to support lymphatic drainage and detoxification.</li>
-          <li class="font-mont leading-[1.8em] text-[15px]"><strong class="tracking-[0.06rem]">Rutin</strong> – A flavonoid that may strengthen blood vessels and improve circulation.</li>
-          <li class="font-mont leading-[1.8em] text-[15px]"><strong class="tracking-[0.06rem]">Bromelain Powder</strong> – An enzyme from pineapple that may reduce inflammation and support tissue repair.</li>
-          <li class="font-mont leading-[1.8em] text-[15px]"><strong class="tracking-[0.06rem]">Lemon Powder</strong> – Rich in vitamin C, it may aid in collagen production and skin rejuvenation.</li>
-          <li class="font-mont leading-[1.8em] text-[15px]"><strong class="tracking-[0.06rem]">Kelp Extract</strong> – A source of iodine and minerals that may support skin metabolism.</li>
+        <strong class="text-[16px] mb-3 font-bold">Sculptique Ingredients:</strong>
+        <ul style="padding-left: 40px;" class="text-[16px] mt-4 list-disc list-outside">
+          <li class="font-mont leading-[1.8em]  text-[15px]"><strong class="font-mont tracking-[0.06rem]">Echinacea purpurea Extract</strong> – Known for its anti-inflammatory properties, it may support skin health.</li>
+          <li class="font-mont leading-[1.8em]  text-[15px]"><strong class="font-mont tracking-[0.06rem]">Dandelion Extract</strong> – Traditionally used as a diuretic, it may help reduce water retention.</li>
+          <li class="font-mont leading-[1.8em]  text-[15px]"><strong class="font-mont tracking-[0.06rem]">Burdock Powder</strong> – Contains antioxidants that may promote skin clarity.</li>
+          <li class="font-mont leading-[1.8em]  text-[15px]"><strong class="font-mont tracking-[0.06rem]">Cleavers Extract</strong> – Believed to support lymphatic drainage and detoxification.</li>
+          <li class="font-mont leading-[1.8em]  text-[15px]"><strong class="font-mont tracking-[0.06rem]">Rutin</strong> – A flavonoid that may strengthen blood vessels and improve circulation.</li>
+          <li class="font-mont leading-[1.8em]  text-[15px]"><strong class="font-mont tracking-[0.06rem]">Bromelain Powder</strong> – An enzyme from pineapple that may reduce inflammation and support tissue repair.</li>
+          <li class="font-mont leading-[1.8em]  text-[15px]"><strong class="font-mont tracking-[0.06rem]">Lemon Powder</strong> – Rich in vitamin C, it may aid in collagen production and skin rejuvenation.</li>
+          <li class="font-mont leading-[1.8em]  text-[15px]"><strong class="font-mont tracking-[0.06rem]">Kelp Extract</strong> – A source of iodine and minerals that may support skin metabolism.</li>
         </ul>
-        <p class="text-md leading-[1.3em]">These natural ingredients work together to reduce puffiness, bloating, fluid retention.</p>
+        <p class="text-md leading-[1.3em] mt-4">These natural ingredients work together to reduce puffiness, bloating, fluid retention.</p>
       `,
     },
     {
@@ -64,14 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
           style="border-radius:32px"
         >
           <div class="w-full flex items-center gap-[12px] justify-between text-left">
-            <span class="text-[16px] flex-1 font-medium">${item.title}</span>
+            <span class="text-[16px] flex-1 leading-[1.3em]">${item.title}</span>
             <span
               id="${item.id}-icon"
               class="flex w-[24px] aspect-square items-center justify-center rounded-full bg-[#f4f0e8] transition-transform duration-300 ${
                 item.open ? "rotate-45" : ""
               }"
             >
-              <img src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Button_To_Expand_1_8a6027c0-281a-4c6b-8881-60673c7255ec.png?v=1758716844" />
+              <img loading="lazy"src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Button_To_Expand_1_8a6027c0-281a-4c6b-8881-60673c7255ec.png?v=1758716844" />
             </span>
           </div>
 

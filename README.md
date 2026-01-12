@@ -7,3 +7,6 @@ section 4, in medium device, the cards not the same height => some card higher t
 in section 5, accordion when toggle not change the chevron direction
 
 section 6, the pagination enter ne line not good ux, so i make them in 1 line
+
+
+nunito updated the "l", so using the same font family nunito not the same as the template

@@ -29,8 +29,8 @@ function renderIngredientAccordion() {
 
     const borderClass = `
       border-black
-      ${!isLastCol ? "md:border-r" : ""}
-      ${!isLastRow ? "md:border-b" : ""}
+      ${!isLastCol ? "border-r" : ""}
+      ${!isLastRow ? "border-b" : ""}
     `;
 
     return `

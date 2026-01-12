@@ -59,14 +59,14 @@ function renderStoriesCarousel() {
     <div class="stories-slide flex-shrink-0 ${index === 0 ? "pr-2 " : "px-2"}" style="width: ${slideWidth}%;">
         <div class="aspect-[9/16] rounded-[4px] overflow-hidden bg-gray-200 relative group cursor-pointer"
             onclick="playStoryVideo(${index})">
-            <img src="${story.poster}" alt="Story ${
+            <img loading="lazy"src="${story.poster}" alt="Story ${
         index + 1
       }" class="w-full h-full object-cover" id="story-poster-${index}" />
             <video id="story-video-${index}" class="absolute inset-0 w-full h-full object-cover hidden"
                 src="${story.video_url}" playsinline loop></video>
             <div id="story-play-btn-${index}"
                 class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
-                <img alt="play icon" class="w-8 h-8 object-cover" src="
+                <img loading="lazy"alt="play icon" class="w-8 h-8 object-cover" src="
          https://cdn.shopify.com/s/files/1/0917/5649/5191/files/mingcute_play-fill.png?v=1752485519
 " />
             </div>
@@ -98,12 +98,12 @@ function renderStoriesCarousel() {
         <button onclick="prevStorySlide()" class="max-w-[32px] aspect-square bg-white flex items-center justify-center rounded-full hover:bg-white/50 transition-colors ${
           currentStoryIndex === 0 ? "opacity-50 cursor-not-allowed" : ""
         }" ${currentStoryIndex === 0 ? "disabled" : ""}>
-     <img class="w-full h-full" src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/iconamoon_arrow-up-2-thin_55aa38bb-cb5e-4608-9097-927814968771.png?v=1758716845" alt="chevron left"/>  
+     <img loading="lazy"class="w-full h-full" src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/iconamoon_arrow-up-2-thin_55aa38bb-cb5e-4608-9097-927814968771.png?v=1758716845" alt="chevron left"/>  
         </button>
         <button onclick="nextStorySlide()" class="max-w-[32px] aspect-square bg-white flex items-center justify-center rounded-full hover:bg-white/50 transition-colors ${
           currentStoryIndex >= maxIndex ? "opacity-50 cursor-not-allowed" : ""
         }" ${currentStoryIndex >= maxIndex ? "disabled" : ""}>
-     <img class="rotate-180 w-full h-full" src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/iconamoon_arrow-up-2-thin_55aa38bb-cb5e-4608-9097-927814968771.png?v=1758716845" alt="chevron left"/>  
+     <img loading="lazy"class="rotate-180 w-full h-full" src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/iconamoon_arrow-up-2-thin_55aa38bb-cb5e-4608-9097-927814968771.png?v=1758716845" alt="chevron left"/>  
       
         </button>
       </div>

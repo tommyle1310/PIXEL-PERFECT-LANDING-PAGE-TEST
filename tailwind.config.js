@@ -10,6 +10,7 @@ module.exports = {
       'sm': '640px',
       'md': '679px',
       'md-2': '750px',
+      'md-3': '769px',
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
@@ -18,7 +19,8 @@ module.exports = {
       fontSize: {
         xxs: '12px',
         xs: '13px',
-        md: '16px'
+        md: '16px',
+        lg: '18px',
       },
       fontFamily: {
         mont: ['Montserrat', 'sans-serif'],

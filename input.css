@@ -10,6 +10,8 @@
 
   html {
     font-size: 62.5%; /* 1rem = 10px */
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   *,
@@ -60,17 +62,20 @@
   }
 
   @media (min-width: 651px) {
-    .section-1,
-    .section-3,
     .section-6,
     .section-8 {
       padding-left: 32px;
       padding-right: 32px;
     }
+
+    .section-1,
+    .section-3 {
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
   }
 
   @media (min-width: 750px) {
-    .section-3,
     .section-6,
     .section-8 {
       padding-left: 3rem !important;
@@ -93,11 +98,15 @@
     font-size: 16px;
     line-height: 1.4;
     font-family: "Nunito";
+    font-feature-settings: "ss01" 0, "ss02" 0, "liga" 0;
+    font-variant-ligatures: none;
   }
   .reviews-terms a {
     text-decoration: underline;
     color: #0000ee;
     font-family: "Nunito";
+    font-feature-settings: "ss01" 0, "ss02" 0, "liga" 0;
+    font-variant-ligatures: none;
   }
 
   .stat-card {
@@ -148,6 +157,26 @@
   .desc {
     font-size: 20px;
     margin-bottom: 12px;
+  }
+
+  .double-chevron-down {
+    max-width: 34px
+  }
+
+   @media (min-width: 679px) {
+    .double-chevron-down {
+      max-width: 48px;
+    }
+  }
+
+  .bloating-card {
+    max-width: 50%;
+  }
+
+  @media (min-width: 679px) {
+    .bloating-card {
+      max-width: 100%;
+    }
   }
 
   .as-seen {
@@ -238,6 +267,8 @@
   button,
   strong {
     font-family: "Nunito";
+    font-feature-settings: "ss01" 0, "ss02" 0, "liga" 0;
+    font-variant-ligatures: none;
     line-height: 1.3rem;
   }
 
@@ -312,14 +343,25 @@
     list-style: none;
     padding-left: 0;
     font-weight: 600;
+    font-size: 1.6rem;
+    margin: 0.8rem 0;
   }
 
   .ul-danger li {
     color: #a60003;
     list-style: none;
     padding-left: 0;
+    font-size: 1.6rem;
     font-weight: 600;
+    margin: 0.8rem 0;
   }
+
+   @media (min-width: 679px) { 
+    .ul-success li,
+    .ul-danger li {
+      font-size: 18px;
+    }
+   }
 
   /* SUCCESS ICON */
   .ul-success li {
@@ -360,15 +402,14 @@
 @layer utilities {
   h3 {
     font-size: 18px;
-    font-family: 'Trirong';
+    font-family: "Trirong";
   }
 
-   @media (min-width: 900px) {
-  h3 {
-    font-size: 24px;
+  @media (min-width: 900px) {
+    h3 {
+      font-size: 24px;
+    }
   }
-  }
-
 
   .top-4 {
     top: 1.6rem;
@@ -392,6 +433,18 @@
 
   .p-4 {
     padding: 1.6rem;
+  }
+
+  .mt-4 {
+    margin-top: 1.6rem;
+  }
+
+  .mb-4 {
+    margin-bottom: 1.6rem;
+  }
+
+  .m-4 {
+    margin: 1.6rem;
   }
 
   .rounded-xl {

@@ -74,7 +74,7 @@ const renderOptions = (containerId, opts) => {
              <div class="flex items-center gap-3">
 
                  <span
-                 style="width: 24px; height: 24px;"
+                 style="width: 26px; height: 26px;"
                  class="flex items-center justify-center aspect-square rounded-full border-2 border-[#039869]
                      transition-all
                      group-has-[:checked]:bg-white">
@@ -101,7 +101,7 @@ const renderOptions = (containerId, opts) => {
              <div class="flex items-center px-2 py-2 gap-[8px] text-sm text-white
                      bg-[#63ba99] group-has-[:checked]:bg-[#039869]
                      transition-colors">
-                 <img class="w-[34px] aspect-square object-contain" src="${b.icon}" alt="" />
+                 <img loading="lazy"class="w-[34px] aspect-square object-contain" src="${b.icon}" alt="" />
                  <span class="text-white text-[12px]">${b.text}</span>
              </div>
              `).join('')}
