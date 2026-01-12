@@ -24,30 +24,56 @@ function renderIngredientAccordion() {
   if (!container) return;
 
   container.innerHTML = ingredientsData.map((item, index) => {
-    const isLastRow = index >= ingredientsData.length - 4;
-    const isLastCol = (index + 1) % 4 === 0;
+    const totalItems = ingredientsData.length;
+    const mdCols = 4;
 
-    const borderClass = `
-      border-black
-      ${!isLastCol ? "border-r" : ""}
-      ${!isLastRow ? "border-b" : ""}
-    `;
+    // Mobile (1 col): last item = no border-b, no one gets border-r
+    const isLastItemMobile = index === totalItems - 1;
+
+    // MD+ (4 cols): last column = no border-r, last row = no border-b
+    const isLastColMd = (index + 1) % mdCols === 0;
+    const itemsInLastRowMd = totalItems % mdCols || mdCols;
+    const isLastRowMd = index >= totalItems - itemsInLastRowMd;
+
+    // Build border classes
+    let borderClasses = ['border-black'];
+
+    // Border-right: ONLY on md+ for non-last columns (mobile has 1 col, no border-r)
+    if (!isLastColMd) {
+      borderClasses.push('md:border-r');
+    }
+
+    // Border-bottom logic:
+    // - Mobile: all except last item need border-b
+    // - MD+: all except last row need border-b
+    if (!isLastItemMobile && !isLastRowMd) {
+      // Both breakpoints need border-b
+      borderClasses.push('border-b');
+    } else if (!isLastItemMobile && isLastRowMd) {
+      // Mobile needs border-b, MD+ doesn't
+      borderClasses.push('border-b md:border-b-0');
+    }
+    // else: neither needs border-b (last item is always in last row)
+
+    const borderClass = borderClasses.join(' ');
 
     return `
       <div
         id="${item.id}"
         data-ingredient
-        class="p-6 cursor-pointer ${borderClass}"
+        class="p-6 md:p-[24px] cursor-pointer ${borderClass}"
         aria-expanded="false"
       >
         <div class="w-full flex flex-col text-left gap-3">
 
           <div class="flex items-center justify-center gap-2 w-full">
-            <img
+          <div class="max-w-[16px] md:max-w-[11px] lg:max-w-[16px]">
+              <img
               src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/check-mark_17013456_2.png?v=1760698419"
-              class="w-[9px] aspect-square object-contain"
+              class="w-full aspect-square object-fit"
             />
-            <span class="text-green-600 text-[16px] font-medium">
+          </div>
+            <span class="text-green-600 md:leading-[1.8] text-[16px] font-medium">
               ${item.title}
             </span>
           </div>
@@ -61,8 +87,8 @@ function renderIngredientAccordion() {
 
             <div class="flex items-center gap-2 justify-between w-full flex-1">
               <p
-                style="font-family: 'Trirong';"
-                class="font-semibold text-[16px] text-black"
+                style="font-family: 'Trirong', serif;"
+                class="font-semibold text-sm md:text-md leading-[1.3]  text-black"
               >
                 ${item.name}
               </p>

@@ -46,8 +46,8 @@
 
   @media (min-width: 750px) {
     .section-container {
-      padding-left: 2rem !important;
-      padding-right: 2rem !important;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
   }
 
@@ -69,7 +69,9 @@
     }
 
     .section-1,
-    .section-3 {
+    .section-3, 
+    .section-4 .section-container,
+    .section-5 .section-container {
       padding-left: 5rem;
       padding-right: 5rem;
     }
