@@ -867,8 +867,7 @@ small {
     padding-right: 32px;
   }
 
-  .section-1,
-    .section-3,
+  .section-3,
     .section-8,
     .section-11,
     .section-4 .section-container,
@@ -891,14 +890,14 @@ small {
     padding-left: 1.5rem !important;
     padding-right: 1.5rem !important;
   }
-}
 
-@media (min-width: 1024px) {
   .section-1 {
     padding-left: 5rem;
     padding-right: 5rem;
   }
+}
 
+@media (min-width: 1024px) {
   .section-10 {
     padding-left: 5rem !important;
     padding-right: 5rem !important;
@@ -4286,6 +4285,10 @@ h3 {
     margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
   }
 
+  .max-md\:whitespace-nowrap {
+    white-space: nowrap;
+  }
+
   .max-md\:pb-12 {
     padding-bottom: 3rem;
   }
@@ -4496,6 +4499,11 @@ h3 {
     padding-right: 1.5rem;
   }
 
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   .md\:px-\[80px\] {
     padding-left: 80px;
     padding-right: 80px;
@@ -4529,11 +4537,6 @@ h3 {
   .md\:py-\[56px\] {
     padding-top: 56px;
     padding-bottom: 56px;
-  }
-
-  .md\:px-8 {
-    padding-left: 2rem;
-    padding-right: 2rem;
   }
 
   .md\:pb-20 {

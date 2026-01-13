@@ -108,6 +108,7 @@ class ProductImageSlider {
                     rounded-[24px]
                     bg-[#ffffffd9]
                     px-[24px] py-[8px]
+                    max-md:whitespace-nowrap
                     max-w-[290px]
                     text-[#383938]
                     border border-black
