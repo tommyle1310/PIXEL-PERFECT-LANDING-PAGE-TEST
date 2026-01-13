@@ -37,7 +37,7 @@ function setupRatingRows() {
 
     // disable row if no result
     if (count === 0) {
-      row.classList.add("opacity-30", "pointer-events-none");
+      row.classList.add( "pointer-events-none");
       row.setAttribute("aria-disabled", "true");
       return;
     }

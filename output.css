@@ -884,6 +884,11 @@ small {
     padding-left: 3rem !important;
     padding-right: 3rem !important;
   }
+
+  .section-10 {
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -981,7 +986,7 @@ small {
   gap: 80px;
   width: -moz-max-content;
   width: max-content;
-  animation: scroll 25s linear infinite;
+  animation: scroll 65s linear infinite;
 }
 
 .marquee-track img {
@@ -2577,12 +2582,12 @@ small {
   border-radius: 0.25rem;
 }
 
-.rounded-\[24px\] {
-  border-radius: 24px;
+.rounded-\[16px\] {
+  border-radius: 16px;
 }
 
-.rounded-\[32px\] {
-  border-radius: 32px;
+.rounded-\[24px\] {
+  border-radius: 24px;
 }
 
 .rounded-\[4px\] {
@@ -3074,11 +3079,6 @@ small {
   padding-right: 1.25rem;
 }
 
-.px-\[16px\] {
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
 .px-\[18px\] {
   padding-left: 18px;
   padding-right: 18px;
@@ -3162,6 +3162,10 @@ small {
   padding-bottom: 0.5rem;
 }
 
+.pb-32 {
+  padding-bottom: 8rem;
+}
+
 .pb-5 {
   padding-bottom: 1.25rem;
 }
@@ -3192,6 +3196,10 @@ small {
 
 .pt-0 {
   padding-top: 0px;
+}
+
+.pt-20 {
+  padding-top: 5rem;
 }
 
 .pt-8 {
@@ -3977,12 +3985,26 @@ h3 {
   padding: 1.2rem;
 }
 
+.px-2 {
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
 .p-4 {
   padding: 1.6rem;
 }
 
+.px-4 {
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+}
+
 .w-4 {
   width: 1.6rem;
+}
+
+.h-4 {
+  height: 1.6rem;
 }
 
 .w-6 {
@@ -4171,7 +4193,19 @@ h3 {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
+@media not all and (min-width: 750px) {
+  .max-md-2\:mx-\[15px\] {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
 @media not all and (min-width: 679px) {
+  .max-md\:mx-\[15px\] {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
   .max-md\:mt-2 {
     margin-top: 0.5rem;
   }
@@ -4222,11 +4256,6 @@ h3 {
 }
 
 @media (min-width: 679px) {
-  .md\:mx-8 {
-    margin-left: 2rem;
-    margin-right: 2rem;
-  }
-
   .md\:-mb-\[1\.4rem\] {
     margin-bottom: -1.4rem;
   }
@@ -4376,14 +4405,14 @@ h3 {
     padding: 32px;
   }
 
+  .md\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
   .md\:px-12 {
     padding-left: 3rem;
     padding-right: 3rem;
-  }
-
-  .md\:px-14 {
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
   }
 
   .md\:px-24 {
@@ -4401,6 +4430,11 @@ h3 {
     padding-right: 1.5rem;
   }
 
+  .md\:px-\[80px\] {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
   .md\:py-14 {
     padding-top: 3.5rem;
     padding-bottom: 3.5rem;
@@ -4409,6 +4443,21 @@ h3 {
   .md\:py-24 {
     padding-top: 6rem;
     padding-bottom: 6rem;
+  }
+
+  .md\:py-28 {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .md\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .md\:py-\[18px\] {
+    padding-top: 18px;
+    padding-bottom: 18px;
   }
 
   .md\:py-\[56px\] {
@@ -4438,6 +4487,10 @@ h3 {
 
   .md\:pt-\[7rem\] {
     padding-top: 7rem;
+  }
+
+  .md\:pb-\[32px\] {
+    padding-bottom: 32px;
   }
 
   .md\:text-left {
@@ -4478,6 +4531,11 @@ h3 {
 
   .md\:gap-4 {
     gap: 1.6rem;
+  }
+
+  .md\:px-4 {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
   }
 
   .md\:w-6 {

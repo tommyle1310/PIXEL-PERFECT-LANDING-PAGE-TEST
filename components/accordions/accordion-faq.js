@@ -23,17 +23,17 @@ function renderFaqs() {
     <div
       id="${item.id}"
       data-faq
-      class="group border-b leading-[1.3] border-white cursor-pointer"
+      class="group border-b leading-[1.3] md:px-6 py-5 border-white cursor-pointer"
       aria-expanded="false"
     >
-      <div class="w-full flex items-center justify-between text-left md:px-6 py-5">
-        <span class="text-gray-800 font-medium font-nunito text-[18px] pr-4">
+      <div class="w-full flex items-center justify-between text-left ">
+        <span class=" font-nunito text-[18px] pr-4 leading-[1.3]">
           ${item.question}
         </span>
         <svg
           id="${item.id}-icon"
           xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5 flex-shrink-0 text-gray-800 transform transition-transform duration-300"
+          class="w-4 h-4 flex-shrink-0 text-gray-800 transform transition-transform duration-300"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -45,12 +45,12 @@ function renderFaqs() {
 
       <div
         id="${item.id}-content"
-        class="accordion-closed overflow-hidden transition-all duration-300 ease-in-out"
+        class="accordion-closed mt-4 overflow-hidden transition-all duration-300 ease-in-out"
         style="max-height: 0px;"
       >
-        <div class=" pb-5 font-nunito">
+        <p class="text-md pb-5 font-nunito leading-[1.3]">
           ${item.answer}
-        </div>
+        </p>
       </div>
     </div>
   `).join('');
