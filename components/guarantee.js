@@ -11,9 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <img
           src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1_1.png?v=1752388395"
           alt="60 days logo"
-          class="w-4 md:w-6"
+          class="w-6"
         />
-        <span>60 day money-back guarantee</span>
+        <span>60-Day Money-Back Guarantee</span>
       </p>
     `;
 

@@ -853,8 +853,8 @@ small {
 
 .section-1,
   .section-3,
-  .section-6,
-  .section-8 {
+  .section-8,
+  .section-6 {
   padding-right: 15px;
   padding-left: 15px;
   max-width: 1340px;
@@ -862,26 +862,24 @@ small {
 }
 
 @media (min-width: 651px) {
-  .section-6,
-    .section-8 {
+  .section-6 {
     padding-left: 32px;
     padding-right: 32px;
   }
 
   .section-1,
     .section-3,
+    .section-8,
     .section-4 .section-container,
     .section-5 .section-container,
-    .section-7 .section-container
-     {
+    .section-7 .section-container {
     padding-left: 5rem;
     padding-right: 5rem;
   }
 }
 
 @media (min-width: 750px) {
-  .section-6,
-    .section-8 {
+  .section-6 {
     padding-left: 3rem !important;
     padding-right: 3rem !important;
   }
@@ -3032,10 +3030,6 @@ small {
   padding: 16px;
 }
 
-.p-\[32px\] {
-  padding: 32px;
-}
-
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -3302,6 +3296,10 @@ small {
 
 .text-\[8px\] {
   font-size: 8px;
+}
+
+.text-lg {
+  font-size: 18px;
 }
 
 .text-md {
@@ -3971,6 +3969,14 @@ h3 {
   padding: 1.6rem;
 }
 
+.w-4 {
+  width: 1.6rem;
+}
+
+.w-6 {
+  width: 2.4rem;
+}
+
 .mt-4 {
   margin-top: 1.6rem;
 }
@@ -4345,8 +4351,17 @@ h3 {
     border-right-width: 1px;
   }
 
+  .md\:bg-\[\#f7f7f7\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(247 247 247 / var(--tw-bg-opacity, 1));
+  }
+
   .md\:p-\[24px\] {
     padding: 24px;
+  }
+
+  .md\:p-\[32px\] {
+    padding: 32px;
   }
 
   .md\:px-12 {
@@ -4379,9 +4394,19 @@ h3 {
     padding-bottom: 3.5rem;
   }
 
+  .md\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
   .md\:py-\[56px\] {
     padding-top: 56px;
     padding-bottom: 56px;
+  }
+
+  .md\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 
   .md\:pb-20 {
@@ -4446,6 +4471,10 @@ h3 {
 
   .md\:gap-4 {
     gap: 1.6rem;
+  }
+
+  .md\:w-6 {
+    width: 2.4rem;
   }
 }
 
