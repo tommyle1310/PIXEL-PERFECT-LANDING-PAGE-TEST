@@ -125,26 +125,37 @@ function renderReviews() {
   container.innerHTML =
     pageData
       .map((r) => {
-        const solidStars = '<i class="fa-solid fa-star"></i>'.repeat(r.rating);
-        const regularStars = '<i class="fa-regular fa-star"></i>'.repeat(
-          5 - r.rating
+        const solidStars = '<i class="fa-solid fa-scale fa-star"></i>'.repeat(
+          r.rating
         );
+        const regularStars =
+          '<i class="fa-regular fa-scale fa-star"></i>'.repeat(5 - r.rating);
 
         return `
-      <div class="border-b font-mont border-[#fef3f3] py-4 flex flex-col gap-4">
-        <div class="flex justify-between">
-          <div class="flex gap-[1px]">
-            ${solidStars}${regularStars}
-          </div>
-          <p class="text-[#7b7b7b] text-sm">${r.date}</p>
-        </div>
+      <div class="border-b font-mont border-[#fef3f3] pt-8 pb-[3.8rem] flex flex-col gap-2">
+       <div class="flex justify-between">
+         <div class="flex">
+           ${solidStars}${regularStars}
+         </div>
+         <p style="
+          font-size: calc(16px * 0.8)
+          " class="text-[#7b7b7b] text-sm">${r.date}</p>
+       </div>
 
-        <div class="flex gap-2">
-          <div class="w-12 h-12 bg-[#efefef] flex items-center justify-center">
-            ${r.avatarInitial}
-          </div>
-          <div class="flex gap-2">
-            <p class="text-[#fa8a8a] text-[16px]">${r.author}</p>
+       <div class="flex gap-2">
+         <div style="
+          width: 36px; height: 36px;
+          " class=" bg-[#efefef] flex items-center relative justify-center">
+           <i class="fa-regular fa-user text-[24px] text-[#fa8a8a]"></i>
+           <div class="absolute bottom-0 right-0
+         w-[14px] h-[14px]
+         bg-[#fa8a8a]
+         flex items-center justify-center">
+             <i class="fa-solid fa-check text-[8px] text-white"></i>
+           </div>
+         </div>
+         <div class="flex gap-2">
+           <p class="text-[#fa8a8a] text-[16px]">${r.author}</p>
             ${
               r.isVerified
                 ? '<div><span class="bg-[#FA8A8A] text-white text-xs px-2">Verified</span></div>'
@@ -153,7 +164,7 @@ function renderReviews() {
           </div>
         </div>
 
-        <p class="font-nunito text-[16px]">${r.content}</p>
+        <p class="font-nunito text-[15px] md:text-md">${r.content}</p>
       </div>
     `;
       })
@@ -176,8 +187,12 @@ function renderPagination(totalPages) {
   for (let i = 1; i <= totalPages; i++) {
     pagesHTML +=
       i === current
-        ? `<span class="text-[#7b7b7b] text-2xl font-bold px-1">${i}</span>`
-        : `<button onclick="changeReviewPage(${i})" class="text-[#fa8a8a] px-1 hover:opacity-70">${i}</button>`;
+        ? `<span
+        style="
+        font-size: 150%;
+        "
+        class="text-[#7b7b7b] font-mont text-md font-bold px-1">${i}</span>`
+        : `<button onclick="changeReviewPage(${i})" class="text-[#fa8a8a] font-mont px-1 text-[15px] hover:opacity-70">${i}</button>`;
   }
 
   const nextButton = `<button onclick="changeReviewPage(${Math.min(

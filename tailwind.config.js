@@ -11,6 +11,7 @@ module.exports = {
       'md': '679px',
       'md-2': '750px',
       'md-3': '769px',
+      'semi-lg': '992px',
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
@@ -26,6 +27,8 @@ module.exports = {
       fontFamily: {
         mont: ['Montserrat', 'sans-serif'],
         nunito: ['Nunito'],
+        trirong: ['Trirong'],
+        arial: ['Arial'],
         
       }
     },

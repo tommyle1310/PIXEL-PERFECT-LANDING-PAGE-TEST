@@ -30,6 +30,12 @@
 
 /* ================= COMPONENTS ================= */
 @layer components {
+  .fa-scale {
+    font-size: 16px;
+    transform: scale(0.85, 0.94);
+    transform-origin: center;
+  }
+
   .section-container {
     max-width: 1340px;
     margin: 0 auto;
@@ -69,7 +75,7 @@
     }
 
     .section-1,
-    .section-3, 
+    .section-3,
     .section-4 .section-container,
     .section-5 .section-container {
       padding-left: 5rem;
@@ -162,10 +168,10 @@
   }
 
   .double-chevron-down {
-    max-width: 34px
+    max-width: 34px;
   }
 
-   @media (min-width: 679px) {
+  @media (min-width: 679px) {
     .double-chevron-down {
       max-width: 48px;
     }
@@ -358,12 +364,12 @@
     margin: 0.8rem 0;
   }
 
-   @media (min-width: 679px) { 
+  @media (min-width: 679px) {
     .ul-success li,
     .ul-danger li {
       font-size: 18px;
     }
-   }
+  }
 
   /* SUCCESS ICON */
   .ul-success li {
