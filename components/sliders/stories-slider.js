@@ -6,6 +6,7 @@ let dragStartX = 0;
 let dragCurrentTranslate = 0;
 let dragPrevTranslate = 0;
 let isStoriesAnimating = false;
+let currentlyPlayingVideoIndex = -1; // Track which video is currently playing
 
 async function loadStoriesData() {
   try {
@@ -58,14 +59,14 @@ function renderStoriesCarousel() {
       (story, index) => `
     <div class="stories-slide flex-shrink-0 ${index === 0 ? "-mr-6" : "ml-6 pl-6"}" style="width: ${slideWidth}%;">
         <div class="aspect-[9/16] h-full rounded-[4px] overflow-hidden bg-gray-200 relative group cursor-pointer"
-            onclick="playStoryVideo(${index})">
+            onclick="playStoryVideo(${index}, event)">
             <img loading="lazy"src="${story.poster}" alt="Story ${
         index + 1
-      }" class="w-full h-full object-cover" id="story-poster-${index}" />
-            <video id="story-video-${index}" class="absolute inset-0 w-full h-full object-cover hidden"
-                src="${story.video_url}" playsinline loop></video>
+      }" class="w-full h-full object-cover" id="story-poster-${index}" ${currentlyPlayingVideoIndex === index ? 'style="display: none;"' : ''} />
+            <video id="story-video-${index}" class="absolute inset-0 w-full h-full object-cover ${currentlyPlayingVideoIndex === index ? '' : 'hidden'}"
+                src="${story.video_url}" playsinline loop muted></video>
             <div id="story-play-btn-${index}"
-                class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
+                class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors ${currentlyPlayingVideoIndex === index ? 'hidden' : ''}">
                 <img loading="lazy"alt="play icon" class="w-8 h-8 object-cover" src="
          https://cdn.shopify.com/s/files/1/0917/5649/5191/files/mingcute_play-fill.png?v=1752485519
 " />
@@ -134,6 +135,14 @@ function renderStoriesCarousel() {
     });
     document.addEventListener("mouseup", endStoriesDrag);
     document.addEventListener("touchend", endStoriesDrag);
+  }
+
+  // Resume playing video after re-render if one was playing
+  if (currentlyPlayingVideoIndex !== -1) {
+    const video = document.getElementById(`story-video-${currentlyPlayingVideoIndex}`);
+    if (video && video.paused) {
+      video.play().catch(err => console.error("Error resuming video:", err));
+    }
   }
 }
 
@@ -306,7 +315,12 @@ function nextStorySlide() {
   }
 }
 
-function playStoryVideo(index) {
+function playStoryVideo(index, event) {
+  // Stop event propagation to prevent double triggers
+  if (event) {
+    event.stopPropagation();
+  }
+
   // Pause all other videos first
   storiesData.forEach((_, i) => {
     if (i !== index) {
@@ -331,12 +345,21 @@ function playStoryVideo(index) {
       video.classList.remove("hidden");
       poster.classList.add("hidden");
       playBtn.classList.add("hidden");
-      video.play();
+      currentlyPlayingVideoIndex = index;
+      video.play().catch(err => {
+        console.error("Error playing video:", err);
+        // Reset UI if play fails
+        video.classList.add("hidden");
+        poster.classList.remove("hidden");
+        playBtn.classList.remove("hidden");
+        currentlyPlayingVideoIndex = -1;
+      });
     } else {
       video.pause();
       video.classList.add("hidden");
       poster.classList.remove("hidden");
       playBtn.classList.remove("hidden");
+      currentlyPlayingVideoIndex = -1;
     }
   }
 }

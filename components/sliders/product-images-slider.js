@@ -61,7 +61,7 @@ class ProductImageSlider {
         </button>
 
         <!-- Main Image Slider (Mobile) -->
-        <div id="main-slider-container" class="md:hidden w-full aspect-square rounded-xl overflow-hidden bg-gray-200 relative cursor-grab active:cursor-grabbing select-none">
+        <div id="main-slider-container" class="md:hidden w-full aspect-square rounded-[8px] md:rounded-[12px] overflow-hidden bg-gray-200 relative cursor-grab active:cursor-grabbing select-none">
           <div id="main-slider-track" class="flex h-full transition-transform duration-300 ease-out" style="width: 300%; transform: translateX(-33.333%);">
             <div class="w-1/3 h-full flex-shrink-0">
               <img loading="lazy"src="${
@@ -127,7 +127,7 @@ class ProductImageSlider {
 
       <!-- THUMBNAILS: MOBILE (slides 1 image at a time) -->
       <!-- 6 images total: 1 prev + 4 visible + 1 next. Show 4 at a time, each = 25% of container -->
-      <div id="thumbnails-mobile" class="relative mt-[8px] mb-4 md:hidden overflow-hidden cursor-grab active:cursor-grabbing select-none">
+      <div id="thumbnails-mobile" class="relative mt-[8px] mb-4 mx-1 md:hidden overflow-hidden cursor-grab active:cursor-grabbing select-none">
         <div id="thumbnails-track" class="flex gap-2 transition-transform duration-300 ease-out" style="width: calc(150% + 10px); transform: translateX(calc(-16.666% - 1.333px));">
           ${thumbImages
             .map(
