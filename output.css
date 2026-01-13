@@ -871,7 +871,9 @@ small {
   .section-1,
     .section-3,
     .section-4 .section-container,
-    .section-5 .section-container {
+    .section-5 .section-container,
+    .section-7 .section-container
+     {
     padding-left: 5rem;
     padding-right: 5rem;
   }
@@ -889,11 +891,6 @@ small {
   .section-1 {
     padding-left: 5rem;
     padding-right: 5rem;
-  }
-
-  .section-7 {
-    padding-left: 3rem;
-    padding-right: 3rem;
   }
 }
 
@@ -1085,6 +1082,10 @@ small {
   top: -20px;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .bottom-\[32px\] {
   bottom: 32px;
 }
@@ -1099,6 +1100,10 @@ small {
 
 .left-\[24px\] {
   left: 24px;
+}
+
+.right-0 {
+  right: 0px;
 }
 
 .right-2 {
@@ -1131,22 +1136,6 @@ small {
 
 .top-\[16px\] {
   top: 16px;
-}
-
-.bottom-0 {
-  bottom: 0px;
-}
-
-.right-0 {
-  right: 0px;
-}
-
-.-bottom-1 {
-  bottom: -0.25rem;
-}
-
-.-right-1 {
-  right: -0.25rem;
 }
 
 .isolate {
@@ -1402,10 +1391,6 @@ small {
   height: 2.5rem;
 }
 
-.h-12 {
-  height: 3rem;
-}
-
 .h-4 {
   height: 1rem;
 }
@@ -1430,6 +1415,10 @@ small {
   height: 24px;
 }
 
+.h-\[40px\] {
+  height: 40px;
+}
+
 .h-auto {
   height: auto;
 }
@@ -1438,28 +1427,12 @@ small {
   height: 100%;
 }
 
-.h-20 {
-  height: 5rem;
-}
-
-.h-\[36px\] {
-  height: 36px;
-}
-
-.h-\[12px\] {
-  height: 12px;
-}
-
 .min-h-\[150px\] {
   min-height: 150px;
 }
 
 .w-1\/3 {
   width: 33.333333%;
-}
-
-.w-12 {
-  width: 3rem;
 }
 
 .w-4 {
@@ -1496,6 +1469,10 @@ small {
 
 .w-\[128px\] {
   width: 128px;
+}
+
+.w-\[14px\] {
+  width: 14px;
 }
 
 .w-\[15\%\] {
@@ -1568,26 +1545,6 @@ small {
 
 .w-full {
   width: 100%;
-}
-
-.w-10 {
-  width: 2.5rem;
-}
-
-.w-20 {
-  width: 5rem;
-}
-
-.w-\[36px\] {
-  width: 36px;
-}
-
-.w-\[12px\] {
-  width: 12px;
-}
-
-.w-\[14px\] {
-  width: 14px;
 }
 
 .max-w-5 {
@@ -2257,10 +2214,6 @@ small {
   gap: 1rem;
 }
 
-.gap-6 {
-  gap: 1.5rem;
-}
-
 .gap-8 {
   gap: 2rem;
 }
@@ -2273,8 +2226,8 @@ small {
   gap: 12px;
 }
 
-.gap-\[1px\] {
-  gap: 1px;
+.gap-\[24px\] {
+  gap: 24px;
 }
 
 .gap-\[64px\] {
@@ -3118,6 +3071,11 @@ small {
   padding-right: 1.25rem;
 }
 
+.px-\[16px\] {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 .px-\[18px\] {
   padding-left: 18px;
   padding-right: 18px;
@@ -3131,6 +3089,11 @@ small {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .py-14 {
@@ -3193,16 +3156,6 @@ small {
   padding-bottom: 8px;
 }
 
-.px-\[16px\] {
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
 .pb-12 {
   padding-bottom: 3rem;
 }
@@ -3223,6 +3176,10 @@ small {
   padding-bottom: 2rem;
 }
 
+.pb-\[3\.8rem\] {
+  padding-bottom: 3.8rem;
+}
+
 .pb-\[70px\] {
   padding-bottom: 70px;
 }
@@ -3239,20 +3196,12 @@ small {
   padding-top: 0px;
 }
 
-.pt-\[4\.6rem\] {
-  padding-top: 4.6rem;
-}
-
 .pt-8 {
   padding-top: 2rem;
 }
 
-.pb-14 {
-  padding-bottom: 3.5rem;
-}
-
-.pb-\[3\.8rem\] {
-  padding-bottom: 3.8rem;
+.pt-\[4\.6rem\] {
+  padding-top: 4.6rem;
 }
 
 .text-left {
@@ -3311,6 +3260,10 @@ small {
   vertical-align: super;
 }
 
+.font-arial {
+  font-family: Arial;
+}
+
 .font-mont {
   font-family: Montserrat, sans-serif;
 }
@@ -3321,15 +3274,6 @@ small {
 
 .font-trirong {
   font-family: Trirong;
-}
-
-.font-arial {
-  font-family: Arial;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .text-\[12px\] {
@@ -4226,14 +4170,14 @@ h3 {
     gap: 1.5rem;
   }
 
-  .max-md\:px-\[24px\] {
-    padding-left: 24px;
-    padding-right: 24px;
+  .max-md\:space-y-3 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
   }
 
-  .max-md\:px-\[16px\] {
-    padding-left: 16px;
-    padding-right: 16px;
+  .max-md\:pb-12 {
+    padding-bottom: 3rem;
   }
 
   .max-md\:pb-2 {
@@ -4242,14 +4186,6 @@ h3 {
 
   .max-md\:pb-8 {
     padding-bottom: 2rem;
-  }
-
-  .max-md\:pb-12 {
-    padding-bottom: 3rem;
-  }
-
-  .max-md\:pb-10 {
-    padding-bottom: 2.5rem;
   }
 
   .max-md\:text-center {
@@ -4299,10 +4235,6 @@ h3 {
 
   .md\:hidden {
     display: none;
-  }
-
-  .md\:h-8 {
-    height: 2rem;
   }
 
   .md\:w-1\/2 {
@@ -4422,6 +4354,11 @@ h3 {
     padding-right: 3rem;
   }
 
+  .md\:px-14 {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+
   .md\:px-24 {
     padding-left: 6rem;
     padding-right: 6rem;
@@ -4445,16 +4382,6 @@ h3 {
   .md\:py-\[56px\] {
     padding-top: 56px;
     padding-bottom: 56px;
-  }
-
-  .md\:px-8 {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-
-  .md\:px-14 {
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
   }
 
   .md\:pb-20 {
