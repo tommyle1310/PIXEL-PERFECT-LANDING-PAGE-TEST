@@ -872,7 +872,8 @@ small {
     .section-8,
     .section-4 .section-container,
     .section-5 .section-container,
-    .section-7 .section-container {
+    .section-7 .section-container,
+    .section-9 .section-container {
     padding-left: 5rem;
     padding-right: 5rem;
   }
@@ -1210,6 +1211,10 @@ small {
   margin-bottom: 12px;
 }
 
+.-mr-6 {
+  margin-right: -1.5rem;
+}
+
 .mb-3 {
   margin-bottom: 0.75rem;
 }
@@ -1220,6 +1225,10 @@ small {
 
 .mb-\[35px\] {
   margin-bottom: 35px;
+}
+
+.ml-6 {
+  margin-left: 1.5rem;
 }
 
 .mr-4 {
@@ -3140,11 +3149,6 @@ small {
   padding-bottom: 4.4rem;
 }
 
-.py-\[56px\] {
-  padding-top: 56px;
-  padding-bottom: 56px;
-}
-
 .py-\[8px\] {
   padding-top: 8px;
   padding-bottom: 8px;
@@ -3178,8 +3182,8 @@ small {
   padding-bottom: 70px;
 }
 
-.pr-2 {
-  padding-right: 0.5rem;
+.pl-6 {
+  padding-left: 1.5rem;
 }
 
 .pr-4 {
@@ -3945,6 +3949,14 @@ h3 {
   }
 }
 
+.w-8 {
+  width: 3.2rem;
+}
+
+.h-8 {
+  height: 3.2rem;
+}
+
 .top-4 {
   top: 1.6rem;
 }
@@ -4394,19 +4406,14 @@ h3 {
     padding-bottom: 3.5rem;
   }
 
-  .md\:py-20 {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+  .md\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 
   .md\:py-\[56px\] {
     padding-top: 56px;
     padding-bottom: 56px;
-  }
-
-  .md\:py-24 {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
   }
 
   .md\:pb-20 {

@@ -19,17 +19,17 @@ async function loadStoriesData() {
 }
 
 function getStoriesPerView() {
-  return window.innerWidth < 768 ? 1.2 : 4;
+  return window.innerWidth < 679 ? 1.2 : 4;
 }
 
 function getSlideWidthPercent() {
   // Mobile: each slide is 83.33% of container (shows 1 + 0.2 of next)
   // Desktop: each slide is 25% of container (shows 4)
-  return window.innerWidth < 768 ? 83.33 : 25;
+  return window.innerWidth < 679 ? 83.33 : 25;
 }
 
 function getMaxStoryIndex() {
-  const isMobile = window.innerWidth < 768;
+  const isMobile = window.innerWidth < 679;
   if (isMobile) {
     // On mobile, we can scroll through each individual slide
     return storiesData.length - 1;
@@ -43,7 +43,7 @@ function renderStoriesCarousel() {
   const container = document.getElementById("stories-container");
   if (!container) return;
 
-  const isMobile = window.innerWidth < 768;
+  const isMobile = window.innerWidth < 679;
   const slideWidth = getSlideWidthPercent();
   const maxIndex = getMaxStoryIndex();
 
@@ -56,8 +56,8 @@ function renderStoriesCarousel() {
   const videosHTML = storiesData
     .map(
       (story, index) => `
-    <div class="stories-slide flex-shrink-0 ${index === 0 ? "pr-2 " : "px-2"}" style="width: ${slideWidth}%;">
-        <div class="aspect-[9/16] rounded-[4px] overflow-hidden bg-gray-200 relative group cursor-pointer"
+    <div class="stories-slide flex-shrink-0 ${index === 0 ? "-mr-6" : "ml-6 pl-6"}" style="width: ${slideWidth}%;">
+        <div class="aspect-[9/16] h-full rounded-[4px] overflow-hidden bg-gray-200 relative group cursor-pointer"
             onclick="playStoryVideo(${index})">
             <img loading="lazy"src="${story.poster}" alt="Story ${
         index + 1
@@ -197,7 +197,7 @@ function updateStoriesProgressBar(targetIndex, duration) {
   const progressBar = document.querySelector("#stories-progress-track > div");
   if (!progressBar) return;
 
-  const isMobile = window.innerWidth < 768;
+  const isMobile = window.innerWidth < 679;
   const visibleItems = getStoriesPerView();
   const totalItems = storiesData.length;
   const progressBarWidthPercent = (visibleItems / totalItems) * 100;

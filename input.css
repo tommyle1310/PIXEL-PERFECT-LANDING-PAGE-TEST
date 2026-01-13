@@ -78,7 +78,8 @@
     .section-8,
     .section-4 .section-container,
     .section-5 .section-container,
-    .section-7 .section-container {
+    .section-7 .section-container,
+    .section-9 .section-container {
       padding-left: 5rem;
       padding-right: 5rem;
     }
@@ -413,6 +414,14 @@
     h3 {
       font-size: 24px;
     }
+  }
+
+  .w-8 {
+    width: 3.2rem;
+  }
+
+  .h-8 {
+    height: 3.2rem;
   }
 
   .top-4 {
