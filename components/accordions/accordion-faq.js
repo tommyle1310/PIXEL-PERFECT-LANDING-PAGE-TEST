@@ -23,7 +23,7 @@ function renderFaqs() {
     <div
       id="${item.id}"
       data-faq
-      class="group border-b leading-[1.3] md:px-6 py-5 border-white cursor-pointer"
+      class="group border-b leading-[1.3] md:px-8 py-5 border-white cursor-pointer"
       aria-expanded="false"
     >
       <div class="w-full flex items-center justify-between text-left ">

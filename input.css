@@ -92,9 +92,10 @@
       padding-left: 3rem !important;
       padding-right: 3rem !important;
     }
+
     .section-10 {
-      padding-left: 5rem !important;
-      padding-right: 5rem !important;
+      padding-left: 1.5rem !important;
+      padding-right: 1.5rem !important;
     }
   }
 
@@ -102,6 +103,11 @@
     .section-1 {
       padding-left: 5rem;
       padding-right: 5rem;
+    }
+
+    .section-10 {
+      padding-left: 5rem !important;
+      padding-right: 5rem !important;
     }
   }
 

@@ -888,8 +888,8 @@ small {
   }
 
   .section-10 {
-    padding-left: 5rem !important;
-    padding-right: 5rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
   }
 }
 
@@ -897,6 +897,11 @@ small {
   .section-1 {
     padding-left: 5rem;
     padding-right: 5rem;
+  }
+
+  .section-10 {
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
   }
 }
 
@@ -1221,11 +1226,6 @@ small {
 .my-\[12px\] {
   margin-top: 12px;
   margin-bottom: 12px;
-}
-
-.mx-16 {
-  margin-left: 4rem;
-  margin-right: 4rem;
 }
 
 .-mr-6 {
@@ -4390,6 +4390,10 @@ h3 {
     max-width: 600px;
   }
 
+  .md\:max-w-\[824px\] {
+    max-width: 824px;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -4527,6 +4531,11 @@ h3 {
     padding-bottom: 56px;
   }
 
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   .md\:pb-20 {
     padding-bottom: 5rem;
   }
@@ -4637,6 +4646,11 @@ h3 {
 }
 
 @media (min-width: 1024px) {
+  .lg\:mx-20 {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+
   .lg\:grid {
     display: grid;
   }
