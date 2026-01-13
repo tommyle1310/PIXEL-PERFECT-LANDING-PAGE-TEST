@@ -870,6 +870,7 @@ small {
   .section-1,
     .section-3,
     .section-8,
+    .section-11,
     .section-4 .section-container,
     .section-5 .section-container,
     .section-7 .section-container,
@@ -3154,6 +3155,16 @@ small {
   padding-bottom: 8px;
 }
 
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.px-16 {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
 .pb-12 {
   padding-bottom: 3rem;
 }
@@ -3208,6 +3219,10 @@ small {
 
 .pt-\[4\.6rem\] {
   padding-top: 4.6rem;
+}
+
+.pb-16 {
+  padding-bottom: 4rem;
 }
 
 .text-left {
@@ -4201,11 +4216,6 @@ h3 {
 }
 
 @media not all and (min-width: 679px) {
-  .max-md\:mx-\[15px\] {
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-
   .max-md\:mt-2 {
     margin-top: 0.5rem;
   }
@@ -4465,8 +4475,27 @@ h3 {
     padding-bottom: 56px;
   }
 
+  .md\:px-\[32px\] {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .md\:px-\[64px\] {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
+  .md\:px-\[54px\] {
+    padding-left: 54px;
+    padding-right: 54px;
+  }
+
   .md\:pb-20 {
     padding-bottom: 5rem;
+  }
+
+  .md\:pb-\[32px\] {
+    padding-bottom: 32px;
   }
 
   .md\:pb-\[6\.5rem\] {
@@ -4487,10 +4516,6 @@ h3 {
 
   .md\:pt-\[7rem\] {
     padding-top: 7rem;
-  }
-
-  .md\:pb-\[32px\] {
-    padding-bottom: 32px;
   }
 
   .md\:text-left {
@@ -4546,6 +4571,11 @@ h3 {
 @media (min-width: 750px) {
   .md-2\:flex {
     display: flex;
+  }
+
+  .md-2\:py-\[64px\] {
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
 }
 
