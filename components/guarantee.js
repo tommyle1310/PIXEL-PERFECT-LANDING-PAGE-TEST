@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   targets.forEach(el => {
     const isCenter = el.hasAttribute("data-center");
     const isBold = el.hasAttribute("data-bold");
+    const variant2 = el.hasAttribute("data-variant2");
     const isHalfGap = el.hasAttribute("data-half-gap");
 
     const template = `
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
           alt="60 days logo"
           class="w-6"
         />
-        <span>60-Day Money-Back Guarantee</span>
+        <span>${variant2 ? "60 day money-back guarantee" : "60-Day Money-Back Guarantee"}</span>
       </p>
     `;
 
