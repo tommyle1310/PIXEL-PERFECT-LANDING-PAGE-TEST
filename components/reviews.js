@@ -78,13 +78,8 @@ function applyRatingFilter(rating) {
 function applySort(value) {
   currentReviewPage = 1;
 
-  // reset-only options
-  if (
-    value === "with-pictures" ||
-    value === "pictures-first" ||
-    value === "videos-first" ||
-    value === "most-helpful"
-  ) {
+  // reset-only options (videos-first and most-helpful not implemented yet)
+  if (value === "videos-first" || value === "most-helpful") {
     activeRatingFilter = null;
     activeSortFilter = null;
     filteredReviews = [...reviewsData];
@@ -103,6 +98,22 @@ function applySort(value) {
     );
   } else {
     filteredReviews = [...reviewsData];
+  }
+
+  // Filter: only reviews with pictures
+  if (value === "with-pictures") {
+    filteredReviews = filteredReviews.filter(
+      (r) => r.images && r.images.length > 0
+    );
+  }
+
+  // Sort: pictures first (reviews with images come before those without)
+  if (value === "pictures-first") {
+    filteredReviews.sort((a, b) => {
+      const aHasImages = a.images && a.images.length > 0 ? 1 : 0;
+      const bHasImages = b.images && b.images.length > 0 ? 1 : 0;
+      return bHasImages - aHasImages;
+    });
   }
 
   if (value === "highest-rating") {
