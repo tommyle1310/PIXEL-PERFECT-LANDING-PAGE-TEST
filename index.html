@@ -1081,7 +1081,8 @@
                     class="flex flex-col items-center gap-2 w-full text-[16px]">
                     <label class="text-[15px] md:text-md"
                         for="content-textarea">Review content <span
-                            class="text-[#7b7b7b] text-[12px] md:text-[12.8px]">(4996)</span></label>
+                            id="char-counter"
+                            class="text-[#7b7b7b] text-[12px] md:text-[12.8px] hidden"></span></label>
                     <textarea
                         style="font-size: 14px"
                         class="w-full px-4 py-2 border-[#e4e4e4] border"
@@ -1512,14 +1513,7 @@
             class="fixed inset-0 z-50 bg-black/80 hidden items-center justify-center"
             onclick="if(event.target === this) closeReviewImageModal()">
             
-            <!-- CLOSE BUTTON - fixed top right -->
-            <button
-                onclick="closeReviewImageModal()"
-                class="fixed top-4 right-4 z-20">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#adadad]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
+         
 
             <!-- LEFT CHEVRON - fixed left 24px -->
             <button
@@ -1541,6 +1535,14 @@
 
             <!-- IMAGE CONTAINER -->
             <div class="relative flex flex-col items-center">
+                   <!-- CLOSE BUTTON - fixed top right -->
+            <button
+                onclick="closeReviewImageModal()"
+                class="fixed top-4 right-4 z-20">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#adadad]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
                 <!-- IMAGE -->
                 <img
                     id="review-modal-image"
