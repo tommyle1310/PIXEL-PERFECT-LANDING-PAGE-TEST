@@ -554,8 +554,15 @@ video {
   display: none;
 }
 
-body {
-  overflow-x: clip;
+/* --- Reset & Box Model --- */
+
+*,
+  ::before,
+  ::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #fff;
 }
 
 html {
@@ -565,38 +572,51 @@ html {
   text-rendering: optimizeLegibility;
 }
 
-*,
-  ::before,
-  ::after {
-  box-sizing: border-box;
-  /* 1 */
-  border-width: 0;
-  /* 2 */
-  border-style: solid;
-  /* 2 */
-  border-color: #fff;
-  /* 2 */
-}
-
 body {
+  overflow-x: clip;
   letter-spacing: 0.06rem;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-input:focus,
-  textarea:focus {
-  border-color: #f2847d;
-  outline: none;
+/* --- Typography --- */
+
+h1,
+  h2 {
+  font-family: "Lora";
 }
 
-a {
-  font-family: "Montserrat", sans-serif;
+h1 {
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h2 span {
+  font-family: "Lora";
+}
+
+h4 {
+  font-family: "Trirong";
+  font-size: 20px;
 }
 
 p {
   color: #000;
+}
+
+p,
+  li,
+  button {
+  font-size: 16px;
+}
+
+a {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
 }
 
 li,
@@ -609,56 +629,23 @@ li,
   line-height: 1.3rem;
 }
 
-h1,
-  h2 {
-  font-family: "Lora";
+small {
+  color: #666;
 }
 
-h4 {
-  font-family: "Trirong";
-  font-size: 20px;
+/* --- Form Elements --- */
+
+input:focus,
+  textarea:focus {
+  border-color: #f2847d;
+  outline: none;
 }
 
-h1 {
-  font-size: 28px;
-}
+/* --- SVG & Icons --- */
 
-@media (max-width: 679px) {
-  h1 {
-    font-size: 24px;
-  }
-}
-
-h2 {
-  font-size: 32px;
-}
-
-@media (max-width: 679px) {
-  h2 {
-    font-size: 24px;
-  }
-}
-
-p,
-  li,
-  button {
-  font-size: 16px;
-}
-
-@media (max-width: 679px) {
-  p,
-    li,
-    button {
-    font-size: 16px;
-  }
-}
-
-a {
-  font-size: 16px;
-}
-
-h2 span {
-  font-family: "Lora";
+circle {
+  fill: none;
+  stroke-width: 12;
 }
 
 .fa-star,
@@ -666,46 +653,19 @@ h2 span {
   color: #fa8a8a;
 }
 
-circle {
-  fill: none;
-  stroke-width: 12;
-}
-
-small {
-  color: #666;
-}
-
-.ul-success li {
-  color: #0c7c00;
-  list-style: none;
-  padding-left: 0;
-  font-weight: 600;
-  font-size: 1.6rem;
-  margin: 0.8rem 0;
-}
-
-.ul-danger li {
-  color: #a60003;
-  list-style: none;
-  padding-left: 0;
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin: 0.8rem 0;
-}
-
-@media (min-width: 679px) {
-  .ul-success li,
-    .ul-danger li {
-    font-size: 18px;
-  }
-}
-
-/* SUCCESS ICON */
+/* --- Success List --- */
 
 .ul-success li {
   display: flex;
   align-items: flex-start;
   gap: 8px;
+  color: #0c7c00;
+  list-style: none;
+  line-height: 1.3em;
+  padding-left: 0;
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin: 0.8rem 0;
 }
 
 .ul-success li::before {
@@ -718,12 +678,18 @@ small {
       no-repeat center / contain;
 }
 
-/* DANGER ICON */
+/* --- Danger List --- */
 
 .ul-danger li {
   display: flex;
   align-items: flex-start;
   gap: 8px;
+  color: #a60003;
+  list-style: none;
+  padding-left: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0.8rem 0;
 }
 
 .ul-danger li::before {
@@ -734,6 +700,31 @@ small {
   margin-top: 4px;
   background: url("https://trysculptique.com/cdn/shop/files/Vector_7.png?v=1760702839")
       no-repeat center / contain;
+}
+
+/* --- Base Responsive --- */
+
+@media (max-width: 679px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  p,
+    li,
+    button {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 679px) {
+  .ul-success li,
+    .ul-danger li {
+    font-size: 18px;
+  }
 }
 
 .\!container {
@@ -824,11 +815,15 @@ small {
   }
 }
 
+/* --- Font Awesome Scale --- */
+
 .fa-scale {
   font-size: 16px;
   transform: scale(0.85, 0.94);
   transform-origin: center;
 }
+
+/* --- Section Containers --- */
 
 .section-container {
   max-width: 1340px;
@@ -837,67 +832,17 @@ small {
   padding-right: 15px;
 }
 
-@media (min-width: 651px) {
-  .section-container {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-}
-
-@media (min-width: 750px) {
-  .section-container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
 .section-1,
   .section-3,
   .section-8,
   .section-6 {
-  padding-right: 15px;
-  padding-left: 15px;
   max-width: 1340px;
   margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
-@media (min-width: 651px) {
-  .section-6 {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  .section-3,
-    .section-8,
-    .section-11,
-    .section-4 .section-container,
-    .section-5 .section-container,
-    .section-7 .section-container,
-    .section-9 .section-container,
-    .section-12 .section-container {
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-}
-
-@media (min-width: 750px) {
-  .section-10 {
-    padding-left: 5rem !important;
-    padding-right:5rem !important;
-  }
-
-  .section-1 {
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .section-10 {
-    padding-left: 5rem !important;
-    padding-right: 5rem !important;
-  }
-}
+/* --- Reviews Terms --- */
 
 .reviews-terms {
   font-size: 16px;
@@ -914,6 +859,8 @@ small {
   font-feature-settings: "ss01" 0, "ss02" 0, "liga" 0;
   font-variant-ligatures: none;
 }
+
+/* --- Stat Card & Donut Chart --- */
 
 .bg {
   stroke: #dcdcdc;
@@ -937,25 +884,19 @@ small {
   margin-bottom: 12px;
 }
 
+/* --- Double Chevron --- */
+
 .double-chevron-down {
   max-width: 34px;
 }
 
-@media (min-width: 679px) {
-  .double-chevron-down {
-    max-width: 48px;
-  }
-}
+/* --- Bloating Card --- */
 
 .bloating-card {
   max-width: 50%;
 }
 
-@media (min-width: 679px) {
-  .bloating-card {
-    max-width: 100%;
-  }
-}
+/* --- As Seen Section --- */
 
 .as-seen {
   background: #f6f1e4;
@@ -967,14 +908,17 @@ small {
   gap: 20px;
 }
 
+/* --- Full Bleed Layout --- */
+
 .full-bleed {
   width: 100vw;
   max-width: 100vw;
   position: relative;
-  /* BREAK OUT OF PARENT */
   left: 50%;
   transform: translateX(-50%);
 }
+
+/* --- Marquee --- */
 
 .marquee {
   position: relative;
@@ -997,15 +941,87 @@ small {
   filter: grayscale(100%);
 }
 
+/* --- Customer Reviews --- */
+
+.customer-reviews,
+  .customer-reviews p {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* --- Judgeme Star --- */
+
+/* --- Components Responsive (min-width: 651px) --- */
+
+@media (min-width: 651px) {
+  .section-container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .section-6 {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .section-3,
+    .section-8,
+    .section-11,
+    .section-4 .section-container,
+    .section-5 .section-container,
+    .section-7 .section-container,
+    .section-9 .section-container,
+    .section-12 .section-container {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+/* --- Components Responsive (min-width: 679px) --- */
+
+@media (min-width: 679px) {
+  .double-chevron-down {
+    max-width: 48px;
+  }
+
+  .bloating-card {
+    max-width: 100%;
+  }
+}
+
+/* --- Components Responsive (min-width: 750px) --- */
+
+@media (min-width: 750px) {
+  .section-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .section-1 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .section-10 {
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+  }
+}
+
+/* --- Components Responsive (max-width: 899px) --- */
+
 @media (max-width: 899px) {
   .marquee-track img {
     height: 20px;
   }
 }
 
-.customer-reviews,
-  .customer-reviews p {
-  font-family: "Montserrat", sans-serif;
+/* --- Components Responsive (min-width: 1024px) --- */
+
+@media (min-width: 1024px) {
+  .section-10 {
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+  }
 }
 
 .sr-only {
@@ -1631,6 +1647,22 @@ small {
 
 .max-w-md {
   max-width: 28rem;
+}
+
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
+}
+
+.max-w-\[45rem\] {
+  max-width: 45rem;
+}
+
+.\!max-w-\[45rem\] {
+  max-width: 45rem !important;
 }
 
 .flex-1 {
@@ -3062,6 +3094,14 @@ small {
   padding: 16px;
 }
 
+.p-\[20px\] {
+  padding: 20px;
+}
+
+.p-\[18px\] {
+  padding: 18px;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -3985,24 +4025,42 @@ small {
   forced-color-adjust: none;
 }
 
+/* --- Headings --- */
+
 h3 {
   font-size: 18px;
   font-family: "Trirong";
 }
 
-@media (min-width: 900px) {
-  h3 {
-    font-size: 24px;
-  }
+/* --- Width --- */
+
+.w-4 {
+  width: 1.6rem;
+}
+
+.gap-3 {
+  gap: 1.2rem;
+}
+
+.w-6 {
+  width: 2.4rem;
 }
 
 .w-8 {
   width: 3.2rem;
 }
 
+/* --- Height --- */
+
+.h-4 {
+  height: 1.6rem;
+}
+
 .h-8 {
   height: 3.2rem;
 }
+
+/* --- Position --- */
 
 .top-4 {
   top: 1.6rem;
@@ -4012,6 +4070,8 @@ h3 {
   right: 1.6rem;
 }
 
+/* --- Gap --- */
+
 .gap-2 {
   gap: 0.8rem;
 }
@@ -4020,8 +4080,14 @@ h3 {
   gap: 1.6rem;
 }
 
+/* --- Padding --- */
+
 .p-3 {
   padding: 1.2rem;
+}
+
+.p-4 {
+  padding: 1.6rem;
 }
 
 .py-2 {
@@ -4039,26 +4105,12 @@ h3 {
   padding-right: 0.8rem;
 }
 
-.p-4 {
-  padding: 1.6rem;
-}
-
 .px-4 {
   padding-left: 1.6rem;
   padding-right: 1.6rem;
 }
 
-.w-4 {
-  width: 1.6rem;
-}
-
-.h-4 {
-  height: 1.6rem;
-}
-
-.w-6 {
-  width: 2.4rem;
-}
+/* --- Margin --- */
 
 .mt-4 {
   margin-top: 1.6rem;
@@ -4068,13 +4120,17 @@ h3 {
   margin-bottom: 1.6rem;
 }
 
-.rounded-xl {
-  border-radius: 1.2rem;
-}
+/* --- Border Radius --- */
 
 .rounded-lg {
   border-radius: 0.8rem;
 }
+
+.rounded-xl {
+  border-radius: 1.2rem;
+}
+
+/* --- Animations --- */
 
 @keyframes scroll {
   from {
@@ -4102,13 +4158,25 @@ h3 {
   animation: fadeIn 0.2s ease-out;
 }
 
-/* ================= BASE (GLOBAL TAGS) ================= */
+/* --- Utilities Responsive --- */
 
-/* ================= COMPONENTS ================= */
+@media (min-width: 900px) {
+  h3 {
+    font-size: 24px;
+  }
+}
 
-/* ================= BASE (GLOBAL TAGS) ================= */
+/* ============================================
+   BASE LAYER - Global Resets & Typography
+   ============================================ */
 
-/* ================= UTILITIES / ANIMATIONS ================= */
+/* ============================================
+   COMPONENTS LAYER - Reusable UI Components
+   ============================================ */
+
+/* ============================================
+   UTILITIES LAYER - Helpers & Animations
+   ============================================ */
 
 @media (min-width: 640px) {
   .sm\:container {
@@ -4469,6 +4537,10 @@ h3 {
     padding: 32px;
   }
 
+  .md\:p-\[20px\] {
+    padding: 20px;
+  }
+
   .md\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
@@ -4607,6 +4679,10 @@ h3 {
     line-height: 1.8;
   }
 
+  .md\:gap-3 {
+    gap: 1.2rem;
+  }
+
   .md\:gap-2 {
     gap: 0.8rem;
   }
@@ -4649,11 +4725,6 @@ h3 {
 }
 
 @media (min-width: 1024px) {
-  .lg\:mx-20 {
-    margin-left: 5rem;
-    margin-right: 5rem;
-  }
-
   .lg\:grid {
     display: grid;
   }
