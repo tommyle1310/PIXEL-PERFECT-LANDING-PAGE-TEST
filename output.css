@@ -881,14 +881,9 @@ small {
 }
 
 @media (min-width: 750px) {
-  .section-6 {
-    padding-left: 3rem !important;
-    padding-right: 3rem !important;
-  }
-
   .section-10 {
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
+    padding-left: 5rem !important;
+    padding-right:5rem !important;
   }
 
   .section-1 {
@@ -4482,6 +4477,11 @@ h3 {
   .md\:px-12 {
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+
+  .md\:px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   .md\:px-24 {
