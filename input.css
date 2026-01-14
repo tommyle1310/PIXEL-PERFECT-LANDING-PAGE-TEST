@@ -468,6 +468,10 @@
     padding: 1.6rem;
   }
 
+  .rounded-md {
+    border-radius: 0.8rem;
+  }
+
   .py-2 {
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;

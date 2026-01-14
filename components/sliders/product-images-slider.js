@@ -144,7 +144,7 @@ class ProductImageSlider {
 
       <!-- THUMBNAILS: TABLET+ (Static, no interaction) -->
       <div class="hidden md:block space-y-3 mt-4">
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid grid-cols-2 gap-4">
           ${this.images
             .slice(1, 3)
             .map(
@@ -156,7 +156,7 @@ class ProductImageSlider {
             )
             .join("")}
         </div>
-        <div class="grid grid-cols-3 gap-3">
+        <div class="grid grid-cols-3 gap-4">
           ${this.images
             .slice(3, 6)
             .map(

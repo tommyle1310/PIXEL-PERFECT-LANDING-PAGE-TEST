@@ -33,7 +33,11 @@
         "date": "11/28/2025",
         "content": "Finally found something that helps with the 'sluggish' feeling in the mornings. I feel much lighter.",
         "source": "Verified Purchase",
-        "avatarInitial": "L"
+        "avatarInitial": "L",
+        "images": [
+            "https://judgeme.imgix.net/sculptique/1752663679__1752663592120-image__original.jpg?auto=format&w=160",
+            "https://judgeme.imgix.net/sculptique/1752663682__1752663674935-image__original.jpg?auto=format&w=160"
+        ]
     },
     {
         "rating": 3,

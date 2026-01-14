@@ -6,6 +6,10 @@ const REVIEWS_PER_PAGE = 5;
 let activeRatingFilter = null;
 let activeSortFilter = null;
 
+// Review image modal state
+let currentReviewImages = [];
+let currentImageIndex = 0;
+
 /* ================= LOAD ================= */
 async function loadReviewsData() {
   const res = await fetch("./data/reviews.json");
@@ -165,6 +169,18 @@ function renderReviews() {
         </div>
 
         <p class="font-nunito text-[15px] md:text-md">${r.content}</p>
+        
+        ${r.images && r.images.length > 0 ? `
+          <div class="flex flex-wrap gap-4 mt-2">
+            ${r.images.map((img, idx) => `
+              <div
+                style="width: 94px; height: 94px;"
+              class="cursor-pointer overflow-hidden" onclick="openReviewImageModal(${JSON.stringify(r.images).replace(/"/g, '&quot;')}, ${idx})">
+                <img src="${img}" alt="Review image" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
       </div>
     `;
       })
@@ -218,6 +234,53 @@ function changeReviewPage(p) {
   document
     .getElementById("reviews-container")
     ?.scrollIntoView({ behavior: "smooth" });
+}
+
+/* ================= REVIEW IMAGE MODAL ================= */
+function updateImagePagination() {
+  const paginationEl = document.getElementById("review-image-pagination");
+  if (paginationEl) {
+    paginationEl.textContent = `${currentImageIndex + 1} / ${currentReviewImages.length}`;
+  }
+}
+
+function openReviewImageModal(images, index) {
+  currentReviewImages = images;
+  currentImageIndex = index;
+  
+  const modal = document.getElementById("review-image-modal-overlay");
+  const imgEl = document.getElementById("review-modal-image");
+  
+  if (modal && imgEl) {
+    imgEl.src = currentReviewImages[currentImageIndex];
+    updateImagePagination();
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeReviewImageModal() {
+  const modal = document.getElementById("review-image-modal-overlay");
+  if (modal) {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    document.body.style.overflow = "";
+  }
+}
+
+function prevReviewImage() {
+  if (currentReviewImages.length === 0) return;
+  currentImageIndex = (currentImageIndex - 1 + currentReviewImages.length) % currentReviewImages.length;
+  document.getElementById("review-modal-image").src = currentReviewImages[currentImageIndex];
+  updateImagePagination();
+}
+
+function nextReviewImage() {
+  if (currentReviewImages.length === 0) return;
+  currentImageIndex = (currentImageIndex + 1) % currentReviewImages.length;
+  document.getElementById("review-modal-image").src = currentReviewImages[currentImageIndex];
+  updateImagePagination();
 }
 
 /* ================= INIT ================= */
