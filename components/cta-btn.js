@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "2": "bg-[#000] text-lg leading-[1.3] mx-auto md:px-[80px] md:py-[18px] p-4 rounded-[4px] text-white hover:bg-[#333] duration-300",
     "3": "bg-[#000] text-lg leading-[1.3] mx-auto md:px-[80px] md:py-[18px] p-4 rounded-[4px] text-white hover:bg-[#333] duration-300",
     "4": "bg-[#000] leading-[1.3] mx-auto p-4 md:px-[80px] md:py-[18px] rounded-[4px] text-white hover:bg-[#333] duration-300 text-md md:text-lg",
-    "5": "bg-[#000] w-full mt-8 mx-auto py-[18px] leading-[1.3] md:px-[80px] text-md md:text-lg md:py-[18px] px-20 rounded-[4px] text-white hover:bg-[#333] duration-300",
+    "5": "bg-[#000] mt-8 py-[18px] flex-shrink-1 self-start leading-[1.3] md:px-[80px] text-md md:text-lg md:py-[18px] px-20 rounded-[4px] text-white hover:bg-[#333] duration-300",
     "6": "bg-[#000] font-mont w-full mx-auto p-[18px] leading-[1.3] md:p-[20px] rounded-lg text-white hover:bg-[#333] duration-300"
   };
 
